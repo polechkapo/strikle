@@ -29,17 +29,20 @@ router.route('/')
   .put(async (req, res) => {
     try {
       const {
-        user_id, gender, birthdate, city, bio,
+        gender, birthdate, city, bio,
       } = req.body;
 
-      const updateUser = await User.update({
-        gender, birth_date: birthdate, city, bio,
-      }, { where: { id: user_id } });
+      if (req.session.userId) {
+        const updateUser = await User.update({
+          gender, birth_date: birthdate, city, bio,
+        }, { where: { id: req.session.userId } });
 
-      if (updateUser) {
-        return res.status(203).json({ updateUser: true });
+        if (updateUser) {
+          return res.status(203).json({ updateUser: true });
+        } else {
+          return res.status(404).json({ updateUser: false });
+        }
       }
-      return res.status(404).json({ updateUser: false });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

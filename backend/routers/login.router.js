@@ -5,7 +5,6 @@ const { User } = require('../db/models')
 router.route('/')
   .post(async (req, res) => {
     const { email, password } = req.body;
-    console.log('SERVER', email, password);
     const userCheck = await User.findOne({
       where: {
         email,
