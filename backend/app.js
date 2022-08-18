@@ -8,18 +8,12 @@ const favoriteRouter = require('./routers/favorite.router');
 const sessionRouter = require('./routers/auth.router');
 const genreRouter = require('./routers/genre.router')
 const loginRouter = require('./routers/login.router')
-
 const app = express();
 config(app);
 const createSocketServer = require('./socket');
-
 const server = createServer(); // поля
-
-app.use(require('cors')({
-  origin: ['http://localhost:3000'],
-  credentials: true,
-}));
 require('./mw/session')(app);
+
 
 app.use('/api', regRouter);
 app.use('/api/favorite', favoriteRouter);

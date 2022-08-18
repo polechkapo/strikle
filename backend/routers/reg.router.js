@@ -47,7 +47,6 @@ router.route('/reg')
     } else {
       res.status(404).json({ updateUser: false });
     }
-      
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
