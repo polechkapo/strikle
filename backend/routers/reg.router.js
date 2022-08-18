@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../db/models');
 
-router.route('/reg')
+router.route('/')
   .post(async (req, res) => {
     try {
       const {
@@ -17,11 +17,11 @@ router.route('/reg')
 
       if (userRegFailed) {
         return res.status(403).json({ registration: false, message: 'Пользователь с таким email уже существует' });
+      } else {
+        const user = await User.create({ username, email, password: await bcrypt.hash(password, saltRounds) });
+        req.session.userId = user.id;
+        return res.status(201).json({ registration: true });
       }
-
-      const user = await User.create({ username, email, password: await bcrypt.hash(password, saltRounds) });
-      req.session.userId = user.id;
-      return res.status(201).json({ registration: true });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -44,3 +44,5 @@ router.route('/reg')
       return res.status(500).json({ error: error.message });
     }
   });
+
+module.exports = router;
