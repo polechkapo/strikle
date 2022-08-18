@@ -1,11 +1,10 @@
 import React, { useState} from 'react';
 import empty from './empty.jpeg';
-import axios from 'axios';
 
 
 export default function Multer() {
   const [photo, setPhoto] = useState(null);
-  const [avatar, setAvatar] = useState(null);
+  
  console.log(photo);
   const hendlerUloadPhoto= React.useCallback(async(e)=>{
     try {
