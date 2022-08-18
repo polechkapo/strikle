@@ -46,22 +46,24 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       },
     },
-
     password: {
       allowNull: false,
       type: DataTypes.TEXT,
     },
     birth_date: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.DATE,
     },
     bio: {
+      allowNull: true,
       type: DataTypes.TEXT,
     },
     avatar: {
+      allowNull: true,
       type: DataTypes.TEXT,
     },
     city: {
+      allowNull: true,
       type: DataTypes.TEXT,
     },
     createdAt: {
