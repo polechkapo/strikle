@@ -10,6 +10,9 @@ module.exports = {
       user_who: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+        },
       },
       message: {
         allowNull: false,
