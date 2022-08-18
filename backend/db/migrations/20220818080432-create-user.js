@@ -15,14 +15,12 @@ module.exports = {
         allowNull: false,
         unique: true,
         type: Sequelize.TEXT,
-
       },
       password: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
       birth_date: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
       bio: {

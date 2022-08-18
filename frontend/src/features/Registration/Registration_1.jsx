@@ -1,18 +1,23 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../store/userReducer/reducer';
 
 function Registration1() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleForm = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
-    const name = event.target.name.value;
+    const username = event.target.name.value;
     const password = event.target.password.value;
+    const checkPassword = event.target.checkPassword.value;
 
-    dispatch(registerUser({ email, name, password })); // кидаем в санку
-    //  navigate('/registraton/2');
+    dispatch(registerUser({
+      email, username, password, checkPassword,
+    })); // кидаем в санку
+    navigate('/registraton/2');
   };
 
   return (

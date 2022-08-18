@@ -38,6 +38,7 @@ const registerUser = createAsyncThunk(
 
     });
     const data = await response.json();
+    console.log(data);
 
     if (data.error) {
       throw data.error;
@@ -45,22 +46,45 @@ const registerUser = createAsyncThunk(
 
     return data;
   },
+);
+
+  const updateUser = createAsyncThunk(
+   'user/updateUser', // это тайп для редьюсера
+ 
+   async (payload) => {
+    // сюда прилетает пэйлоад из компонента
+    console.log(payload, 'update fetch');
+     const response = await fetch('/api/reg', { // сюда кидаем фетч 
+       method: 'PUT',
+       headers: { 'content-type': 'application/json' },
+       body: JSON.stringify(payload),
+ 
+     });
+     const data = await response.json();
+     console.log(data, '<===== data fetch');
+ 
+     if (data.error) {
+       throw data.error;
+     }
+ 
+     return data;
+   },
 
 );
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    addUser: (state, action) => {
-      const newUser = action.payload;
-      state.user = newUser;
-    },
-    updateUser: (state, action) => {
-      const newInfo = action.payload;
-      state.user = { ...state.user, newInfo };
-    },
-  },
+  // reducers: {
+  //   addUser: (state, action) => {
+  //     const newUser = action.payload;
+  //     state.user = newUser;
+  //   },
+  //   updateUser: (state, action) => {
+  //     const newInfo = action.payload;
+  //     state.user = { ...state.user, newInfo };
+  //   },
+  // },
   extraReducers: (builder) => {
     builder
       .addCase(loadUser.rejected, (state, action) => {
@@ -74,7 +98,7 @@ const userSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
          // Сценарий провала — загрузка не увенчалась успехом
-         console.log(state.error, '<===== error');
+         console.log(state.error, '<===== error register');
          state.error = action.error.message;
        })
        .addCase(registerUser.fulfilled, (state, action) => {
@@ -82,19 +106,31 @@ const userSlice = createSlice({
          console.log(state.user, '<===== user');
          const newUser = action.payload;
          state.user = newUser;
-       });
+       })
+       .addCase(updateUser.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        console.log(state.error, '<===== error update');
+        state.error = action.error.message;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        console.log(state.user, '<===== Updateuser');
+        const newInfo = action.payload;
+        state.user = newInfo;
+      });
   },
 });
 
 export {
   loadUser,
   registerUser,
+  updateUser,
 };
 
-export const {
-  addUser,
-  updateUser,
-} = userSlice.actions;
+// export const {
+//   addUser,
+//   updateUser,
+// } = userSlice.actions;
 
 export const selectUser = (state) => state.user;
 

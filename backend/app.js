@@ -1,30 +1,31 @@
 require('dotenv').config();
 const express = require('express');
 const { createServer } = require('http'); // поля
-const path = require('path');
+const { sequelize } = require('./db/models');
+const config = require('./config/config');
+const regRouter = require('./routers/reg.router');
+const favoriteRouter = require('./routers/favorite.router');
+const sessionRouter = require('./routers/auth.router');
+const genreRouter = require('./routers/genre.router')
+const loginRouter = require('./routers/login.router')
 
 const app = express();
+config(app);
 const createSocketServer = require('./socket');
-// поля
-const server = createServer(); // поля
-// const tems = require('./routes/tems');
-app.use(require('morgan')('dev'));
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const server = createServer(); // поля
+
 app.use(require('cors')({
   origin: ['http://localhost:3000'],
   credentials: true,
 }));
-
-// Static content: web-client path AS virtual, server path
-app.use(express.static(path.join(__dirname, '../client/build')));
-app.use('/avatar', express.static(path.resolve('uploads')));
-app.use(express.static(path.resolve('public')));
-
 require('./mw/session')(app);
 
-const { sequelize } = require('./db/models');
+app.use('/api', regRouter);
+app.use('/api/favorite', favoriteRouter);
+app.use('/api/session', sessionRouter);
+app.use('/api', genreRouter);
+app.use('/api/login', loginRouter);
 
 server.on('request', app);
 server.listen(process.env.PORT, async () => {
