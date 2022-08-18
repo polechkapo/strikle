@@ -12,7 +12,7 @@ export default function Multer() {
       const data = new FormData()
       data.append('avatar', img)
     } catch (error) {
-      await axios.post('/api/upload', data, {
+      await axios.post('/upload', data, {
         headers: {
           'content-type': 'multipart/form-data'
         }
@@ -30,10 +30,12 @@ export default function Multer() {
           ? <img className='photo' src={`${avatar}`} alt="avatar" />
           : <img className='photo' src={`${empty}`} alt="avatar" />
         }
-        <img src={`${empty}`} alt="avatar" />
       </div>
-        <input type="file" onChange={e => setImg(e.target.files[0])}/>
+      <form action="/multer" method="post" enctype="multipart/form-data">
+      <input type="file" onChange={e => setImg(e.target.files[0])}/>
         <button className='btn' onClick={sendFile}>Добавить аватар</button>
+      </form>
+        
     </div>
   );
 }

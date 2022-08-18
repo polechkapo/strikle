@@ -1,9 +1,8 @@
-const {Router} = require('express');
+const router = require('express').Router();
 const fileMiddleware = require('../mw/file')
 
-const router = Router();
 
-router.post('/upload', fileMiddleware.single('avatar'), (req, res) => {
+router.post('/', fileMiddleware.single('avatar'), (req, res) => {
   try {
     if (req.file) {
       res.json(req.file);
@@ -12,5 +11,6 @@ router.post('/upload', fileMiddleware.single('avatar'), (req, res) => {
       console.log(error);
     }
   
-  
 })
+
+module.exports = router;

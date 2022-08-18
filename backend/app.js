@@ -7,7 +7,8 @@ const regRouter = require('./routers/reg.router');
 const favoriteRouter = require('./routers/favorite.router');
 const sessionRouter = require('./routers/auth.router');
 const genreRouter = require('./routers/genre.router')
-const loginRouter = require('./routers/login.router')
+const loginRouter = require('./routers/login.router');
+const uploadRouter = require('./routers/upload.router')
 
 const app = express();
 config(app);
@@ -15,18 +16,20 @@ const createSocketServer = require('./socket');
 
 const server = createServer(); // поля
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json({extended: true}));
 app.use(require('cors')({
   origin: ['http://localhost:3000'],
   credentials: true,
 }));
-
 // Static content: web-client path AS virtual, server path
-app.use(express.static(path.join(__dirname, '../client/build')));
-app.use('/avatars', express.static(path.resolve('uploads')));
-app.use(express.static(path.resolve('public')));
+// app.use(express.static(path.join(__dirname, '../client/build')));
+
+// app.use(express.static(path.resolve('public')));
 
 require('./mw/session')(app);
 
+app.use('/multer', uploadRouter);
 app.use('/api/reg', regRouter);
 app.use('/api/favorite', favoriteRouter);
 app.use('/api/session', sessionRouter);
