@@ -7,8 +7,8 @@ const store = configureStore(
     // Комбинированный reducer
     reducer: {
       // tasks: tasksSlice,
-    }
-  }
+    },
+  },
 );
 
 export default store;
