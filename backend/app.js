@@ -7,6 +7,7 @@ const regRouter = require('./routers/reg.router');
 const favoriteRouter = require('./routers/favorite.router');
 const sessionRouter = require('./routers/auth.router');
 const genreRouter = require('./routers/genre.router')
+const loginRouter = require('./routers/login.router')
 
 const app = express();
 config(app);
@@ -23,7 +24,8 @@ require('./mw/session')(app);
 app.use('/api/reg', regRouter);
 app.use('/api/favorite', favoriteRouter);
 app.use('/api/session', sessionRouter);
-app.use('/api/genre', genreRouter)
+app.use('/api/genre', genreRouter);
+app.use('/api/login', loginRouter);
 
 server.on('request', app);
 server.listen(process.env.PORT, async () => {
