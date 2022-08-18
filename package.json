@@ -1,0 +1,23 @@
+{
+  "name": "strikle",
+  "version": "1.0.0",
+  "description": "todo разобраться с мультером разобраться со споти база сделать бэк(скелеты) сделать фронт(скелеты)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polechkapo/strikle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/polechkapo/strikle/issues"
+  },
+  "homepage": "https://github.com/polechkapo/strikle#readme",
+  "dependencies": {
+    "multer": "^1.4.5-lts.1"
+  }
+}
