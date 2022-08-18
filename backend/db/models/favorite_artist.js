@@ -4,11 +4,6 @@ const {
 
 module.exports = (sequelize, DataTypes) => {
   class Favorite_Artist extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate({ User, Artist }) {
       Favorite_Artist.belongsTo(User, ({ foreignKey: 'user_id' }));
       Favorite_Artist.belongsTo(Artist, ({ foreignKey: 'artist_id' }));
