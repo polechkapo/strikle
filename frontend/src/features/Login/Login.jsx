@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+  const navigate = useNavigate();
   async function handleLogin(event) {
     event.preventDefault();
     const {
@@ -16,9 +18,9 @@ export default function Login() {
     });
 
     const data = await response.json();
-    console.log(data);
+
     if (data.login) {
-      window.location.href = '/';
+      navigate('/');
     }
   }
   return (
