@@ -14,23 +14,9 @@ const photoUploadFileRouter = require('./routers/upload.router')
 const app = express();
 config(app);
 const createSocketServer = require('./socket');
-
 const server = createServer(); // поля
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json({extended: true}));
-app.use(require('cors')({
-  origin: ['http://localhost:3000'],
-  credentials: true,
-}));
-// Static content: web-client path AS virtual, server path
-// app.use(express.static(path.join(__dirname, '../client/build')));
-
-// app.use(express.static(path.resolve('public')));
-
 require('./mw/session')(app);
 
-app.use('/multer', photoUploadFileRouter);
 app.use('/api/reg', regRouter);
 app.use('/api/favorite', favoriteRouter);
 app.use('/api/session', sessionRouter);
