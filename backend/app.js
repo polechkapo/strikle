@@ -19,7 +19,7 @@ app.use(require('cors')({
 
 // Static content: web-client path AS virtual, server path
 app.use(express.static(path.join(__dirname, '../client/build')));
-app.use('/avatar', express.static(path.resolve('uploads')));
+app.use('/avatars', express.static(path.resolve('uploads')));
 app.use(express.static(path.resolve('public')));
 
 require('./mw/session')(app);
