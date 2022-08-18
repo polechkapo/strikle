@@ -12,6 +12,5 @@
     },
     "rules": {
         "camelcase": 0,
-        "allowElseIf": false
     }
 }
