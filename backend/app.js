@@ -8,7 +8,7 @@ const favoriteRouter = require('./routers/favorite.router');
 const sessionRouter = require('./routers/auth.router');
 const genreRouter = require('./routers/genre.router')
 const loginRouter = require('./routers/login.router');
-const uploadRouter = require('./routers/upload.router')
+const photoUploadFileRouter = require('./routers/upload.router')
 
 const app = express();
 config(app);
@@ -29,7 +29,7 @@ app.use(require('cors')({
 
 require('./mw/session')(app);
 
-app.use('/multer', uploadRouter);
+app.use('/multer', photoUploadFileRouter);
 app.use('/api/reg', regRouter);
 app.use('/api/favorite', favoriteRouter);
 app.use('/api/session', sessionRouter);

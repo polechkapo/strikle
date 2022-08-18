@@ -1,16 +1,12 @@
-const router = require('express').Router();
-const fileMiddleware = require('../mw/file')
+const photoUploadFileRouter = require('express').Router();
+const fileuploadphoto = require('../uploadFile');
 
-
-router.post('/', fileMiddleware.single('avatar'), (req, res) => {
+photoUploadFileRouter.post('/', async (req, res) => {
   try {
-    if (req.file) {
-      res.json(req.file);
-    }
-  } catch (error) {
-      console.log(error);
-    }
-  
-})
+    const file = req.files.homesImg;
+    const arrUrl = await fileuploadphoto(file);
+    res.json(arrUrl);
+  } catch { console.error; }
+});
 
-module.exports = router;
+module.exports = photoUploadFileRouter;
