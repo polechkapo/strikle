@@ -13,8 +13,8 @@ function Registration2() {
   const handlerUloadPhoto = React.useCallback(async (e) => {
     console.log(e.target.files);
     try {
-    const picturesData = [...e.target.files];
-    const file = new FormData();
+      const picturesData = [...e.target.files];
+      const file = new FormData();
       picturesData.forEach((img) => {
         file.append('homesImg', img);
       });
@@ -57,7 +57,6 @@ function Registration2() {
           </div>
           <form action="/multer" method="post">
             <input type="file" onChange={handlerUloadPhoto} />
-            {/* <button type="button" className="btn" onClick={handleSaveInDB}>Save changes</button> */}
           </form>
         </label>
 
