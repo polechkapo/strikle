@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 /* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-=======
-import React from 'react';
->>>>>>> 2425f0d3b6ca09f3b4a64bb07ecd910aa55465e9
 import { useNavigate } from 'react-router-dom';
 import { loadGenres, addGenre } from '../store/genresReducer/reducer';
 
