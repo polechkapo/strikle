@@ -21,19 +21,15 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       birth_date: {
-        allowNull: true,
         type: Sequelize.DATE,
       },
       bio: {
-        allowNull: true,
         type: Sequelize.TEXT,
       },
       avatar: {
-        allowNull: true,
         type: Sequelize.TEXT,
       },
       city: {
-        allowNull: true,
         type: Sequelize.TEXT,
       },
       createdAt: {

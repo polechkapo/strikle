@@ -51,19 +51,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
     },
     birth_date: {
-      allowNull: true,
       type: DataTypes.DATE,
     },
     bio: {
-      allowNull: true,
       type: DataTypes.TEXT,
     },
     avatar: {
-      allowNull: true,
       type: DataTypes.TEXT,
     },
     city: {
-      allowNull: true,
       type: DataTypes.TEXT,
     },
     createdAt: {

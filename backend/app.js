@@ -17,10 +17,10 @@ const createSocketServer = require('./socket');
 const server = createServer(); // поля
 require('./mw/session')(app);
 
-app.use('/api/reg', regRouter);
+app.use('/api', regRouter);
 app.use('/api/favorite', favoriteRouter);
 app.use('/api/session', sessionRouter);
-app.use('/api/genre', genreRouter);
+app.use('/api', genreRouter);
 app.use('/api/login', loginRouter);
 
 server.on('request', app);

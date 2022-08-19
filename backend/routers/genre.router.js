@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const { Genre } = require('../db/models')
 
-router.route('/')
+router.route('/genre')
   .get(async (req, res) => {
     try {
       const allGenres = await Genre.findAll({ raw: true })

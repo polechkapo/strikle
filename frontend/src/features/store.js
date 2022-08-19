@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import tasksSlice from './features/tasks/tasksSlice';
+import userSlice from './store/userReducer/reducer';
+import genresSlice from './store/genresReducer/reducer';
 
 const store = configureStore(
   // Опции создания хранилища
   {
     // Комбинированный reducer
     reducer: {
-      // tasks: tasksSlice,
+      user: userSlice,
+      genres: genresSlice,
     },
   },
 );
