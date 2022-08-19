@@ -9,6 +9,7 @@ const sessionRouter = require('./routers/auth.router');
 const genreRouter = require('./routers/genre.router')
 const loginRouter = require('./routers/login.router');
 const photoUploadFileRouter = require('./routers/upload.router')
+const editProfileRouter = require('./routers/profile.router')
 
 
 const app = express();
@@ -23,6 +24,7 @@ app.use('/api/session', sessionRouter);
 app.use('/api', genreRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/multer', photoUploadFileRouter)
+app.use('/api', editProfileRouter)
 
 server.on('request', app);
 server.listen(process.env.PORT, async () => {
