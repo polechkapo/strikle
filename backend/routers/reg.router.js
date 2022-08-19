@@ -30,7 +30,7 @@ router.route('/reg')
   .put(async (req, res) => {
     try {
       const {
-        gender, birthdate, city, bio,
+        gender, birthdate, city, bio, avatar
       } = req.body;
       console.log(req.body);
       console.log(req.session.userId)
@@ -40,6 +40,7 @@ router.route('/reg')
       updateUser.birth_date = birthdate,
       updateUser.city = city,
       updateUser.bio = bio,
+      updateUser.avatar = avatar,
       updateUser.save();
       console.log(updateUser);
       res.status(203).json(updateUser);

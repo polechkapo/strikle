@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { updateUser } from '../store/userReducer/reducer';
+import empty from '../Multer/empty.jpeg';
 
 function Registration2() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [photo, setPhoto] = useState(null);
+
+  const handlerUloadPhoto = React.useCallback(async (e) => {
+    console.log(e.target.files);
+    try {
+    const picturesData = [...e.target.files];
+    const file = new FormData();
+      picturesData.forEach((img) => {
+        file.append('homesImg', img);
+      });
+      const response = await fetch('/api/multer', {
+        method: 'POST',
+        body: file,
+      });
+      const test = await response.json();
+      setPhoto(test);
+    } catch (error) {
+      console.log(error.message);
+    }
+  });
 
   const handleForm = (event) => {
     event.preventDefault();
@@ -13,15 +35,32 @@ function Registration2() {
     const birthdate = event.target.birth.value;
     const city = event.target.city.value;
     const bio = event.target.bio.value;
+    const avatar = photo;
+    console.log(avatar, 'form');
     dispatch(updateUser({
-      gender, birthdate, city, bio,
+      gender, birthdate, city, bio, avatar,
     }));
     navigate('/registraton/3');
   };
+
   return (
     <>
       <h1>Расскажи о себе</h1>
       <form className="inputs_reg" onSubmit={handleForm}>
+        <label htmlFor="avatar">
+          <div className="avatar">
+            {
+              photo
+                ? <img className="photo" src={photo} alt="avatar" style={{ width: 100 }} />
+                : <img className="photo" src={`${empty}`} alt="avatar" />
+            }
+          </div>
+          <form action="/multer" method="post">
+            <input type="file" onChange={handlerUloadPhoto} />
+            {/* <button type="button" className="btn" onClick={handleSaveInDB}>Save changes</button> */}
+          </form>
+        </label>
+
         <select name="gender">
           <option disabled>Какого ты пола?</option>
           <option value="Ж">Ж</option>
