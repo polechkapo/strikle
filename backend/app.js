@@ -22,6 +22,7 @@ app.use('/api/favorite', favoriteRouter);
 app.use('/api/session', sessionRouter);
 app.use('/api', genreRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/multer', photoUploadFileRouter)
 
 server.on('request', app);
 server.listen(process.env.PORT, async () => {
