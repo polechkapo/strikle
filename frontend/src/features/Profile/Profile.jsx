@@ -120,7 +120,7 @@ function Profile() {
 
         <input type="text" placeholder="Поиск исполнителя" />
         <button type="submit">Поиск</button>
-        <button type="submit" onClick={() => navigate('/')}>Пропустить</button>
+        <button type="submit" onClick={() => navigate(-1)}>Назад</button>
 
         <button type="submit">Сохранить изменения</button>
       </form>
