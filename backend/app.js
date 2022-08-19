@@ -7,13 +7,15 @@ const regRouter = require('./routers/reg.router');
 const favoriteRouter = require('./routers/favorite.router');
 const sessionRouter = require('./routers/auth.router');
 const genreRouter = require('./routers/genre.router')
-const loginRouter = require('./routers/login.router')
+const loginRouter = require('./routers/login.router');
+const photoUploadFileRouter = require('./routers/upload.router')
+
+
 const app = express();
 config(app);
 const createSocketServer = require('./socket');
 const server = createServer(); // поля
 require('./mw/session')(app);
-
 
 app.use('/api', regRouter);
 app.use('/api/favorite', favoriteRouter);
