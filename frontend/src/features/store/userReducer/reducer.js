@@ -78,7 +78,7 @@ const editUser = createAsyncThunk(
   async (payload) => {
    // сюда прилетает пэйлоад из компонента
    console.log(payload, 'edit fetch');
-    const response = await fetch('/api/profile/edit', { // сюда кидаем фетч 
+    const response = await fetch('/api/profile', { // сюда кидаем фетч 
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(payload),

@@ -53,6 +53,7 @@ function Profile() {
     const email = event.target.email.value;
     const username = event.target.name.value;
     const password = event.target.password.value;
+    const oldPassword = event.target.oldPassword.value;
     const checkPassword = event.target.checkPassword.value;
     const gender = event.target.gender.value;
     const birthdate = event.target.birth.value;
@@ -61,7 +62,7 @@ function Profile() {
 
     console.log(avatar, 'form');
     dispatch(editUser({
-      email, username, password, checkPassword, gender, birthdate, city, bio,
+      email, username, oldPassword, password, checkPassword, gender, birthdate, city, bio,
     }));
     navigate('/cabinet');
   };
@@ -95,8 +96,8 @@ function Profile() {
         />
         <input
           type="password"
-          name="password"
-          id="password"
+          name="oldPassword"
+          id="oldPassword"
           placeholder="Введи старый пароль"
           required
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
