@@ -31,6 +31,7 @@ module.exports = {
       avatar: {
         allowNull: true,
         type: Sequelize.TEXT,
+        defaultValue: '/avatars/stock_avatar.jpg',
       },
       city: {
         allowNull: true,
