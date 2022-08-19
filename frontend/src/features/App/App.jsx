@@ -5,7 +5,6 @@ import Registration1 from '../Registration/Registration_1';
 import Registration2 from '../Registration/Registration_2';
 import Login from '../Login/Login';
 import Registration3 from '../Registration/Registration_3';
-import Main from '../Main/Main';
 
 function App() {
   return (

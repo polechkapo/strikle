@@ -1,15 +1,42 @@
 const router = require('express').Router();
-const { Favorite_Artist, User_genre } = require('../db/models');
+const { Favorite_Artist, User_Genre, Genre } = require('../db/models');
 
 router.route('/')
   .post(async (req, res) => {
     try {
-      const { genres, artists, user_id } = req.body;
-      if (artists.length >= 5) {
-        artists.map(async (artist) => await Favorite_Artist.create({ artist, user_id }));
-        genres.map(async (genre) => await User_genre.create({ genre, user_id }))
+      const { genres, artists } = req.body;
+      const user_id = req.session.userId
+      console.log('START',user_id,genres);
+      if (genres) {
+        if(artists){
+          artists.map(async (artist) => await Favorite_Artist.create({ artist, user_id }));
+        }
+        // await User_Genre.create({
+        //   genre_id: Number(genres[0]), 
+        //   user_id: Number(user_id)
+        // })
 
-        return res.status(200).json({ added: true });
+        console.log('SERVER GENRE', genres, user_id);
+        for(let i = 0; i < genres.length; i++){
+          await User_Genre.create({
+            genre_id: Number(genres[i]), 
+            user_id: Number(user_id)
+          })
+        }
+
+        const resultUser = await User_Genre.findAll({
+          where: {
+            user_id
+          },
+          include: {
+            raw: true,
+            model: Genre,
+            attributes: ['id', 'title'],
+            }, 
+        }
+        )
+
+        return res.status(200).json({ added: true, resultUser , user_id});
       } else {
         return res.status(404).json({ added: false });
       }
