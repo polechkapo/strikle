@@ -23,6 +23,9 @@ module.exports = {
       birth_date: {
         type: Sequelize.DATE,
       },
+      gender: {
+        type: Sequelize.TEXT,
+      },
       bio: {
         type: Sequelize.TEXT,
       },

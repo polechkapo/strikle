@@ -1,20 +1,39 @@
-import React, { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { updateUser } from '../store/userReducer/reducer';
-import empty from '../Multer/empty.jpeg';
+import { editUser } from '../store/userReducer/reducer';
+import { loadGenres } from '../store/genresReducer/reducer';
 
 function Profile() {
+  const user = useSelector((state) => state.user)
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [genresArr, setGenresArr] = useState([]);
+  const genres = useSelector((state) => state.genres);
 
-  const [photo, setPhoto] = useState(null);
+  useEffect(() => {
+    dispatch(loadGenres());
+  }, []);
+
+  const handleButton = (event) => {
+    event.preventDefault();
+    const value = event.target.id;
+    if (!genresArr.includes(value)) {
+      if (genresArr.length < 5) {
+        setGenresArr([...genresArr, value]);
+        event.target.style.backgroundColor = 'red';
+      }
+    } else {
+      setGenresArr(genresArr.filter((el) => el !== value));
+      event.target.style.backgroundColor = 'transparent';
+    }
+  };
 
   const handlerUloadPhoto = useCallback(async (e) => {
     console.log(e.target.files);
     try {
-    const picturesData = [...e.target.files];
-    const file = new FormData();
+      const picturesData = [...e.target.files];
+      const file = new FormData();
       picturesData.forEach((img) => {
         file.append('homesImg', img);
       });
@@ -39,10 +58,10 @@ function Profile() {
     const birthdate = event.target.birth.value;
     const city = event.target.city.value;
     const bio = event.target.bio.value;
-    const avatar = photo;
+
     console.log(avatar, 'form');
-    dispatch(updateUser({
-      email, username, password, checkPassword, gender, birthdate, city, bio, avatar,
+    dispatch(editUser({
+      email, username, password, checkPassword, gender, birthdate, city, bio,
     }));
     navigate('/cabinet');
   };
@@ -50,12 +69,20 @@ function Profile() {
   return (
     <div>
       <h1>Личный кабинет</h1>
+      <label htmlFor="avatar">
+        <div className="avatar">
+          <img className="photo" src={`${user.avatar}`} alt="avatar" style={{ width: 100 }} />
+        </div>
+        <form action="/multer" method="post">
+          <input type="file" onChange={handlerUloadPhoto} />
+        </form>
+      </label>
       <form onSubmit={handleForm}>
         <input
           type="email"
           name="email"
           id="email"
-          placeholder="Тут будет старый email"
+          value={user.email}
           required
           pattern="^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$"
           title="Введите действующую почту"
@@ -64,7 +91,7 @@ function Profile() {
           type="text"
           name="name"
           id="name"
-          placeholder="Тут будет имя"
+          value={user.username}
         />
         <input
           type="password"
@@ -87,27 +114,14 @@ function Profile() {
         />
         <input type="password" name="checkPassword" id="checkPassword" placeholder="Введи новый пароль еще раз" />
 
-        <label htmlFor="avatar">
-          <div className="avatar">
-            {
-              photo
-                ? <img className="photo" src={photo} alt="avatar" style={{ width: 100 }} />
-                : <img className="photo" src={`${empty}`} alt="avatar" />
-            }
-          </div>
-          <form action="/multer" method="post">
-            <input type="file" onChange={handlerUloadPhoto} />
-          </form>
-        </label>
-
         <select name="gender">
-          <option disabled>Твой пол</option>
+          <option disabled value={user.gender}>Пол</option>
           <option value="Ж">Ж</option>
           <option value="М">М</option>
         </select>
         <label htmlFor="birth">
-          Тут будет твой день рождения
-          <input
+          Изменение даты рождения
+          <input value={user.birth_date}
             type="date"
             id="birth"
             name="birth"
@@ -115,8 +129,8 @@ function Profile() {
             max="2004-01-01"
           />
         </label>
-        <input type="text" id="city" name="city" placeholder="Тут будет город" />
-        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Тут будут предпочтения" />
+        <input type="text" id="city" name="city" value={user.city} />
+        <textarea name="bio" id="bio" cols="30" rows="10" value={user.bio} />
 
         <input type="text" placeholder="Поиск исполнителя" />
         <button type="submit">Поиск</button>
@@ -124,6 +138,18 @@ function Profile() {
 
         <button type="submit">Сохранить изменения</button>
       </form>
+
+      <div>
+        <h1>Выбери любимые жанры:</h1>
+        <div>
+          {genres.genres && genres.genres.map((genre) => (
+            <button key={genre.id} id={genre.id} type="button" onClick={handleButton}>
+              {genre.title}
+            </button>
+          ))}
+        </div>
+      </div>
+
     </div>
   );
 }

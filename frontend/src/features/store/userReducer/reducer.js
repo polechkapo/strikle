@@ -72,6 +72,30 @@ const registerUser = createAsyncThunk(
 
 );
 
+const editUser = createAsyncThunk(
+  'user/editUser', // это тайп для редьюсера
+
+  async (payload) => {
+   // сюда прилетает пэйлоад из компонента
+   console.log(payload, 'edit fetch');
+    const response = await fetch('/api/profile/edit', { // сюда кидаем фетч 
+      method: 'PUT',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+
+    });
+    const data = await response.json();
+    console.log(data, '<===== data edit fetch');
+
+    if (data.error) {
+      throw data.error;
+    }
+
+    return data;
+  },
+
+);
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -117,6 +141,17 @@ const userSlice = createSlice({
         console.log(state.user, '<===== Updateuser');
         const newInfo = action.payload;
         state.user = newInfo;
+      })
+      .addCase(editUser.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        console.log(state.error, '<===== error edit');
+        state.error = action.error.message;
+      })
+      .addCase(editUser.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        console.log(state.user, '<===== Edituser');
+        const newInfo = action.payload;
+        state.user = newInfo;
       });
   },
 });
@@ -125,6 +160,7 @@ export {
   loadUser,
   registerUser,
   updateUser,
+  editUser,
 };
 
 // export const {

@@ -53,6 +53,9 @@ module.exports = (sequelize, DataTypes) => {
     birth_date: {
       type: DataTypes.DATE,
     },
+    gender: {
+      type: DataTypes.TEXT,
+    },
     bio: {
       type: DataTypes.TEXT,
     },
