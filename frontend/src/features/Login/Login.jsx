@@ -27,7 +27,7 @@ export default function Login() {
     <div>
       <form action="/api/login" method="post" onSubmit={handleLogin}>
         <input type="email" name="email" placeholder="Введите почту" />
-        <input type="text" name="password" placeholder="Введите пароль" />
+        <input type="password" name="password" placeholder="Введите пароль" />
         <button type="submit">Войти</button>
       </form>
     </div>
