@@ -78,7 +78,7 @@ function Registration2() {
         <input type="text" id="city" name="city" placeholder="Из какого ты города?" />
         <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Расскажи о себе и о том, кого бы ты хотел  найти на Стракйл" />
         <button type="submit">Cледующий шаг</button>
-        <button type="button" onClick={() => navigate('/')}>Пропустить</button>
+        <button type="button" onClick={() => navigate('/cabinet')}>Пропустить</button>
       </form>
 
     </>

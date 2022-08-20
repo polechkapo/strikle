@@ -8,13 +8,14 @@ const favoriteRouter = require('./routers/favorite.router');
 const sessionRouter = require('./routers/auth.router');
 const genreRouter = require('./routers/genre.router')
 const loginRouter = require('./routers/login.router');
+
+const editProfileRouter = require('./routers/profile.router')
 const photoUploadFileRouter = require('./routers/upload.router');
 const refreshRouter = require('./routers/refresh.router');
 const loginSpotifyRouter = require('./routers/spotifyLogin.router');
 const lyricsRouter = require('./routers/lyrics.router');
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
 
 const app = express();
 app.use(cors())
@@ -30,11 +31,11 @@ app.use('/api/favorite', favoriteRouter);
 app.use('/api/session', sessionRouter);
 app.use('/api', genreRouter);
 app.use('/api/login', loginRouter);
-app.use('/api/multer', photoUploadFileRouter);
+app.use('/api/multer', photoUploadFileRouter)
+app.use('/api', editProfileRouter)
 app.use('/api/refresh', refreshRouter);
 app.use('/login', loginSpotifyRouter);
 app.use('/lyrics', lyricsRouter);
-
 
 server.on('request', app);
 server.listen(process.env.PORT, async () => {
