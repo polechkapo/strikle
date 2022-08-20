@@ -7,7 +7,7 @@ router.route('/logout')
         if (error) {
           console.log(error.message);
         }
-        res.clearCookie('user_sid'); // чистим куки
+        res.clearCookie('connect.sid'); // чистим куки
         res.send({ delete: true })
       });
   });
