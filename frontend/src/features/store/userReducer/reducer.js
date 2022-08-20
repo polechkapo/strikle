@@ -7,7 +7,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: {},
+  user: undefined,
 };
 
 const loadUser = createAsyncThunk(
@@ -37,6 +37,27 @@ const registerUser = createAsyncThunk(
       body: JSON.stringify(payload),
 
     });
+    const data = await response.json();
+    console.log(data);
+
+    if (data.error) {
+      throw data.error;
+    }
+
+    return data;
+  },
+);
+
+const loginUser = createAsyncThunk(
+  'user/loginUser',
+
+  async (payload) => {
+    console.log(payload, 'thunk');
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'Application/json' },
+      body: JSON.stringify(payload),
+  });
     const data = await response.json();
     console.log(data);
 
@@ -96,6 +117,26 @@ const editUser = createAsyncThunk(
 
 );
 
+const deleteUser = createAsyncThunk(
+  'user/deleteUser',
+  async () => {
+    // сюда прилетает пэйлоад из компонента
+     const response = await fetch('/logout', {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json' },
+    });
+
+     const data = await response.json();
+     console.log(data, '<===== data fetch');
+ 
+     if (data.error) {
+       throw data.error;
+     }
+ 
+     return data;
+   },
+);
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -119,6 +160,7 @@ const userSlice = createSlice({
         // Успешный случай — загрузка прошла хорошо
         const newUser = action.payload;
         state.user = newUser;
+        console.log(newUser);
       })
       .addCase(registerUser.rejected, (state, action) => {
          // Сценарий провала — загрузка не увенчалась успехом
@@ -131,6 +173,17 @@ const userSlice = createSlice({
          const newUser = action.payload;
          state.user = newUser;
        })
+       .addCase(loginUser.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        console.log(state.error, '<===== error login');
+        state.error = action.error.message;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        console.log(state.user, '<===== user login');
+        const newUser = action.payload;
+        state.user = newUser;
+      })
        .addCase(updateUser.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
         console.log(state.error, '<===== error update');
@@ -152,6 +205,12 @@ const userSlice = createSlice({
         console.log(state.user, '<===== Edituser');
         const newInfo = action.payload;
         state.user = newInfo;
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(deleteUser.fulfilled, (state) => {
+        state.user = undefined;
       });
   },
 });
@@ -161,6 +220,8 @@ export {
   registerUser,
   updateUser,
   editUser,
+  deleteUser,
+  loginUser,
 };
 
 // export const {

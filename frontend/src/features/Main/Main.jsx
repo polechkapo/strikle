@@ -14,6 +14,7 @@ function Main() {
         Знакомься онлайн — это просто.
       </p>
       <button type="button" onClick={() => navigate('/registraton/1')}>Регистрация</button>
+      <button type="button" onClick={() => navigate('/login')}>Войти</button>
     </div>
   );
 }
