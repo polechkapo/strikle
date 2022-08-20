@@ -1,21 +1,13 @@
 const router = require('express').Router();
-const { Favorite_Artist, User_Genre, Genre } = require('../db/models');
+const { User_Genre, Genre } = require('../db/models');
 
 router.route('/')
   .post(async (req, res) => {
     try {
-      const { genres, artists } = req.body;
+      const { genres } = req.body;
       const user_id = req.session.userId
       console.log('START',user_id,genres);
       if (genres) {
-        if(artists){
-          artists.map(async (artist) => await Favorite_Artist.create({ artist, user_id }));
-        }
-        // await User_Genre.create({
-        //   genre_id: Number(genres[0]), 
-        //   user_id: Number(user_id)
-        // })
-
         console.log('SERVER GENRE', genres, user_id);
         for(let i = 0; i < genres.length; i++){
           await User_Genre.create({
@@ -43,6 +35,6 @@ router.route('/')
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
-  });
+});
 
 module.exports = router;
