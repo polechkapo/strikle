@@ -5,7 +5,10 @@
 import React, { useState, useEffect } from 'react';
 // import Player from "../Player"
 import { Container, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import SpotifyWebApi from 'spotify-web-api-node';
+import { addTracks } from '../store/artistsReducer/reducer';
 // import axios from 'axios';
 // import TrackSearchResult from './TrackSearchResult';
 import useAuth from './useAuth';
@@ -18,6 +21,8 @@ export default function Dashboard({ code }) {
   const accessToken = useAuth(code);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
   // const [playingTrack, setPlayingTrack] = useState();
   // const [lyrics, setLyrics] = useState('');
 
@@ -87,7 +92,7 @@ export default function Dashboard({ code }) {
     const artist = event.target.parentNode.childNodes[2].innerText;
     const { id } = event.target;
     // console.log(img, title, artist);
-    console.log(id);
+    // console.log(id);
 
     if (!tracksArr.some((el) => el.id === id)) {
       if (tracksArr.length < 5) {
@@ -102,6 +107,11 @@ export default function Dashboard({ code }) {
     }
   };
 
+  const handleButtons = () => {
+    dispatch(addTracks(tracksArr));
+    // navigate('/');
+  };
+
   return (
     <Container className="d-flex flex-column py-2" style={{ height: '100vh' }}>
       <Form.Control
@@ -111,6 +121,7 @@ export default function Dashboard({ code }) {
         onChange={(e) => setSearch(e.target.value)}
       />
       <div className="flex-grow-1 my-2" style={{ overflowY: 'auto' }}>
+        <button type="button" onClick={handleButtons}>Готово</button>
         {searchResults.map((track) => (
           <div key={track.uri}>
             <img src={track.albumUrl} alt="" />

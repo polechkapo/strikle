@@ -7,17 +7,24 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
+      artist: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      photo: {
+      title: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      genre: {
+      albumUrl: {
         allowNull: false,
         type: Sequelize.TEXT,
+      },
+      user_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+        },
       },
       createdAt: {
         allowNull: false,

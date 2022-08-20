@@ -10,21 +10,28 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({ User }) {
-      Artist.belongsToMany(User, ({ foreignKey: 'artist_id', through: 'Favorite_Artist', otherKey: 'user_id' }));
+      Artist.belongsTo(User, ({ foreignKey: 'user_id' }));
     }
   }
   Artist.init({
-    name: {
+    artist: {
       allowNull: false,
       type: DataTypes.TEXT,
     },
-    photo: {
+    title: {
       allowNull: false,
       type: DataTypes.TEXT,
     },
-    genre: {
+    albumUrl: {
       allowNull: false,
       type: DataTypes.TEXT,
+    },
+    user_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+      },
     },
   }, {
     sequelize,

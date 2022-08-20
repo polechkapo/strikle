@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(Pair, ({ foreignKey: 'user_id_2' }));
       User.hasMany(Comment, ({ foreignKey: 'user_id' }));
       User.hasMany(Event, ({ foreignKey: 'user_id' }));
+      User.hasMany(Artist, ({ foreignKey: 'user_id' }));
       User.hasMany(Chat, ({ foreignKey: 'user_who' }));
     }
   }
