@@ -15,11 +15,14 @@ const refreshRouter = require('./routers/refresh.router');
 const loginSpotifyRouter = require('./routers/spotifyLogin.router');
 const logoutRouter = require('./routers/logout.routers');
 const lyricsRouter = require('./routers/lyrics.router');
-const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const app = express();
-app.use(cors())
+app.use(require('cors')({
+  origin: ['http://localhost:3000'],
+  credentials: true,
+}));
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 config(app);

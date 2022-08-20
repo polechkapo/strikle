@@ -42,6 +42,7 @@ function App() {
         )
           : (
             <>
+              <Route path="/search" element={<SearchSpoty />} />
               <Route path="/" element={<Main />} />
               <Route path="/registraton/1" element={<Registration1 />} />
               <Route path="/login" element={<Login />} />

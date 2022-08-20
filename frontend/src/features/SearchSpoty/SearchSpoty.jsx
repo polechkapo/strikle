@@ -2,11 +2,20 @@ import React from 'react';
 import Dashboard from '../spotify/Dashboard';
 import LoginSpotify from '../spotify/LoginSpotify';
 
-const code = new URLSearchParams(window.location.search).get('code');
-
 function SearchSpoty() {
+  const code = new URLSearchParams(window.location.search).get('code');
+
   return (
-    code ? <Dashboard code={code} /> : <LoginSpotify />
+    <div>
+      <h1>Давай выберем твои любимые песни!</h1>
+      {code ? <Dashboard code={code} />
+        : (
+          <>
+            <h3>Войди в свой аккаунт</h3>
+            <LoginSpotify />
+          </>
+        ) }
+    </div>
   );
 }
 
