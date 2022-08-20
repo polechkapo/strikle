@@ -48,6 +48,27 @@ const registerUser = createAsyncThunk(
   },
 );
 
+const loginUser = createAsyncThunk(
+  'user/loginUser',
+
+  async (payload) => {
+    console.log(payload, 'thunk');
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'Application/json' },
+      body: JSON.stringify(payload),
+  });
+    const data = await response.json();
+    console.log(data);
+
+    if (data.error) {
+      throw data.error;
+    }
+
+    return data;
+  },
+);
+
   const updateUser = createAsyncThunk(
    'user/updateUser', // это тайп для редьюсера
  
@@ -69,6 +90,30 @@ const registerUser = createAsyncThunk(
  
      return data;
    },
+
+);
+
+const editUser = createAsyncThunk(
+  'user/editUser', // это тайп для редьюсера
+
+  async (payload) => {
+   // сюда прилетает пэйлоад из компонента
+   console.log(payload, 'edit fetch');
+    const response = await fetch('/api/profile', { // сюда кидаем фетч 
+      method: 'PUT',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+
+    });
+    const data = await response.json();
+    console.log(data, '<===== data edit fetch');
+
+    if (data.error) {
+      throw data.error;
+    }
+
+    return data;
+  },
 
 );
 
@@ -128,6 +173,17 @@ const userSlice = createSlice({
          const newUser = action.payload;
          state.user = newUser;
        })
+       .addCase(loginUser.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        console.log(state.error, '<===== error login');
+        state.error = action.error.message;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        console.log(state.user, '<===== user login');
+        const newUser = action.payload;
+        state.user = newUser;
+      })
        .addCase(updateUser.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
         console.log(state.error, '<===== error update');
@@ -136,6 +192,17 @@ const userSlice = createSlice({
       .addCase(updateUser.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
         console.log(state.user, '<===== Updateuser');
+        const newInfo = action.payload;
+        state.user = newInfo;
+      })
+      .addCase(editUser.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        console.log(state.error, '<===== error edit');
+        state.error = action.error.message;
+      })
+      .addCase(editUser.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        console.log(state.user, '<===== Edituser');
         const newInfo = action.payload;
         state.user = newInfo;
       })
@@ -152,7 +219,9 @@ export {
   loadUser,
   registerUser,
   updateUser,
+  editUser,
   deleteUser,
+  loginUser,
 };
 
 // export const {

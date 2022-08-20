@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
@@ -11,6 +10,7 @@ import Registration3 from '../Registration/Registration_3';
 // import Dashboard from "../spotify/Dashboard";
 // import Multer from '../Multer/Multer';
 import Login from '../Login/Login';
+import Profile from '../Profile/Profile';
 import SearchSpoty from '../SearchSpoty/SearchSpoty';
 import { loadUser } from '../store/userReducer/reducer';
 import Home from '../Home/Home';
@@ -37,16 +37,17 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/registraton/2" element={<Registration2 />} />
             <Route path="/registraton/3" element={<Registration3 />} />
+            <Route path="/cabinet" element={<Profile />} />
           </>
         )
           : (
             <>
               <Route path="/" element={<Main />} />
               <Route path="/registraton/1" element={<Registration1 />} />
+              <Route path="/login" element={<Login />} />
             </>
           )}
         {/* <Route path="/multer" element={<Multer />} /> */}
-        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
