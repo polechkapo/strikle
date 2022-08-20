@@ -21,7 +21,7 @@ export default function Dashboard({ code }) {
   const accessToken = useAuth(code);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   // const [playingTrack, setPlayingTrack] = useState();
   // const [lyrics, setLyrics] = useState('');
@@ -109,7 +109,7 @@ export default function Dashboard({ code }) {
 
   const handleButtons = () => {
     dispatch(addTracks(tracksArr));
-    // navigate('/');
+    navigate('/');
   };
 
   return (

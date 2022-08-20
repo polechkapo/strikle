@@ -25,25 +25,24 @@ const addTracks = createAsyncThunk(
   'tracks/addTracks',
   async (payload) => {
     console.log(payload, ',++++ thunk');
-    // const response = await fetch('/api/favorite', {
-    //   method: 'POST',
-    //   headers: { 'content-type': 'application/json' },
-    //   body: JSON.stringify({
-    //     genres: payload,
-    //   }),
-    // });
+    const response = await fetch('/api/artists', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        artists: payload,
+      }),
+    });
 
-    // const data = await response.json();
+    const data = await response.json();
 
-    // console.log('data', data);
-    // if (data.error) {
-    //   throw data.error;
-    // }
-    // return data;
+    if (data.error) {
+      throw data.error;
+    }
+    return data;
   },
 );
 
-const genresSlice = createSlice({
+const artistSlice = createSlice({
   name: 'tracks',
   initialState,
   // reducers: {
@@ -83,4 +82,4 @@ export {
 export const selectGenres = (state) => state.genres;
 export const selectUserGenres = (state) => state.userGenres;
 
-export default genresSlice.reducer;
+export default artistSlice.reducer;
