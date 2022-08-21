@@ -8,10 +8,24 @@ import React, {
 import { useDispatch, useSelector } from 'react-redux';
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card';
+import { initUserGenre, loadGenres, loadUsersGenres } from '../store/genresReducer/reducer';
+import { addLike, loadLikes } from '../store/tinderReducer/reducer';
 import './Tinder.css';
 
 function Tinder() {
-  const db = useSelector((state) => state.user.users);
+  const dbStart = useSelector((state) => state.user.users);
+  const user = useSelector((state) => state.user.user);
+  const usersGenres = useSelector((state) => state.genres.usersGenres);
+  const userGenre = useSelector((state) => state.genres.userGenre);
+  const likes = useSelector((state) => state.likes.likes);
+  const likesCards = likes.map((el) => el.user_id_get);
+  const db = dbStart.filter((el) => !likesCards.includes(el.id));
+  // console.log(db[0].Artists);
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(loadLikes()), []);
+  useEffect(() => dispatch(loadUsersGenres()), []);
+  useEffect(() => dispatch(loadGenres()), []);
+  useEffect(() => dispatch(initUserGenre()), []);
 
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
@@ -40,19 +54,22 @@ function Tinder() {
     updateCurrentIndex(index - 1);
   };
 
-  const outOfFrame = (name, idx) => {
-    console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current);
-    // handle the case in which go back is pressed before card goes outOfFrame
-    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
-    // TODO: when quickly swipe and restore multiple times the same card,
-    // it happens multiple outOfFrame events are queued and the card disappear
-    // during latest swipes. Only the last outOfFrame event should be considered valid
-  };
-
   const swipe = async (dir) => {
     if (canSwipe && currentIndex < db.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
     }
+  };
+
+  const outOfFrame = (name, idx, dir) => {
+    // handle the case in which go back is pressed before card goes outOfFrame
+    if (dir === 'right') {
+      dispatch(addLike({ user_id_take: user.id, user_id_get: name.id }));
+    }
+    console.log(`${name.username} (${name.id}) ${dir} the screen!`, currentIndexRef.current);
+    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+    // TODO: when quickly swipe and restore multiple times the same card,
+    // it happens multiple outOfFrame events are queued and the card disappear
+    // during latest swipes. Only the last outOfFrame event should be considered valid
   };
 
   // increase current index and show card
@@ -63,63 +80,99 @@ function Tinder() {
     await childRefs[newIndex].current.restoreCard();
   };
 
+  // const handleLike = (event) => {
+  //   swipe('right');
+  //   // const user = event.target.parentNode;
+  // };
+
+  const calculatePercentOfMatch = (cardUser) => {
+    const cardArtist = cardUser.Artists.map((artist) => artist.artist);
+    const cardGenres = usersGenres.map((genre) => (genre.user_id === cardUser.id ? genre.Genre.title : '')).filter((el) => el !== '');
+    const cardAll = [...cardGenres, ...cardArtist]; // все артисты и жанры карточки для пары
+    const userGenresTitle = userGenre.map((el) => el.Genre.title);
+    const userArtists = user.Artists.map((artist) => artist.artist);
+    const userAll = [...userGenresTitle, ...userArtists];
+    console.log(cardAll, 'card');
+    console.log(userAll, 'user');
+
+    let counter = 0;
+    for (let i = 0; i <= userAll.length; i += 1) {
+      if (cardAll.includes(userAll[i])) {
+        counter += 1;
+      }
+    }
+
+    const result = (counter / ((cardAll.length + userAll.length) / 2)) * 100;
+    return result;
+  };
+
   return (
-    <>
-      <div>
-        <link
-          href="https://fonts.googleapis.com/css?family=Damion&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
-          rel="stylesheet"
-        />
-        <div className="cardContainer">
-          {db.map((character, index) => (
-            <TinderCard
-              ref={childRefs[index]}
-              className="swipe"
-              key={character.name}
-              onSwipe={(dir) => swiped(dir, character.username, index)}
-              onCardLeftScreen={() => outOfFrame(character.username, index)}
+    <div>
+      <link
+        href="https://fonts.googleapis.com/css?family=Damion&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
+        rel="stylesheet"
+      />
+      <div className="cardContainer">
+        {db.map((character, index) => (
+          <TinderCard
+            ref={childRefs[index]}
+            className="swipe"
+            key={character.id}
+            id={character.id}
+            onSwipe={(dir) => swiped(dir, character.username, index)}
+            onCardLeftScreen={(dir) => outOfFrame(character, index, dir)}
+          >
+            <div
+              // style={{ backgroundImage: `url(${character.avatar})` }}
+              className="card"
+              id={character.id}
             >
-              <div
-                // style={{ backgroundImage: `url(${character.avatar})` }}
-                className="card"
-              >
-                <img src={character.avatar} alt="" />
-                <h3>{character.username}</h3>
-                <p>{character.bio}</p>
-                <p>{character.city}</p>
-              </div>
-              {character.Artists.length > 0 && character.Artists.map((artist) => (
-                <div key={artist.id}>
-                  <p>{artist.title}</p>
-                  <img src={artist.albumUrl} alt={artist.title} />
+              <div className="wrapper__profile">
+                <img src={character.avatar} alt="" className="card__photo" />
+                <div className="artists__list">
+                  {character.Artists.length > 0 && character.Artists.map((artist) => (
+                    <div key={artist.id} className="artist__item">
+                      <img src={`${artist.albumUrl}`} alt={artist.artist} />
+                    </div>
+                  ))}
                 </div>
-              )) }
-            </TinderCard>
-          ))}
-        </div>
-        <div className="buttons">
-          <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('left')} type="button">❌</button>
-          <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()} type="button">Undo swipe!</button>
-          <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('right')} type="button">💖</button>
-        </div>
-        {lastDirection ? (
-          <h2 key={lastDirection} className="infoText">
-            You swiped
-            {' '}
-            {lastDirection}
-          </h2>
-        ) : (
-          <h2 className="infoText">
-            Swipe a card or press a button to get Restore Card button visible!
-          </h2>
-        )}
+                <div>
+                  {usersGenres.map((genre) => (genre.user_id === character.id
+                    ? <p key={genre.Genre.id}>{genre.Genre.title}</p>
+                    : ''))}
+                </div>
+              </div>
+              <h3>{character.username}</h3>
+              <p>{character.bio}</p>
+              <p>{character.city}</p>
+              <p>
+                Cовпадение:
+                {' '}
+                {calculatePercentOfMatch(character)}
+                %
+              </p>
+            </div>
+
+          </TinderCard>
+        ))}
       </div>
-      ;
-    </>
+      <div className="buttons">
+        <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('left')} type="button">❌</button>
+        {/* <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()} type="button">Undo swipe!</button> */}
+        <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('right')} type="button">💖</button>
+      </div>
+      {/* {lastDirection ? (
+        ''
+      ) : (
+        <h2 className="infoText">
+          Упс, на этом пока все!
+        </h2>
+      )} */}
+    </div>
   );
 }
 

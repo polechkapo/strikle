@@ -5,7 +5,14 @@ router.route('/session')
   .get(async (req, res) => {
     let user = '';
     if (req.session.userId) {
-      user = await User.findOne({ where: { id: req.session.userId } });
+      user = await User.findOne({ 
+        where: { id: req.session.userId },
+        include: {
+          raw: true,
+          model: Artist,
+          attributes: ['id', 'title', 'artist', 'albumUrl'],
+        }, 
+      });
       res.send(user);
     } else {
       res.send(undefined);
@@ -18,19 +25,18 @@ router.route('/session')
     let users = '';
     if (req.session.userId) {
       users = await User.findAll( {
-        include: {
-          raw: true,
-          model: Genre,
-          attributes: ['id', 'title'],
-        },
+        // include: {
+        //   raw: true,
+        //   model: Genre,
+        //   attributes: ['id', 'title'],
+        // },
         include: {
           raw: true,
           model: Artist,
-          attributes: ['id', 'title'],
+          attributes: ['id', 'title', 'artist', 'albumUrl'],
         }, 
       },);
       const resultUsers = users.filter(user => user.id !== req.session.userId);
-      console.log(resultUsers)
       res.send(resultUsers);
     } else {
       res.send(undefined);
