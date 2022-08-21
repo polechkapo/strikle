@@ -24,7 +24,7 @@ router.route('/')
             raw: true,
             model: Genre,
             attributes: ['id', 'title'],
-            }, 
+          }, 
         }
         )
 

@@ -5,12 +5,27 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const initialState = {
   genres: null,
   userGenre: [],
+  usersGenres: [],
 };
 
 const loadGenres = createAsyncThunk(
   'genres/initGenres',
   async () => {
     const response = await fetch('/api/genre');
+    const data = await response.json();
+
+    if (data.error) {
+      console.log(data.error);
+      throw data.error;
+    }
+    return data;
+  },
+);
+
+const loadUsersGenres = createAsyncThunk(
+  'genres/initUsersGenres',
+  async () => {
+    const response = await fetch('/api/genres');
     const data = await response.json();
 
     if (data.error) {
@@ -43,6 +58,21 @@ const addGenre = createAsyncThunk(
   },
 );
 
+const initUserGenre = createAsyncThunk(
+  'genres/initUserGenre',
+  async () => {
+    const response = await fetch('/api/genres/user');
+    const data = await response.json();
+
+    console.log('data', data);
+    if (data.error) {
+      throw data.error;
+    }
+    return data;
+  },
+);
+
+
 const genresSlice = createSlice({
   name: 'genres',
   initialState,
@@ -63,6 +93,15 @@ const genresSlice = createSlice({
         const newGenres = action.payload;
         state.genres = newGenres;
       })
+      .addCase(initUserGenre.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        state.error = action.error.message;
+      })
+      .addCase(initUserGenre.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        const userGenres = action.payload;
+        state.userGenre = userGenres;
+      })
       .addCase(addGenre.rejected, (state, action) => {
         state.error = action.error.message;
       })
@@ -71,6 +110,15 @@ const genresSlice = createSlice({
           user_id: action.payload.user_id,
           genre: action.payload.resultUser,
         };
+      })
+      .addCase(loadUsersGenres.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        state.error = action.error.message;
+      })
+      .addCase(loadUsersGenres.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        const usersGenres = action.payload;
+        state.usersGenres = usersGenres;
       });
   },
 });
@@ -78,13 +126,15 @@ const genresSlice = createSlice({
 export {
   loadGenres,
   addGenre,
+  loadUsersGenres,
+  initUserGenre,
 };
 
 // export const {
 //   addGenres,
 // } = genresSlice.actions;
 
-export const selectGenres = (state) => state.genres;
-export const selectUserGenres = (state) => state.userGenres;
+// export const selectGenres = (state) => state.genres;
+// export const selectUserGenres = (state) => state.userGenres;
 
 export default genresSlice.reducer;

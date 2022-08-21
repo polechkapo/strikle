@@ -16,6 +16,7 @@ const logoutRouter = require('./routers/logout.routers');
 const lyricsRouter = require('./routers/lyrics.router');
 const bodyParser = require("body-parser");
 const artistsRouter = require('./routers/artists.router');
+const likesRouter = require('./routers/likes.router');
 
 const app = express();
 app.use(require('cors')({
@@ -32,8 +33,9 @@ require('./mw/session')(app);
 
 app.use('/api', regRouter);
 app.use('/api/favorite', favoriteRouter);
-app.use('/api/session', sessionRouter);
+app.use('/api', sessionRouter);
 app.use('/api', genreRouter);
+app.use('/api', likesRouter);
 app.use('/api', artistsRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/multer', photoUploadFileRouter)

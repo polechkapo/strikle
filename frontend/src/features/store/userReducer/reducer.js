@@ -8,6 +8,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   user: undefined,
+  users: undefined,
 };
 
 const loadUser = createAsyncThunk(
@@ -15,6 +16,22 @@ const loadUser = createAsyncThunk(
 
   async () => {
     const response = await fetch('/api/session');
+    const data = await response.json();
+
+    if (data.error) {
+      throw data.error;
+    }
+
+    return data;
+  },
+);
+
+const loadUsers = createAsyncThunk(
+  'user/initAllUsers',
+
+  async () => {
+    console.log('я в санке');
+    const response = await fetch('/api/all');
     const data = await response.json();
 
     if (data.error) {
@@ -162,6 +179,16 @@ const userSlice = createSlice({
         state.user = newUser;
         console.log(newUser);
       })
+      .addCase(loadUsers.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        state.error = action.error.message;
+      })
+      .addCase(loadUsers.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        const allUsers = action.payload;
+        state.users = allUsers;
+        console.log(allUsers);
+      })
       .addCase(registerUser.rejected, (state, action) => {
          // Сценарий провала — загрузка не увенчалась успехом
          console.log(state.error, '<===== error register');
@@ -222,6 +249,7 @@ export {
   editUser,
   deleteUser,
   loginUser,
+  loadUsers,
 };
 
 // export const {
