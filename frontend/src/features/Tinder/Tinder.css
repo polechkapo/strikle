@@ -48,6 +48,7 @@
    width: 90vw;
    max-width: 260px;
    height: 300px;
+   margin: 0 auto;
  }
  
  .card {
@@ -75,7 +76,7 @@
    position: absolute;
    bottom: 0;
    margin: 10px;
-   color: #fff;
+   /* color: #fff; */
  }
  
  .infoText {
@@ -83,7 +84,7 @@
    height: 28px;
    justify-content: center;
    display: flex;
-   color: #fff;
+   /* color: #fff; */
    animation-name: popup;
    animation-duration: 800ms;
  }
@@ -91,6 +92,7 @@
  .buttons {
    margin: 20px;
    display: flex;
+   justify-content: center;
  }
  
  .buttons button {

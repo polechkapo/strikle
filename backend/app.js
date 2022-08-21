@@ -33,7 +33,7 @@ require('./mw/session')(app);
 
 app.use('/api', regRouter);
 app.use('/api/favorite', favoriteRouter);
-app.use('/api/session', sessionRouter);
+app.use('/api', sessionRouter);
 app.use('/api', genreRouter);
 app.use('/api', artistsRouter);
 app.use('/api/login', loginRouter);

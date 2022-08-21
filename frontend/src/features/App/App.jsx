@@ -15,7 +15,8 @@ import SearchSpoty from '../SearchSpoty/SearchSpoty';
 import { loadUser } from '../store/userReducer/reducer';
 import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
-import Tinder from '../Tinder/Tinder';
+// import Tinder from '../Tinder/Tinder';
+import MainTinder from '../Tinder/MainTinder';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ function App() {
             <Route path="/registraton/2" element={<Registration2 />} />
             <Route path="/registraton/3" element={<Registration3 />} />
             <Route path="/cabinet" element={<Profile />} />
-            <Route path="/tinder" element={<Tinder />} />
+            <Route path="/tinder" element={<MainTinder />} />
           </>
         )
           : (

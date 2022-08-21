@@ -31,7 +31,7 @@ module.exports = {
       },
       avatar: {
         type: Sequelize.TEXT,
-        defaultValue: '/avatars/stock_avatar.jpg',
+        defaultValue: 'https://cdn.store-assets.com/s/391095/f/5163613.jpeg?width=1500',
       },
       city: {
         type: Sequelize.TEXT,
