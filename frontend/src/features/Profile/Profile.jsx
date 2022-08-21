@@ -94,6 +94,8 @@ function Profile() {
                 id="name"
                 placeholder={user.user.username}
               />
+              
+              {/* Password */}
               <input
                 type="password"
                 name="oldPassword"
@@ -112,6 +114,8 @@ function Profile() {
                 title="Пароль должен содержать по крайней мере одно число, одну заглавную и строчную буквы, а также не менее 8 и более символов"
               />
               <input type="password" name="checkPassword" id="checkPassword" placeholder="Введи новый пароль еще раз" />
+
+
               <input type="text" id="city" name="city" placeholder={user.user.city} />
               <textarea name="bio" id="bio" cols="30" rows="10" placeholder={user.user.bio} />
 
