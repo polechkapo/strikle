@@ -1,19 +1,19 @@
 /* eslint-disable no-param-reassign */
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { editUser } from '../store/userReducer/reducer';
 
 function ChangeInfo() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user.user);
+  console.log(user,'USER');
+  const [email, setEmail] = useState(user.email);
+  console.log(email,'EMAIL');
+  const [username, setUsername] = useState(user.username);
+  const [city, setCity] = useState(user.city);
+  const [bio, setBio] = useState(user.bio);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [genresArr, setGenresArr] = useState([]);
-  // const genres = useSelector((state) => state.genres);
-  // console.log(user, 'profile user');
-  // useEffect(() => {
-  //   dispatch(loadGenres());
-  // }, []);
 
   const handleForm = (event) => {
     event.preventDefault();
@@ -35,7 +35,8 @@ function ChangeInfo() {
           type="email"
           name="email"
           id="email"
-          placeholder={user.user.email}
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           pattern="^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$"
           title="Введите действующую почту"
         />
@@ -43,11 +44,14 @@ function ChangeInfo() {
           type="text"
           name="name"
           id="name"
-          placeholder={user.user.username}
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
         />
 
-        <input type="text" id="city" name="city" placeholder={user.user.city} />
-        <textarea name="bio" id="bio" cols="30" rows="10" placeholder={user.user.bio} />
+        <input type="text" id="city" name="city" value={city}
+          onChange={(event) => setCity(event.target.value)} />
+        <textarea name="bio" id="bio" cols="30" rows="10" value={bio}
+          onChange={(event) => setBio(event.target.value)} />
 
         {/* <input type="text" placeholder="Поиск исполнителя" />
               <button type="submit">Поиск</button>

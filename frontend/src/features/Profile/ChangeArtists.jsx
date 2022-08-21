@@ -1,24 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Dashboard from '../spotify/Dashboard';
 import LoginSpotify from '../spotify/LoginSpotify';
 
 function ChangeArtists() {
   const code = new URLSearchParams(window.location.search).get('code');
-  useEffect(() => {
-    fetch('https://accounts.spotify.com/authorize?client_id=a64cff7f1f62470ab9902e118ab37e41&response_type=code&redirect_uri=http://localhost:3000/search')
-      .then((response) => console.log(response));
-  }, []);
-
+  const userTrack = useSelector((state) => state.tracks.userTracks);
   return (
     <div>
-      <h1>Давай выберем твои любимые песни!</h1>
+      <h3>Здесь можно изменить список твоих любимых артистов!</h3>
+      {userTrack ? userTrack.map((track) =>
+        <div key={track.uri}>
+          <img src={track.albumUrl} alt="" />
+          <p>{track.title}</p>
+          <p>{track.artist}</p>
+        </div>) : <h3>Загрузка артистов</h3>}
       {code ? <Dashboard code={code} />
         : (
           <>
             <h3>Войди в свой аккаунт</h3>
             <LoginSpotify />
           </>
-        ) }
+        )}
     </div>
   );
 }

@@ -1,21 +1,23 @@
 /* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
-// import { editUser } from '../store/userReducer/reducer';
-import { loadUserGenres } from '../store/genresReducer/reducer';
+import { useNavigate } from 'react-router-dom';
+import { editGenre, loadGenres, loadUserGenres } from '../store/genresReducer/reducer';
 
 function ChangeGenres() {
-  const user = useSelector((state) => state.user);
   const userGenre = useSelector((state) => state.genres.userGenre);
+  const genres = useSelector((state) => state.genres)
+
   const [genresArr, setGenresArr] = useState([]);
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  console.log(user, 'profile user');
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(loadUserGenres());
+    dispatch(loadGenres())
   }, []);
-
+  console.log(genres, 'gerererereereerere');
+  console.log(userGenre, 'USeRGENRE');
   const handleButton = (event) => {
     event.preventDefault();
     const value = event.target.id;
@@ -30,15 +32,27 @@ function ChangeGenres() {
     }
   };
 
+  const handleButtons = () => {
+    dispatch(editGenre(genresArr));
+    navigate('/cabinet');
+  };
+
   return (
     <>
-      <h1>Выбери любимые жанры:</h1>
       <div>
-        {userGenre && userGenre.map((genre) => (
+        <h4>Ваши любимые жанры</h4>
+        {userGenre.map((genre) => <button key={genre.id} id={genre.id} type="button" >
+          {genre.Genre.title}
+        </button>)}
+      </div>
+      <h4>Выбери новые жанры:</h4>
+      <div>
+        {genres.genres && genres.genres.map((genre) => (
           <button key={genre.id} id={genre.id} type="button" onClick={handleButton}>
             {genre.title}
           </button>
         ))}
+        <button type="button" onClick={handleButtons}>Изменить</button>
       </div>
     </>
   );

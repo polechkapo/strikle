@@ -8,7 +8,6 @@ const favoriteRouter = require('./routers/favorite.router');
 const sessionRouter = require('./routers/auth.router');
 const genreRouter = require('./routers/genre.router')
 const loginRouter = require('./routers/login.router');
-
 const editProfileRouter = require('./routers/profile.router')
 const photoUploadFileRouter = require('./routers/upload.router');
 const refreshRouter = require('./routers/refresh.router');

@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { editUser } from '../store/userReducer/reducer';
+import { editPassUser } from '../store/userReducer/reducer';
 
 function ChangePassword() {
   // const user = useSelector((state) => state.user);
@@ -13,7 +13,7 @@ function ChangePassword() {
     const oldPassword = event.target.oldPassword.value;
     const checkPassword = event.target.checkPassword.value;
 
-    dispatch(editUser({
+    dispatch(editPassUser({
       oldPassword, password, checkPassword,
     }));
     // navigate('/cabinet');

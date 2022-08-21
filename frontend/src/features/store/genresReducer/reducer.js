@@ -22,11 +22,11 @@ const loadGenres = createAsyncThunk(
 );
 
 const loadUserGenres = createAsyncThunk(
-  'genres/initGenres',
+  'genres/loadUserGenres',
   async () => {
-    const response = await fetch('/api/userGenre');
+    const response = await fetch('/api/favorite');
     const data = await response.json();
-
+    console.log('DATA UG', data);
     if (data.error) {
       console.log(data.error);
       throw data.error;
@@ -58,7 +58,7 @@ const addGenre = createAsyncThunk(
 );
 
 const editGenre = createAsyncThunk(
-  'genres/addedUserGenre',
+  'genres/editGenre',
   async (payload) => {
     console.log(payload, ',++++ thunk');
     const response = await fetch('/api/favorite', {
@@ -121,10 +121,7 @@ const genresSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(editGenre.fulfilled, (state, action) => {
-        state.userGenre = {
-          user_id: action.payload.user_id,
-          genre: action.payload.editGenre,
-        };
+        state.userGenre = action.payload
       });
   },
 });

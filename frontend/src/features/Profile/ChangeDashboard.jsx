@@ -3,13 +3,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-return-assign */
 import React, { useState, useEffect } from 'react';
-// import Player from "../Player"
 import { Container, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { addTracks } from '../store/artistsReducer/reducer';
-// import axios from 'axios';
-// import TrackSearchResult from './TrackSearchResult';
 import useAuth from './useAuth';
 
 const spotifyApi = new SpotifyWebApi({
@@ -23,29 +20,6 @@ export default function Dashboard({ code }) {
   const added = useSelector((state) => state.tracks.tracks);
   console.log('ERROR STAT', added);
   const dispatch = useDispatch();
-  // const [playingTrack, setPlayingTrack] = useState();
-  // const [lyrics, setLyrics] = useState('');
-
-  // function chooseTrack(track) {
-  //   setPlayingTrack(track);
-  //   setSearch('');
-  //   setLyrics('');
-  // }
-
-  // useEffect(() => {
-  //   if (!playingTrack) return;
-
-  //   axios
-  //     .get('http://localhost:4000/artists', {
-  //       params: {
-  //         track: playingTrack.title,
-  //         artist: playingTrack.artist,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       setLyrics(res.data.lyrics);
-  //     });
-  // }, [playingTrack]);
 
   useEffect(() => {
     if (!accessToken) return;
@@ -84,15 +58,11 @@ export default function Dashboard({ code }) {
 
   const [tracksArr, setTracksArr] = useState([]);
 
-  // const tracksArr = [];
-
   const handleTrack = (event) => {
     const img = event.target.parentNode.childNodes[0].attributes[0].nodeValue;
     const title = event.target.parentNode.childNodes[1].innerText;
     const artist = event.target.parentNode.childNodes[2].innerText;
     const { id } = event.target;
-    // console.log(img, title, artist);
-    // console.log(id);
 
     if (!tracksArr.some((el) => el.id === id)) {
       if (tracksArr.length < 5) {
@@ -113,15 +83,6 @@ export default function Dashboard({ code }) {
 
   return (
     <Container className="d-flex flex-column py-2" style={{ height: '100vh' }}>
-      {added.addedArtist === false && (
-        <div style={{ backgroundColor: 'red' }}>
-          <p>
-            У вас уже загружен список артистов. Для редактирования перейдите в
-            {' '}
-            <a href="/cabinet">Личный кабинет</a>
-          </p>
-        </div>
-      )}
       <Form.Control
         type="search"
         placeholder="Search Songs/Artists"
@@ -129,7 +90,7 @@ export default function Dashboard({ code }) {
         onChange={(e) => setSearch(e.target.value)}
       />
       <div className="flex-grow-1 my-2" style={{ overflowY: 'auto' }}>
-        <button type="button" onClick={handleButtons}>Готово</button>
+        <button type="button" onClick={handleButtons}>Изменить</button>
         {searchResults.map((track) => (
           <div key={track.uri}>
             <img src={track.albumUrl} alt="" />
@@ -138,19 +99,9 @@ export default function Dashboard({ code }) {
             <button type="button" onClick={handleTrack} id={track.uri}>💖</button>
           </div>
         ))}
-        {/* {searchResults.length === 0 && (
-          <div className="text-center" style={{ whiteSpace: "pre" }}>
-            {lyrics}
-          </div>
-        )} */}
       </div>
       <div>
-        {/* <Player accessToken={accessToken} trackUri={playingTrack?.uri} /> */}
       </div>
     </Container>
   );
 }
-
-// track={track}
-// key={track.uri}
-// chooseTrack={chooseTrack}
