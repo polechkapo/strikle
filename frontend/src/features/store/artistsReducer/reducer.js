@@ -3,7 +3,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  tracks: null,
+  tracks: { addedArtist: null },
   // userTracks: [],
 };
 
@@ -34,7 +34,7 @@ const addTracks = createAsyncThunk(
     });
 
     const data = await response.json();
-
+    console.log('DATA ARTIST', data);
     if (data.error) {
       throw data.error;
     }
@@ -75,11 +75,6 @@ export {
   addTracks,
 };
 
-// export const {
-//   addGenres,
-// } = genresSlice.actions;
-
-export const selectGenres = (state) => state.genres;
-export const selectUserGenres = (state) => state.userGenres;
+export const selectTracks = (state) => state.tracks;
 
 export default artistSlice.reducer;
