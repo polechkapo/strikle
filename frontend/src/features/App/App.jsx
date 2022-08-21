@@ -10,6 +10,7 @@ import Registration3 from '../Registration/Registration_3';
 // import Dashboard from "../spotify/Dashboard";
 // import Multer from '../Multer/Multer';
 import Login from '../Login/Login';
+import ProfileOld from '../Profile/ProfileOld';
 import Profile from '../Profile/Profile';
 import SearchSpoty from '../SearchSpoty/SearchSpoty';
 import { loadUser } from '../store/userReducer/reducer';
@@ -38,6 +39,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/registraton/2" element={<Registration2 />} />
             <Route path="/registraton/3" element={<Registration3 />} />
+            <Route path="/cabinetOld" element={<ProfileOld />} />
             <Route path="/cabinet" element={<Profile />} />
             <Route path="/tinder" element={<Tinder />} />
           </>
