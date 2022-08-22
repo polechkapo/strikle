@@ -29,10 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         model: 'Users',
       },
     },
-    match_percent: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-    },
   }, {
     sequelize,
     modelName: 'Pair',

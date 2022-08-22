@@ -6,10 +6,11 @@ import React, {
   useState, useRef, useMemo, useEffect,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card';
 import { initUserGenre, loadGenres, loadUsersGenres } from '../store/genresReducer/reducer';
-import { addLike, loadLikes } from '../store/tinderReducer/reducer';
+import { addLike, findMatch, loadLikes } from '../store/tinderReducer/reducer';
 import './Tinder.css';
 
 function Tinder() {
@@ -18,9 +19,11 @@ function Tinder() {
   const usersGenres = useSelector((state) => state.genres.usersGenres);
   const userGenre = useSelector((state) => state.genres.userGenre);
   const likes = useSelector((state) => state.likes.likes);
+  const match = useSelector((state) => state.likes.match);
   const likesCards = likes.map((el) => el.user_id_get);
   const db = dbStart.filter((el) => !likesCards.includes(el.id));
-  // console.log(db[0].Artists);
+  const [modal, setModal] = useState(true);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => dispatch(loadLikes()), []);
   useEffect(() => dispatch(loadUsersGenres()), []);
@@ -60,18 +63,6 @@ function Tinder() {
     }
   };
 
-  const outOfFrame = (name, idx, dir) => {
-    // handle the case in which go back is pressed before card goes outOfFrame
-    if (dir === 'right') {
-      dispatch(addLike({ user_id_take: user.id, user_id_get: name.id }));
-    }
-    console.log(`${name.username} (${name.id}) ${dir} the screen!`, currentIndexRef.current);
-    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
-    // TODO: when quickly swipe and restore multiple times the same card,
-    // it happens multiple outOfFrame events are queued and the card disappear
-    // during latest swipes. Only the last outOfFrame event should be considered valid
-  };
-
   // increase current index and show card
   const goBack = async () => {
     if (!canGoBack) return;
@@ -92,8 +83,6 @@ function Tinder() {
     const userGenresTitle = userGenre.map((el) => el.Genre.title);
     const userArtists = user.Artists.map((artist) => artist.artist);
     const userAll = [...userGenresTitle, ...userArtists];
-    console.log(cardAll, 'card');
-    console.log(userAll, 'user');
 
     let counter = 0;
     for (let i = 0; i <= userAll.length; i += 1) {
@@ -102,9 +91,26 @@ function Tinder() {
       }
     }
 
-    const result = (counter / ((cardAll.length + userAll.length) / 2)) * 100;
+    const result = Math.round((counter / ((cardAll.length + userAll.length) / 2)) * 100);
     return result;
   };
+
+  const outOfFrame = (name, idx, dir) => {
+    // handle the case in which go back is pressed before card goes outOfFrame
+    if (dir === 'right') {
+      dispatch(addLike({ user_id_take: user.id, user_id_get: name.id }));
+      dispatch(findMatch({ card_id: name.id }));
+    }
+    console.log(`${name.username} (${name.id}) ${dir} the screen!`, currentIndexRef.current);
+    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+    // TODO: when quickly swipe and restore multiple times the same card,
+    // it happens multiple outOfFrame events are queued and the card disappear
+    // during latest swipes. Only the last outOfFrame event should be considered valid
+  };
+
+  console.log(match, 'это мэтч');
+
+  console.log(db);
 
   return (
     <div>
@@ -172,6 +178,34 @@ function Tinder() {
           Упс, на этом пока все!
         </h2>
       )} */}
+      {(match !== false && modal)
+      && (
+      <div className="modal">
+        <div className="modal__content">
+          Это мэтч!
+          <div>
+            <img src={user.avatar} alt="" className="modal__img" />
+            <p>{user.username}</p>
+            и
+            {dbStart.filter((el) => el.id === match.user_id_1).map((el) => (
+              <div key={el.id}>
+                <img src={el.avatar} alt="" className="modal__img" />
+                {' '}
+                <p>{el.username}</p>
+              </div>
+            ))}
+          </div>
+          <div className="buttons">
+            <button type="button" onClick={() => setModal(!modal)}>
+              Продолжить
+            </button>
+            <button onClick={() => navigate('/cabinet')} type="button">
+              Написать
+            </button>
+          </div>
+        </div>
+      </div>
+      )}
     </div>
   );
 }
