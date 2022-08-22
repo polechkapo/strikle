@@ -1,6 +1,7 @@
 import React from 'react';
 import Dashboard from '../spotify/Dashboard';
 import LoginSpotify from '../spotify/LoginSpotify';
+import './SearchSpoty.css';
 
 function SearchSpoty() {
   const code = new URLSearchParams(window.location.search).get('code');
@@ -8,15 +9,15 @@ function SearchSpoty() {
   return (
     <div>
 
-      <h1>Давай выберем твои любимые песни!</h1>
+      <h1 id="h1Main" className="spoty__title">Выбери любимые песни:</h1>
 
       {
         code ? <Dashboard code={code} />
           : (
-            <>
-              <h3>Войди в свой аккаунт</h3>
+            <div className="genres__content spoty__content">
+              <p>Для начала войди в свой аккаунт</p>
               <LoginSpotify />
-            </>
+            </div>
           )
       }
     </div>

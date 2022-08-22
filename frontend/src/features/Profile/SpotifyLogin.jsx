@@ -9,7 +9,7 @@ export default function SpotifyLogin() {
       className="d-flex justify-content-center align-items-center"
       style={{ minHeight: '20vh' }}
     >
-      <a className="btn btn-success btn-lg" href={AUTH_URL}>
+      <a className="spoty__login" href={AUTH_URL}>
         Login With Spotify
       </a>
     </Container>
