@@ -40,25 +40,18 @@ function Registration3() {
   console.log(userGenre, 'жанры пользователя');
 
   return (
-    <>
-      <h1>Выбери исполнителей и жанры</h1>
+    <div>
+      <h1>Выбери любимые жанры:</h1>
       <div>
-        <input type="text" placeholder="Поиск исполнителя" />
-        <button type="submit">Поиск</button>
+        { genres.genres && genres.genres.map((genre) => (
+          <button key={genre.id} id={genre.id} type="button" onClick={handleButton}>
+            {genre.title}
+          </button>
+        ))}
+        <button type="button" onClick={handleButtons}>Подключиться</button>
         <button type="submit" onClick={() => navigate('/')}>Пропустить</button>
       </div>
-      <div>
-        <h1>Выбери любимые жанры:</h1>
-        <div>
-          { genres.genres && genres.genres.map((genre) => (
-            <button key={genre.id} id={genre.id} type="button" onClick={handleButton}>
-              {genre.title}
-            </button>
-          ))}
-          <button type="button" onClick={handleButtons}>Подключиться</button>
-        </div>
-      </div>
-    </>
+    </div>
   );
 }
 
