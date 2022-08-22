@@ -15,6 +15,9 @@ import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
 import ChangeArtists from '../Profile/ChangeArtists';
 import MainTinder from '../Tinder/MainTinder';
+import Events from '../Events/EventsPage';
+import EventPage from '../Events/EventPage/EventPage';
+import { loadComments, loadEvents, loadParticipants } from '../store/eventsReducer/reducer';
 import InputChat from '../Chat/InputChat';
 import socket from '../Chat/socket';
 import { setMessages } from '../store/chatReducer/reducer';
@@ -36,7 +39,12 @@ function App() {
 
   useEffect(() => {
     dispatch(loadUser());
-  }, [dispatch]);
+    dispatch(loadEvents());
+    dispatch(loadComments());
+    dispatch(loadParticipants());
+  }, []);
+
+  console.log(user);
 
   return (
     <BrowserRouter>

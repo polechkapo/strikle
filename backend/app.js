@@ -18,6 +18,7 @@ const bodyParser = require("body-parser");
 const artistsRouter = require('./routers/artists.router');
 const editPassRouter = require('./routers/password.router');
 const likesRouter = require('./routers/likes.router');
+const eventsRouter = require('./routers/events.router');
 const chatRouter = require('./routers/chat.router')
 const loadPairsRouter = require('./routers/chatpage.router')
 
