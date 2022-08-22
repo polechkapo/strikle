@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deleteUser } from '../store/userReducer/reducer';
+import './Nav.css';
 
 function Nav() {
   const user = useSelector((state) => state.user);
@@ -15,9 +16,9 @@ function Nav() {
   };
 
   return (
-    <>
-      {user.user && <button type="button" onClick={handleDestroy}>Выйти</button> }
-    </>
+    <div className="divNav">
+      {user.user && <button className="btnNav" type="button" onClick={handleDestroy}>Выйти</button> }
+    </div>
   );
 }
 

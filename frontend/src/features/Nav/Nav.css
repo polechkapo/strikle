@@ -1,0 +1,20 @@
+.divNav {
+    display: flex;
+    width: 1100px;
+    justify-content: flex-end;
+    margin: 20px;
+    margin-bottom: 0px;
+
+    
+}
+
+.btnNav {
+    align-items: center;
+    width: 120px;
+    height: 40px;
+    background: #FFFFFF;
+    padding: 10px;
+    border: none;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+}
