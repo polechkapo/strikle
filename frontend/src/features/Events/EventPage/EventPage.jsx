@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
@@ -17,6 +18,7 @@ function EventPage() {
   const handleButton = (event) => {
     event.preventDefault();
     dispatch(addParticipant({ user_id: user.id, event_id: Number(event.target.id) }));
+    event.target.disabled = true;
   };
 
   return (
