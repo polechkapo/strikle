@@ -22,8 +22,8 @@ photoUploadFileRouter.put('/edit', async (req, res) => {
       user.avatar = arrUrl;
       user.save();
       res.status(200);
-      res.end();
-    } 
+      res.json({ loadedPhoto: true });
+    }
   } catch { console.error; }
 });
 

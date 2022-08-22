@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate({
       Artist, Genre, Like, Pair, Comment, Event, Chat,
     }) {
-      User.belongsToMany(Artist, ({ foreignKey: 'user_id', through: 'Favorite_Artist', otherKey: 'artist_id' }));
       User.belongsToMany(Genre, ({ foreignKey: 'user_id', through: 'User_Genres', otherKey: 'genre_id' }));
       User.belongsToMany(Event, ({ foreignKey: 'user_id', through: 'Participant', otherKey: 'event_id' }));
+      User.hasMany(Artist, ({ foreignKey: 'user_id' }));
       User.hasMany(Like, ({ foreignKey: 'user_id_take' }));
       User.hasMany(Like, ({ foreignKey: 'user_id_get' }));
       User.hasMany(Pair, ({ foreignKey: 'user_id_1' }));
@@ -62,7 +62,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     avatar: {
       type: DataTypes.TEXT,
-      defaultValue: '/avatars/stock_avatar.jpg',
+      defaultValue: 'https://cdn.store-assets.com/s/391095/f/5163613.jpeg?width=1500',
     },
     city: {
       type: DataTypes.TEXT,

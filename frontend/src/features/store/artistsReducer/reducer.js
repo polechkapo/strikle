@@ -3,8 +3,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  tracks: null,
-  // userTracks: [],
+  tracks: { addedArtist: null },
+  userTracks: [],
 };
 
 // const loadGenres = createAsyncThunk(
@@ -34,7 +34,43 @@ const addTracks = createAsyncThunk(
     });
 
     const data = await response.json();
+    console.log('DATA ARTIST', data);
+    if (data.error) {
+      throw data.error;
+    }
+    return data;
+  },
+);
 
+const editTracks = createAsyncThunk(
+  'tracks/editTracks',
+  async (payload) => {
+    console.log(payload, ',++++ thunk');
+    const response = await fetch('/api/artists', {
+      method: 'PUT',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        artists: payload,
+      }),
+    });
+
+    const data = await response.json();
+    console.log('DATA ARTIST', data);
+    if (data.error) {
+      throw data.error;
+    }
+    return data;
+  },
+);
+
+const loadUserTracks = createAsyncThunk(
+  'tracks/loadUserTracks',
+  async (payload) => {
+    console.log(payload, ',++++ thunk');
+    const response = await fetch('/api/artists');
+
+    const data = await response.json();
+    console.log('DATA ARTIST', data);
     if (data.error) {
       throw data.error;
     }
@@ -45,27 +81,24 @@ const addTracks = createAsyncThunk(
 const artistSlice = createSlice({
   name: 'tracks',
   initialState,
-  // reducers: {
-  //   addGenres: (state, action) => {
-  //     const newGenres = action.payload;
-  //     state.userGenres.push(newGenres);
-  //   },
-  // },
   extraReducers: (builder) => {
     builder
-      // .addCase(loadGenres.rejected, (state, action) => {
-      //   // Сценарий провала — загрузка не увенчалась успехом
-      //   state.error = action.error.message;
-      // })
-      // .addCase(loadGenres.fulfilled, (state, action) => {
-      //   // Успешный случай — загрузка прошла хорошо
-      //   const newGenres = action.payload;
-      //   state.genres = newGenres;
-      // })
       .addCase(addTracks.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(addTracks.fulfilled, (state, action) => {
+        state.tracks = action.payload;
+      })
+      .addCase(loadUserTracks.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadUserTracks.fulfilled, (state, action) => {
+        state.userTracks = action.payload;
+      })
+      .addCase(editTracks.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(editTracks.fulfilled, (state, action) => {
         state.tracks = action.payload;
       });
   },
@@ -73,13 +106,11 @@ const artistSlice = createSlice({
 
 export {
   addTracks,
+  loadUserTracks,
+  editTracks,
 };
 
-// export const {
-//   addGenres,
-// } = genresSlice.actions;
-
-export const selectGenres = (state) => state.genres;
-export const selectUserGenres = (state) => state.userGenres;
+export const selectTracks = (state) => state.tracks;
+export const selectUserTracks = (state) => state.userTracks;
 
 export default artistSlice.reducer;
