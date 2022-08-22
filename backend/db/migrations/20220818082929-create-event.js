@@ -21,7 +21,7 @@ module.exports = {
       photo: {
         type: Sequelize.TEXT,
       },
-      descripton: {
+      description: {
         allowNull: false,
         type: Sequelize.TEXT,
       },

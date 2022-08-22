@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     photo: {
       type: DataTypes.TEXT,
     },
-    descripton: {
+    description: {
       allowNull: false,
       type: DataTypes.TEXT,
     },
