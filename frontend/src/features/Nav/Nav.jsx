@@ -16,17 +16,23 @@ function Nav() {
   };
 
   return (
-    <div className="divNav">
-      {user.user && (
+    <>
+      <div className="divNav">
+        {user.user && <button className="btnNav" type="button" onClick={handleDestroy}>Выйти</button>}
+      </div>
       <>
-        <button className="btnNav" type="button" onClick={handleDestroy}>Выйти</button>
-        <Link to="/tinder">Tinder</Link>
-        <Link to="/">Home</Link>
-        <Link to="/cabinet">Cab</Link>
-      </>
-      )}
+        {user.user && (
+        <>
+          <button type="button" onClick={handleDestroy}>Выйти</button>
+          <Link to="/tinder">Tinder</Link>
+          <Link to="/">Home</Link>
+          <Link to="/cabinet">Cab</Link>
+        </>
+        )}
 
-    </div>
+      </>
+
+    </>
   );
 }
 
