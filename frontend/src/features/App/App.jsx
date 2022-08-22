@@ -48,8 +48,8 @@ function App() {
             <Route path="/events/:id" element={<EventPage />} />
             <Route path="/search" element={<SearchSpoty />} />
             <Route path="/" element={<Home />} />
-            <Route path="/registraton/2" element={<Registration2 />} />
-            <Route path="/registraton/3" element={<Registration3 />} />
+            <Route path="/profile" element={<Registration2 />} />
+            <Route path="/genres" element={<Registration3 />} />
             <Route path="/cabinetOld" element={<ProfileOld />} />
             <Route path="/cabinet" element={<Profile />} />
             <Route path="/tinder" element={<MainTinder />} />
