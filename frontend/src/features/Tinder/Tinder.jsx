@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import differenceInYears from 'date-fns/differenceInYears';
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from 'react-tinder-card';
 import { initUserGenre, loadGenres, loadUsersGenres } from '../store/genresReducer/reducer';
@@ -64,12 +65,12 @@ function Tinder() {
   };
 
   // increase current index and show card
-  const goBack = async () => {
-    if (!canGoBack) return;
-    const newIndex = currentIndex + 1;
-    updateCurrentIndex(newIndex);
-    await childRefs[newIndex].current.restoreCard();
-  };
+  // const goBack = async () => {
+  //   if (!canGoBack) return;
+  //   const newIndex = currentIndex + 1;
+  //   updateCurrentIndex(newIndex);
+  //   await childRefs[newIndex].current.restoreCard();
+  // };
 
   // const handleLike = (event) => {
   //   swipe('right');
@@ -107,10 +108,6 @@ function Tinder() {
     // it happens multiple outOfFrame events are queued and the card disappear
     // during latest swipes. Only the last outOfFrame event should be considered valid
   };
-
-  console.log(match, 'это мэтч');
-
-  console.log(db);
 
   return (
     <div>
@@ -152,7 +149,12 @@ function Tinder() {
                     : ''))}
                 </div>
               </div>
-              <h3>{character.username}</h3>
+              <h3>
+                {character.username}
+                ,
+                {' '}
+                {differenceInYears(new Date(Date.now()), new Date(character.birth_date))}
+              </h3>
               <p>{character.bio}</p>
               <p>{character.city}</p>
               <p>
