@@ -4,6 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   likes: [],
+  match: false,
 };
 
 const loadLikes = createAsyncThunk(
@@ -24,8 +25,28 @@ const addLike = createAsyncThunk(
   'likes/addLike',
 
   async (payload) => {
-    console.log(payload, ',++++ Like');
     const response = await fetch('/api/like', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(
+        payload,
+      ),
+    });
+    const data = await response.json();
+
+    if (data.error) {
+      throw data.error;
+    }
+    return data;
+  },
+);
+
+const findMatch = createAsyncThunk(
+  'likes/findLike',
+
+  async (payload) => {
+    console.log(payload, 'thunk match');
+    const response = await fetch('/api/match', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(
@@ -65,6 +86,13 @@ const likesSlice = createSlice({
       .addCase(addLike.fulfilled, (state, action) => {
         const like = action.payload;
         state.likes = [...state.likes, like];
+      })
+      .addCase(findMatch.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(findMatch.fulfilled, (state, action) => {
+        const pair = action.payload;
+        state.match = pair;
       });
   },
 });
@@ -72,6 +100,7 @@ const likesSlice = createSlice({
 export {
   addLike,
   loadLikes,
+  findMatch,
 };
 
 export const selectLikes = (state) => state.likes;
