@@ -8,7 +8,7 @@
    background: linear-gradient(#e66465, #9198e5);
  } */
  
- #root>div {
+ #root {
    display: flex;
    flex-direction: column;
    justify-content: center;
