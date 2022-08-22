@@ -22,13 +22,11 @@ const loadGenres = createAsyncThunk(
   },
 );
 
-
 const loadUserGenres = createAsyncThunk(
   'genres/loadUserGenres',
   async () => {
     const response = await fetch('/api/favorite');
     const data = await response.json();
-    console.log('DATA UG', data);
     if (data.error) {
       console.log(data.error);
       throw data.error;
@@ -53,7 +51,6 @@ const loadUsersGenres = createAsyncThunk(
 const addGenre = createAsyncThunk(
   'genres/addedUserGenre',
   async (payload) => {
-    console.log(payload, ',++++ thunk');
     const response = await fetch('/api/favorite', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -64,8 +61,8 @@ const addGenre = createAsyncThunk(
 
     const data = await response.json();
 
-    console.log('data', data);
     if (data.error) {
+      console.log(data.error);
       throw data.error;
     }
     return data;
@@ -75,7 +72,6 @@ const addGenre = createAsyncThunk(
 const editGenre = createAsyncThunk(
   'genres/editGenre',
   async (payload) => {
-    console.log(payload, ',++++ thunk');
     const response = await fetch('/api/favorite', {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
@@ -83,11 +79,11 @@ const editGenre = createAsyncThunk(
         genres: payload,
       }),
     });
-    
+
     const data = await response.json();
 
-    console.log('data', data);
     if (data.error) {
+      console.log(data.error);
       throw data.error;
     }
     return data;
@@ -101,8 +97,8 @@ const initUserGenre = createAsyncThunk(
 
     const data = await response.json();
 
-    console.log('data', data);
     if (data.error) {
+      console.log(data.error);
       throw data.error;
     }
     return data;
@@ -137,6 +133,7 @@ const genresSlice = createSlice({
         // Успешный случай — загрузка прошла хорошо
         const newGenres = action.payload;
         state.userGenre = newGenres;
+      })
       .addCase(initUserGenre.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
         state.error = action.error.message;
@@ -159,7 +156,8 @@ const genresSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(editGenre.fulfilled, (state, action) => {
-        state.userGenre = action.payload
+        state.userGenre = action.payload;
+      })
       .addCase(loadUsersGenres.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
         state.error = action.error.message;
