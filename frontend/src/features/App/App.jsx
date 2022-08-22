@@ -10,12 +10,14 @@ import Registration3 from '../Registration/Registration_3';
 // import Dashboard from "../spotify/Dashboard";
 // import Multer from '../Multer/Multer';
 import Login from '../Login/Login';
+import ProfileOld from '../Profile/ProfileOld';
 import Profile from '../Profile/Profile';
 import SearchSpoty from '../SearchSpoty/SearchSpoty';
 import { loadUser } from '../store/userReducer/reducer';
 import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
-// import Tinder from '../Tinder/Tinder';
+import Tinder from '../Tinder/Tinder';
+import ChangeArtists from '../Profile/ChangeArtists';
 import MainTinder from '../Tinder/MainTinder';
 
 function App() {
@@ -35,10 +37,12 @@ function App() {
       <Routes>
         {user.user ? (
           <>
+            <Route path='/artist' element={<ChangeArtists />} />
             <Route path="/search" element={<SearchSpoty />} />
             <Route path="/" element={<Home />} />
             <Route path="/registraton/2" element={<Registration2 />} />
             <Route path="/registraton/3" element={<Registration3 />} />
+            <Route path="/cabinetOld" element={<ProfileOld />} />
             <Route path="/cabinet" element={<Profile />} />
             <Route path="/tinder" element={<MainTinder />} />
           </>

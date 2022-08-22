@@ -16,6 +16,7 @@ const logoutRouter = require('./routers/logout.routers');
 const lyricsRouter = require('./routers/lyrics.router');
 const bodyParser = require("body-parser");
 const artistsRouter = require('./routers/artists.router');
+const editPassRouter = require('./routers/password.router');
 const likesRouter = require('./routers/likes.router');
 
 const app = express();
@@ -43,6 +44,7 @@ app.use('/api', editProfileRouter)
 app.use('/api/refresh', refreshRouter);
 app.use('/login', loginSpotifyRouter);
 app.use('/lyrics', lyricsRouter);
+app.use('/api', editPassRouter);
 app.use(logoutRouter);
 
 server.on('request', app);

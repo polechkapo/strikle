@@ -7,11 +7,11 @@ const storage = async (file)=>{
   const size = file.data.length
   const extension = path.extname(fileName)
 
-  const allowedExtensions = /png|jpeg|jpg|JPG|gif|heic|webp/
+  const allowedExtensions = /png|jpeg|jpg|JPG|gif|heic|webp|PNG|HEIC/
 
   if(!allowedExtensions.test(extension)) throw "Unsupported extension !"
 
-  if(size > 5000000) throw "File must be less than 2MB"
+  if(size > 10000000) throw "File must be less than 2MB"
   
   const md5 = file.md5
 
