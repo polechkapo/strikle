@@ -72,7 +72,6 @@ const initUserGenre = createAsyncThunk(
   },
 );
 
-
 const genresSlice = createSlice({
   name: 'genres',
   initialState,
