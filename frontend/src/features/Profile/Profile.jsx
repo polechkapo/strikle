@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';

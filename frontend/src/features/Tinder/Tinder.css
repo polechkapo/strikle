@@ -104,9 +104,11 @@
  }
  
  .buttons {
-   margin: 20px;
-   display: flex;
-   justify-content: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 87%;
+  left: 35%;
  }
  
  .buttons button {
