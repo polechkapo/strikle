@@ -18,6 +18,7 @@ const bodyParser = require("body-parser");
 const artistsRouter = require('./routers/artists.router');
 const editPassRouter = require('./routers/password.router');
 const likesRouter = require('./routers/likes.router');
+const eventsRouter = require('./routers/events.router');
 
 const app = express();
 app.use(require('cors')({
@@ -45,6 +46,7 @@ app.use('/api/refresh', refreshRouter);
 app.use('/login', loginSpotifyRouter);
 app.use('/lyrics', lyricsRouter);
 app.use('/api', editPassRouter);
+app.use('/api', eventsRouter);
 app.use(logoutRouter);
 
 server.on('request', app);

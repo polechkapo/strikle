@@ -16,9 +16,12 @@ import SearchSpoty from '../SearchSpoty/SearchSpoty';
 import { loadUser } from '../store/userReducer/reducer';
 import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
-import Tinder from '../Tinder/Tinder';
+// import Tinder from '../Tinder/Tinder';
 import ChangeArtists from '../Profile/ChangeArtists';
 import MainTinder from '../Tinder/MainTinder';
+import Events from '../Events/EventsPage';
+import EventPage from '../Events/EventPage/EventPage';
+import { loadComments, loadEvents, loadParticipants } from '../store/eventsReducer/reducer';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +30,9 @@ function App() {
 
   useEffect(() => {
     dispatch(loadUser());
+    dispatch(loadEvents());
+    dispatch(loadComments());
+    dispatch(loadParticipants());
   }, []);
 
   console.log(user);
@@ -37,7 +43,9 @@ function App() {
       <Routes>
         {user.user ? (
           <>
-            <Route path='/artist' element={<ChangeArtists />} />
+            <Route path="/artist" element={<ChangeArtists />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/events/:id" element={<EventPage />} />
             <Route path="/search" element={<SearchSpoty />} />
             <Route path="/" element={<Home />} />
             <Route path="/registraton/2" element={<Registration2 />} />
