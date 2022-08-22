@@ -26,10 +26,13 @@ function Tinder() {
   const [modal, setModal] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  useEffect(() => dispatch(loadLikes()), []);
-  useEffect(() => dispatch(loadUsersGenres()), []);
-  useEffect(() => dispatch(loadGenres()), []);
-  useEffect(() => dispatch(initUserGenre()), []);
+
+  useEffect(() => {
+    dispatch(loadLikes());
+    dispatch(loadUsersGenres());
+    dispatch(loadGenres());
+    dispatch(initUserGenre());
+  }, []);
 
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
@@ -119,8 +122,9 @@ function Tinder() {
         href="https://fonts.googleapis.com/css?family=Alatsi&display=swap"
         rel="stylesheet"
       />
+
       <div className="cardContainer">
-        {db.map((character, index) => (
+        {db && db.map((character, index) => (
           <TinderCard
             ref={childRefs[index]}
             className="swipe"
