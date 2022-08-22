@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 
 function ChangeAvatar() {
   const user = useSelector((state) => state.user);
-  // const dispatch = useDispatch();
-  console.log(user, 'profile user');
 
   const handlerUloadPhoto = async (e) => {
     console.log(e.target.files);
@@ -19,7 +17,11 @@ function ChangeAvatar() {
         method: 'PUT',
         body: file,
       });
-      await response.json();
+      const data = await response.json();
+      console.log('ЧТО ТУТ');
+      if (data.loadedPhoto) {
+        window.location.href = '/cabinet';
+      }
     } catch (error) {
       console.log(error.message);
     }

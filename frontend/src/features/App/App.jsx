@@ -17,6 +17,7 @@ import { loadUser } from '../store/userReducer/reducer';
 import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
 import Tinder from '../Tinder/Tinder';
+import ChangeArtists from '../Profile/ChangeArtists';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
       <Routes>
         {user.user ? (
           <>
+            <Route path='/artist' element={<ChangeArtists />} />
             <Route path="/search" element={<SearchSpoty />} />
             <Route path="/" element={<Home />} />
             <Route path="/registraton/2" element={<Registration2 />} />

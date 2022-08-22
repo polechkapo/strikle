@@ -6,9 +6,7 @@ import { editUser } from '../store/userReducer/reducer';
 
 function ChangeInfo() {
   const user = useSelector((state) => state.user.user);
-  console.log(user,'USER');
   const [email, setEmail] = useState(user.email);
-  console.log(email,'EMAIL');
   const [username, setUsername] = useState(user.username);
   const [city, setCity] = useState(user.city);
   const [bio, setBio] = useState(user.bio);

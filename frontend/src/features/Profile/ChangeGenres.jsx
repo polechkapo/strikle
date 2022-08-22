@@ -16,8 +16,6 @@ function ChangeGenres() {
     dispatch(loadUserGenres());
     dispatch(loadGenres())
   }, []);
-  console.log(genres, 'gerererereereerere');
-  console.log(userGenre, 'USeRGENRE');
   const handleButton = (event) => {
     event.preventDefault();
     const value = event.target.id;
