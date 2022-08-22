@@ -18,6 +18,7 @@ import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
 import Tinder from '../Tinder/Tinder';
 import ChangeArtists from '../Profile/ChangeArtists';
+import MainTinder from '../Tinder/MainTinder';
 
 function App() {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ function App() {
             <Route path="/registraton/3" element={<Registration3 />} />
             <Route path="/cabinetOld" element={<ProfileOld />} />
             <Route path="/cabinet" element={<Profile />} />
-            <Route path="/tinder" element={<Tinder />} />
+            <Route path="/tinder" element={<MainTinder />} />
           </>
         )
           : (
