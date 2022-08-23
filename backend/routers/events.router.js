@@ -50,7 +50,7 @@ router.route('/events')
         include: {
           raw: true,
           model: User,
-          attributes: ['id', 'username'],
+          attributes: ['id', 'username', 'avatar'],
         }, 
        })
  
@@ -105,7 +105,7 @@ router.route('/events')
         include: {
           raw: true,
           model: User,
-          attributes: ['id', 'username'],
+          attributes: ['id', 'username', 'avatar'],
         }, 
        })
       res.send(sendParticipant);

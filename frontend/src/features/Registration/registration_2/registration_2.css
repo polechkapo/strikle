@@ -3,7 +3,7 @@ body {
     background-size: 100%;
     display: flex;
     justify-content: center;
-    background-size: auto;
+    background-size: cover;
 }
 
 img {

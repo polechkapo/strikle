@@ -7,7 +7,6 @@ import Registration1 from '../Registration/Registration_1';
 import Registration2 from '../Registration/Registration_2';
 import Registration3 from '../Registration/Registration_3';
 import Login from '../Login/Login';
-import ProfileOld from '../Profile/ProfileOld';
 import Profile from '../Profile/Profile';
 import SearchSpoty from '../SearchSpoty/SearchSpoty';
 import { loadUser } from '../store/userReducer/reducer';
@@ -18,6 +17,7 @@ import MainTinder from '../Tinder/MainTinder';
 import Events from '../Events/EventsPage';
 import EventPage from '../Events/EventPage/EventPage';
 import { loadComments, loadEvents, loadParticipants } from '../store/eventsReducer/reducer';
+import CreateEvent from '../Events/CreateEvent/CreateEvent';
 import InputChat from '../Chat/InputChat';
 import socket from '../Chat/socket';
 import { setMessages } from '../store/chatReducer/reducer';
@@ -58,9 +58,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Registration2 />} />
             <Route path="/genres" element={<Registration3 />} />
-            <Route path="/cabinetOld" element={<ProfileOld />} />
             <Route path="/cabinet" element={<Profile />} />
             <Route path="/tinder" element={<MainTinder />} />
+            <Route path="/events/new" element={<CreateEvent />} />
           </>
         )
           : (
