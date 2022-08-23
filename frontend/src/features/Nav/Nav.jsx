@@ -17,16 +17,14 @@ function Nav() {
 
   return (
     <>
-      <div className="divNav">
-        {user.user && (
-        <>
-          <button className="btnNav" type="button" onClick={handleDestroy}>Выйти</button>
+      {user.user && (
+        <div className="divNav">
           <Link to="/tinder">Tinder</Link>
           <Link to="/">Home</Link>
           <Link to="/cabinet">Cab</Link>
-        </>
-        )}
-      </div>
+          <button className="btnNav" type="button" onClick={handleDestroy}>Выйти</button>
+        </div>
+      )}
     </>
   );
 }
