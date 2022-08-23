@@ -12,6 +12,7 @@ const editProfileRouter = require('./routers/profile.router')
 const photoUploadFileRouter = require('./routers/upload.router');
 const refreshRouter = require('./routers/refresh.router');
 const loginSpotifyRouter = require('./routers/spotifyLogin.router');
+const profileSpotifyRouter = require('./routers/spotifyProfile.router')
 const logoutRouter = require('./routers/logout.routers');
 const lyricsRouter = require('./routers/lyrics.router');
 const bodyParser = require("body-parser");
@@ -44,6 +45,7 @@ app.use('/api/multer', photoUploadFileRouter)
 app.use('/api', editProfileRouter)
 app.use('/api/refresh', refreshRouter);
 app.use('/login', loginSpotifyRouter);
+app.use('/loginspotify', profileSpotifyRouter)
 app.use('/lyrics', lyricsRouter);
 app.use('/api', editPassRouter);
 app.use('/api', eventsRouter);

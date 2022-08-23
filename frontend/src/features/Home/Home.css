@@ -35,3 +35,8 @@
    text-align: center;
    padding: 10px;
 }
+
+.buttons__home {
+   display: flex;
+   flex-direction: column;
+}
