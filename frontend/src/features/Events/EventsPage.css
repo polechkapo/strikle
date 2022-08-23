@@ -148,10 +148,15 @@ p {
    width: 700px;
 }
 
-.buttons_control-my {
+.buttons__control-my {
    display: flex;
-   flex-direction: column;
+   flex-direction: row;
+   justify-content: center;
+   gap: 20px;
+   margin-top: 20px;
 }
+
+
 
 .my__events {
    color: black;
