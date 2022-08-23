@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../store/userReducer/reducer';
 import './Login.css';
@@ -7,19 +7,28 @@ import './Login.css';
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { user, errorMessage } = useSelector((state) => state.user);
+  console.log(user, '<------------------- это юзер');
   async function handleLogin(event) {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
     console.log(email, password);
     dispatch(loginUser({ email, password }));
-    navigate('/');
+    if (errorMessage) {
+      document.querySelector('form').reset();
+    }
   }
+  useEffect(() => {
+    console.log(10);
+    return () => navigate('/');
+  }, []);
 
   return (
     <div id="bodyReg1" className="logContainer">
       <div className="formLog">
         <form id="formReg1" onSubmit={handleLogin}>
+          {errorMessage && <p>{errorMessage}</p>}
           <h1 className="h1Login" id="h1Main">С возвращением</h1>
           <input id="emailLog" type="email" name="email" placeholder="Введите почту" />
           <input id="passwordLog" type="password" name="password" placeholder="Введите пароль" />

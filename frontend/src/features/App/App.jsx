@@ -13,7 +13,7 @@ import { loadUser } from '../store/userReducer/reducer';
 import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
 import ChangeArtists from '../Profile/ChangeArtists';
-import MainTinder from '../Tinder/MainTinder';
+// import MainTinder from '../Tinder/MainTinder';
 import Events from '../Events/EventsPage';
 import EventPage from '../Events/EventPage/EventPage';
 import { loadComments, loadEvents, loadParticipants } from '../store/eventsReducer/reducer';
