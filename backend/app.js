@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const { createServer } = require('http'); // поля
+// поля
 const { sequelize } = require('./db/models');
 const config = require('./config/config');
 const regRouter = require('./routers/reg.router');
@@ -18,6 +18,7 @@ const bodyParser = require("body-parser");
 const artistsRouter = require('./routers/artists.router');
 const editPassRouter = require('./routers/password.router');
 const likesRouter = require('./routers/likes.router');
+const chatRouter = require('./routers/chat.router')
 
 const app = express();
 app.use(require('cors')({
@@ -28,8 +29,8 @@ app.use(require('cors')({
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 config(app);
-const createSocketServer = require('./socket');
-const server = createServer(); // поля
+const server = require('http').Server(app);
+const io = require('socket.io')(server)
 require('./mw/session')(app);
 
 app.use('/api', regRouter);
@@ -45,9 +46,22 @@ app.use('/api/refresh', refreshRouter);
 app.use('/login', loginSpotifyRouter);
 app.use('/lyrics', lyricsRouter);
 app.use('/api', editPassRouter);
+app.use('/api', chatRouter)
 app.use(logoutRouter);
 
-server.on('request', app);
+io.on('connection', (socket) => {
+  console.log(socket.to, 'SOCKET!!!!!');
+  socket.on('ROOM:JOIN', (data) => {
+    console.log(data, 'DATA SOCKET');
+    socket.join(data.room_id)
+    socket.to(data.room_id).emit('ROOM:JOINED', { message: 'JOINNN!@!WE!@@!@' })
+  })
+
+
+
+  console.log('user connection', socket.id);
+});
+
 server.listen(process.env.PORT, async () => {
   console.log(`Сервер отлично шуршит на ${process.env.PORT}`);
   try {
@@ -57,5 +71,3 @@ server.listen(process.env.PORT, async () => {
     console.error('Unable to connect to the database:', error);
   }
 });
-
-createSocketServer(server);

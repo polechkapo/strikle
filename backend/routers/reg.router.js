@@ -35,19 +35,19 @@ router.route('/reg')
       console.log(req.body);
       console.log(req.session.userId)
       if (req.session.userId) {
-      const updateUser = await User.findOne({ where: { id: req.session.userId } });
-      updateUser.gender = gender,
-      updateUser.birth_date = birthdate,
-      updateUser.city = city,
-      updateUser.bio = bio,
-      updateUser.avatar = avatar,
-      updateUser.save();
-      console.log(updateUser);
-      res.status(203).json(updateUser);
-      res.end();
-    } else {
-      res.status(404).json({ updateUser: false });
-    }
+        const updateUser = await User.findOne({ where: { id: req.session.userId } });
+        updateUser.gender = gender,
+          updateUser.birth_date = birthdate,
+          updateUser.city = city,
+          updateUser.bio = bio,
+          updateUser.avatar = avatar,
+          updateUser.save();
+        console.log(updateUser);
+        res.status(203).json(updateUser);
+        res.end();
+      } else {
+        res.status(404).json({ updateUser: false });
+      }
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

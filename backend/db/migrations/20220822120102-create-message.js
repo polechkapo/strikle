@@ -1,37 +1,42 @@
+'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Chats', {
+    await queryInterface.createTable('Messages', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
-      user_id_1: {
+      chat_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Chats',
+        },
+      },
+      user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
         },
       },
-      user_id_2: {
+      user_text: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Users',
-        },
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
+        type: Sequelize.DATE
+      }
     });
   },
-  async down(queryInterface) {
-    await queryInterface.dropTable('Chats');
-  },
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Messages');
+  }
 };

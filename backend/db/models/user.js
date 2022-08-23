@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({
-      Artist, Genre, Like, Pair, Comment, Event, Chat,
+      Artist, Genre, Like, Pair, Comment, Event, Chat, Message,
     }) {
       User.belongsToMany(Genre, ({ foreignKey: 'user_id', through: 'User_Genres', otherKey: 'genre_id' }));
       User.belongsToMany(Event, ({ foreignKey: 'user_id', through: 'Participant', otherKey: 'event_id' }));
@@ -22,7 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(Comment, ({ foreignKey: 'user_id' }));
       User.hasMany(Event, ({ foreignKey: 'user_id' }));
       User.hasMany(Artist, ({ foreignKey: 'user_id' }));
-      User.hasMany(Chat, ({ foreignKey: 'user_who' }));
+      User.hasMany(Chat, ({ foreignKey: 'user_id_1' }));
+      User.hasMany(Chat, ({ foreignKey: 'user_id_2' }));
+      User.hasMany(Message, ({ foreignKey: 'user_id' }));
     }
   }
   User.init({

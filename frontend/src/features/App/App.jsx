@@ -6,9 +6,6 @@ import Main from '../Main/Main';
 import Registration1 from '../Registration/Registration_1';
 import Registration2 from '../Registration/Registration_2';
 import Registration3 from '../Registration/Registration_3';
-// import LoginSpotify from "../spotify/LoginSpotify";
-// import Dashboard from "../spotify/Dashboard";
-// import Multer from '../Multer/Multer';
 import Login from '../Login/Login';
 import ProfileOld from '../Profile/ProfileOld';
 import Profile from '../Profile/Profile';
@@ -16,9 +13,9 @@ import SearchSpoty from '../SearchSpoty/SearchSpoty';
 import { loadUser } from '../store/userReducer/reducer';
 import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
-import Tinder from '../Tinder/Tinder';
 import ChangeArtists from '../Profile/ChangeArtists';
 import MainTinder from '../Tinder/MainTinder';
+import InputChat from '../Chat/InputChat';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,9 +24,7 @@ function App() {
 
   useEffect(() => {
     dispatch(loadUser());
-  }, []);
-
-  console.log(user);
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
@@ -37,7 +32,8 @@ function App() {
       <Routes>
         {user.user ? (
           <>
-            <Route path='/artist' element={<ChangeArtists />} />
+            <Route path="/chat" element={<InputChat />} />
+            <Route path="/artist" element={<ChangeArtists />} />
             <Route path="/search" element={<SearchSpoty />} />
             <Route path="/" element={<Home />} />
             <Route path="/registraton/2" element={<Registration2 />} />
@@ -49,6 +45,7 @@ function App() {
         )
           : (
             <>
+              <Route path="/chat" element={<InputChat />} />
               <Route path="/search" element={<SearchSpoty />} />
               <Route path="/" element={<Main />} />
               <Route path="/registraton/1" element={<Registration1 />} />
