@@ -13,6 +13,7 @@ module.exports = {
         references: {
           model: 'Users',
         },
+        onDelete: 'cascade',
       },
       genre_id: {
         allowNull: false,
@@ -20,6 +21,7 @@ module.exports = {
         references: {
           model: 'Genres',
         },
+        onDelete: 'cascade',
       },
       createdAt: {
         allowNull: false,

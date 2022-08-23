@@ -12,17 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate({
       Artist, Genre, Like, Pair, Comment, Event, Chat,
     }) {
-      User.belongsToMany(Genre, ({ foreignKey: 'user_id', through: 'User_Genres', otherKey: 'genre_id' }));
-      User.belongsToMany(Event, ({ foreignKey: 'user_id', through: 'Participant', otherKey: 'event_id' }));
-      User.hasMany(Artist, ({ foreignKey: 'user_id' }));
-      User.hasMany(Like, ({ foreignKey: 'user_id_take' }));
-      User.hasMany(Like, ({ foreignKey: 'user_id_get' }));
-      User.hasMany(Pair, ({ foreignKey: 'user_id_1' }));
-      User.hasMany(Pair, ({ foreignKey: 'user_id_2' }));
-      User.hasMany(Comment, ({ foreignKey: 'user_id' }));
-      User.hasMany(Event, ({ foreignKey: 'user_id' }));
-      User.hasMany(Artist, ({ foreignKey: 'user_id' }));
-      User.hasMany(Chat, ({ foreignKey: 'user_who' }));
+      User.belongsToMany(Genre, ({ foreignKey: 'user_id', through: 'User_Genres', otherKey: 'genre_id', onDelete: 'cascade' }));
+      User.belongsToMany(Event, ({ foreignKey: 'user_id', through: 'Participant', otherKey: 'event_id', onDelete: 'cascade' }));
+      User.hasMany(Artist, ({ foreignKey: 'user_id', onDelete: 'cascade' }));
+      User.hasMany(Like, ({ foreignKey: 'user_id_take', onDelete: 'cascade' }));
+      User.hasMany(Like, ({ foreignKey: 'user_id_get', onDelete: 'cascade' }));
+      User.hasMany(Pair, ({ foreignKey: 'user_id_1', onDelete: 'cascade' }));
+      User.hasMany(Pair, ({ foreignKey: 'user_id_2', onDelete: 'cascade' }));
+      User.hasMany(Comment, ({ foreignKey: 'user_id', onDelete: 'cascade' }));
+      User.hasMany(Event, ({ foreignKey: 'user_id', onDelete: 'cascade' }));
+      User.hasMany(Artist, ({ foreignKey: 'user_id', onDelete: 'cascade' }));
+      User.hasMany(Chat, ({ foreignKey: 'user_who' , onDelete: 'cascade'}));
     }
   }
   User.init({
