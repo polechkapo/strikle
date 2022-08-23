@@ -15,7 +15,7 @@ function Main() {
           а может быть любовь, на Страйкл это сделать проще простого.
           Знакомься онлайн — это просто.
         </p>
-        <button className="btnMain" type="button" onClick={() => navigate('/registraton/1')}>Регистрация</button>
+        <button className="btnMain" type="button" onClick={() => navigate('/registraton')}>Регистрация</button>
       </div>
       <div className="btn2">
         <button className="btnMain" id="btnMain2" type="button" onClick={() => navigate('/login')}>Войти</button>

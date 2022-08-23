@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -46,10 +47,21 @@ function ChangeInfo() {
           onChange={(event) => setUsername(event.target.value)}
         />
 
-        <input type="text" id="city" name="city" value={city}
-          onChange={(event) => setCity(event.target.value)} />
-        <textarea name="bio" id="bio" cols="30" rows="10" value={bio}
-          onChange={(event) => setBio(event.target.value)} />
+        <input
+          type="text"
+          id="city"
+          name="city"
+          value={city}
+          onChange={(event) => setCity(event.target.value)}
+        />
+        <textarea
+          name="bio"
+          id="bio"
+          cols="30"
+          rows="10"
+          value={bio}
+          onChange={(event) => setBio(event.target.value)}
+        />
 
         {/* <input type="text" placeholder="Поиск исполнителя" />
               <button type="submit">Поиск</button>

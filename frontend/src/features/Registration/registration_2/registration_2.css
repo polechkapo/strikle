@@ -3,11 +3,11 @@ body {
     background-size: 100%;
     display: flex;
     justify-content: center;
+    background-size: cover;
 }
 
 img {
     width: 200px;
-    height: 205px;
     border-radius: 50%;   
 }
 

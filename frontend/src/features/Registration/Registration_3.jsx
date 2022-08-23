@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loadGenres, addGenre } from '../store/genresReducer/reducer';
+import './Reg_3.css';
 
 function Registration3() {
   const [genresArr, setGenresArr] = useState([]);
@@ -24,7 +25,7 @@ function Registration3() {
     if (!genresArr.includes(value)) {
       if (genresArr.length < 5) {
         setGenresArr([...genresArr, value]);
-        event.target.style.backgroundColor = 'red';
+        event.target.style.backgroundColor = '#FD608C';
       }
     } else {
       setGenresArr(genresArr.filter((el) => el !== value));
@@ -40,16 +41,18 @@ function Registration3() {
   console.log(userGenre, 'жанры пользователя');
 
   return (
-    <div>
-      <h1>Выбери любимые жанры:</h1>
-      <div>
+    <div className="genres">
+      <h1 id="h1Main" className="genres__title">Выбери любимые жанры:</h1>
+      <div className="genres__content">
         { genres.genres && genres.genres.map((genre) => (
-          <button key={genre.id} id={genre.id} type="button" onClick={handleButton}>
+          <button key={genre.id} id={genre.id} type="button" onClick={handleButton} className="genres__button">
             {genre.title}
           </button>
         ))}
-        <button type="button" onClick={handleButtons}>Подключиться</button>
-        <button type="submit" onClick={() => navigate('/')}>Пропустить</button>
+      </div>
+      <div className="buttons__control">
+        <button type="button" onClick={handleButtons} className="genres__button-control">Подключиться</button>
+        <button type="submit" onClick={() => navigate('/')} className="genres__button-control">Пропустить</button>
       </div>
     </div>
   );

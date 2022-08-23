@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -8,7 +9,7 @@ export default function useAuth(code) {
 
   useEffect(() => {
     axios
-      .post('http://localhost:4000/login', {
+      .post('http://localhost:4000/loginspotify', {
         code,
       })
       .then((res) => {
