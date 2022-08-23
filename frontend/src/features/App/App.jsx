@@ -24,6 +24,8 @@ import socket from '../Chat/socket';
 import { setMessages } from '../store/chatReducer/reducer';
 import { initUserGenre, loadUserGenres } from '../store/genresReducer/reducer';
 import InputChat from '../Chat/InputChat';
+import socket from '../Chat/socket';
+import { setMessages } from '../store/chatReducer/reducer';
 
 function App() {
   const dispatch = useDispatch();
