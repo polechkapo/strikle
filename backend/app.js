@@ -2,7 +2,7 @@ require('dotenv').config();
 const config = require('./config/config');
 const express = require('express');
 const { sequelize } = require('./db/models');
-const { Message } = require('./db/models')
+const { Message, User } = require('./db/models')
 const regRouter = require('./routers/reg.router');
 const favoriteRouter = require('./routers/favorite.router');
 const sessionRouter = require('./routers/auth.router');
@@ -56,9 +56,13 @@ try {
     })
 
     socket.on('ROOM:NEW_MESSAGE', async ({ chat_id, user_id, user_text }) => {
-      const newMessage = await Message.create({ chat_id, user_id, user_text }, { raw: true })
-
-      socket.to(chat_id).emit('ROOM:NEW_MESSAGE', newMessage)
+      const setMessage = await Message.create({ chat_id, user_id, user_text }, { raw: true })
+      const newMessage = await Message.findOne({
+        where: { id: setMessage.id }, raw: true, include: [{
+          model: User
+        }]
+      })
+      io.to(chat_id).emit('ROOM:NEW_MESSAGES', newMessage)
     })
     // socket.on('disconnect', () => {
     //   console.log(room, 'TUT RABOTAEM');

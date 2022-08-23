@@ -32,7 +32,7 @@ export default function InputChat() {
     });
     dispatch(loadMessage(data.chat.id));
     dispatch(addedRoomId(data.chat.id));
-    dispatch(setUsers(data.users.filter((user) => user.id === user1.id)));
+    dispatch(setUsers(data.users.filter((user) => user.id !== user1.id)));
     dispatch(isJoin(true));
   };
 

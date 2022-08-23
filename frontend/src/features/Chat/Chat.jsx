@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import socket from './socket';
 import './chat.css';
@@ -8,6 +8,7 @@ export default function Chat() {
   const userAuth = useSelector((state) => state.user);
   const [messageValue, setMessagevalue] = useState('');
   const chat = useSelector((state) => state.chats);
+  const messagesRef = useRef(null);
   console.log(chat, 'CHAT USERROOM');
 
   const onSendMessage = () => {
@@ -16,25 +17,25 @@ export default function Chat() {
       chat_id: chat.roomId,
       user_text: messageValue,
     });
+    setMessagevalue('');
   };
 
   useEffect(() => {
-    console.log('privet');
-  }, []);
+    messagesRef.current.scrollTo(0, 9999);
+  }, [chat]);
 
   return (
     <div className="chat">
       <div className="user-online">
-        <b>В сети</b>
         <ul>
           {chat.usersInRoom && chat.usersInRoom.map((user) => <li key={user.id}>{user.username}</li>)}
         </ul>
       </div>
-      <div className="chat-messages">
+      <div ref={messagesRef} className="chat-messages">
         {!chat.messages ? (<p>Загрузка....</p>) : (chat.messages.map((mesage) => (
           <div className="messages" key={mesage.id}>
-            <p>{mesage.user_text}</p>
             <span>{mesage['User.username']}</span>
+            <p>{mesage.user_text}</p>
           </div>
         )))}
       </div>
