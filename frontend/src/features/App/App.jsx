@@ -6,22 +6,18 @@ import Main from '../Main/Main';
 import Registration1 from '../Registration/Registration_1';
 import Registration2 from '../Registration/Registration_2';
 import Registration3 from '../Registration/Registration_3';
-// import LoginSpotify from "../spotify/LoginSpotify";
-// import Dashboard from "../spotify/Dashboard";
-// import Multer from '../Multer/Multer';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import SearchSpoty from '../SearchSpoty/SearchSpoty';
 import { loadUser } from '../store/userReducer/reducer';
 import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
-// import Tinder from '../Tinder/Tinder';
 import ChangeArtists from '../Profile/ChangeArtists';
-import MainTinder from '../Tinder/MainTinder';
+// import MainTinder from '../Tinder/MainTinder';
 import Events from '../Events/EventsPage';
 import EventPage from '../Events/EventPage/EventPage';
 import { loadComments, loadEvents, loadParticipants } from '../store/eventsReducer/reducer';
-import CreateEvent from '../Events/CreateEvent/CreateEvent';
+// import CreateEvent from '../Events/CreateEvent/CreateEvent';
 
 function App() {
   const dispatch = useDispatch();
@@ -51,8 +47,8 @@ function App() {
             <Route path="/profile" element={<Registration2 />} />
             <Route path="/genres" element={<Registration3 />} />
             <Route path="/cabinet" element={<Profile />} />
-            <Route path="/tinder" element={<MainTinder />} />
-            <Route path="/events/new" element={<CreateEvent />} />
+            {/* <Route path="/tinder" element={<MainTinder />} />
+            <Route path="/events/new" element={<CreateEvent />} /> */}
           </>
         )
           : (

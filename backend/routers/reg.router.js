@@ -11,13 +11,13 @@ router.route('/reg')
       console.log(req.body);
 
       if (password !== checkPassword) {
-        return res.status(403).json({ validate: false, message: 'Пароли не совпадают' });
+        return res.status(403).json({ user: null, errorMessage: 'Пароли не совпадают' });
       }
 
       const userRegFailed = await User.findOne({ where: { email } });
 
       if (userRegFailed) {
-        return res.status(403).json({ registration: false, message: 'Пользователь с таким email уже существует' });
+        return res.status(403).json({ user: userRegFailed, errorMessage: 'Пользователь с таким email уже существует' });
       } else {
         const user = await User.create({ username, email, password: await bcrypt.hash(password, 10) });
         req.session.userId = user.id;

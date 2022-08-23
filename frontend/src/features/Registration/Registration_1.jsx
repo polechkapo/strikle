@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../store/userReducer/reducer';
 import './registration_1/registration_1.css';
@@ -7,6 +7,8 @@ import './registration_1/registration_1.css';
 function Registration1() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user, errorMessage } = useSelector((state) => state.user);
+  console.log(user, '<------------------- это юзер');
 
   const handleForm = (event) => {
     event.preventDefault();
@@ -18,7 +20,10 @@ function Registration1() {
     dispatch(registerUser({
       email, username, password, checkPassword,
     })); // кидаем в санку
-    navigate('/');
+    console.log(errorMessage, 'ЭррорМессадж');
+    if (!errorMessage) {
+      navigate('/');
+    }
   };
 
   return (
@@ -26,6 +31,7 @@ function Registration1() {
       <div id="divReg1">
         <h1 id="h1Main" className="h1reg1">Регистрация</h1>
         <form id="formReg1" onSubmit={handleForm}>
+          {errorMessage && <p>{errorMessage}</p>}
           <input
             type="email"
             name="email"
