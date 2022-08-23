@@ -12,6 +12,7 @@
     border-radius: 100px;
     border: none;
     margin-top: 20px;
+    z-index: 2;
 }
 
 #emailLog, #passwordLog {
@@ -42,37 +43,37 @@
     background-image: url('./Ellipse\ 25.png');
     background-size: cover;
     position: absolute;
-    bottom: 15px;
-    right: 80px;
-    width: 280px;
-    height: 280px;
+    bottom: 3%;
+    right: 6%;
+    width: 24%;
+    height: 44%;
     z-index: 5;
 }
 .imgLog2 {
     background-image: url('./Rectangle\ 55\ \(1\).png');
     background-size: cover;
     position: absolute;
-    top: 110px;
-    right: 280px;
-    width: 300px;
-    height: 360px;
+    top: 17%;
+    right: 25%;
+    width: 26%;
+    height: 58%;
     z-index: 4;
 }
 .imgLog3 {
     background-image: url('./Rectangle\ 56\ \(1\).png');
     background-size: cover;
     position: absolute;
-    top: 40px;
-    right: 80px;
-    width: 250px;
-    height: 290px;
+    top: 6%;
+    right: 6%;
+    width: 22%;
+    height: 46%;
     z-index: 2;
 }
 .imgLog4 {
     background-image: url('./Ellipse\ 25\ \(2\).png');
     background-size: cover;
     position: absolute;
-    bottom: 80px;
+    bottom: 8%;
     right: 320px;
     width: 200px;
     height: 205px;

@@ -57,26 +57,26 @@
     background-image: url('./Ellipse\ 25\ \(1\).png');
     background-size: cover;
     position: absolute;
-    bottom: 30px;
-    right: 20px;
-    width: 273px;
-    height: 267px;
+    bottom: 3%;
+    right: 4%;
+    width: 24%;
+    height: 43%;
 }
 #div_reg2 {    
     background-image: url('./Rectangle\ 55\ \(1\).png');
     background-size: cover;
     position: absolute;
-    top: 100px;
-    right: 260px;
-    width: 220px;
-    height: 280px;
+    top: 15%;
+    right: 23%;
+    width: 20%;
+    height: 45%;
 }
 #div_reg3 {    
     background-image: url('./Rectangle\ 56\ \(1\).png');
     background-size: cover;
     position: absolute;
-    right: 40px;
-    top: 100px;
-    width: 170px;
-    height: 190px;
+    right: 4%;
+    top: 13%;
+    width: 16%;
+    height: 35%;
 }
