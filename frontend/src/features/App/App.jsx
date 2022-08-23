@@ -16,9 +16,21 @@ import Nav from '../Nav/Nav';
 import ChangeArtists from '../Profile/ChangeArtists';
 import MainTinder from '../Tinder/MainTinder';
 import InputChat from '../Chat/InputChat';
+import socket from '../Chat/socket';
+import { setMessages } from '../store/chatReducer/reducer';
 
 function App() {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    socket.on('ROOM:JOINED', (users) => {
+      console.log(users, 'JOINED INPUTCHAT');
+    });
+    socket.on('ROOM:NEW_MESSAGE', (message) => {
+      dispatch(setMessages(message));
+      console.log(message, 'APPJSX NEW MESSAGE');
+    });
+  }, []);
 
   const user = useSelector((state) => state.user);
 

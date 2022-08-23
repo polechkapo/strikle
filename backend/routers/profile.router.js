@@ -6,12 +6,9 @@ router.route('/profile')
   .put(async (req, res) => {
     try {
       const  id  = req.session.userId;
-      console.log('ID CHECK', req.session);
       const { email, username, city, bio } = req.body;
-      console.log('SERVER START', req.body);
       
       const editUser = await User.update({ email, username, city, bio }, { where: { id } });
-      console.log('EDITUSER', editUser);
       if (editUser) {
         res.status(203).json({ updateUser: true })
       } else {

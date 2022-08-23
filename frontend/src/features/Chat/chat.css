@@ -1,0 +1,10 @@
+.chat {
+
+  margin: auto;
+}
+
+.message {
+  flex: 1;
+  height: calc(100% - 155px);
+  overflow: auto;
+}

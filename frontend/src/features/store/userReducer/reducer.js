@@ -294,5 +294,6 @@ export {
 // } = userSlice.actions;
 
 export const selectUser = (state) => state.user;
+export const selectUsers = (state) => state.users;
 
 export default userSlice.reducer;

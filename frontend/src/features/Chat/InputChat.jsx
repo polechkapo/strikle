@@ -3,7 +3,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import socket from './socket';
-import { isJoin } from '../store/chatReducer/reducer';
+import {
+  addedRoomId, isJoin, loadMessage, setUsers,
+} from '../store/chatReducer/reducer';
 import Chat from './Chat';
 
 export default function InputChat() {
@@ -21,18 +23,18 @@ export default function InputChat() {
       }),
     });
     const data = await response.json();
-    dispatch(isJoin(true));
-    console.log(data.chat, 'DATA CHAT');
+    console.log(data, 'DATA CHAT');
     socket.emit('ROOM:JOIN', {
       user_id_2: Number(userId),
       user_id_1: user1.id,
       room_id: data.chat.id,
+      usersJoined: data.users.filter((user) => user.id === user1.id),
     });
+    dispatch(loadMessage(data.chat.id));
+    dispatch(addedRoomId(data.chat.id));
+    dispatch(setUsers(data.users.filter((user) => user.id === user1.id)));
+    dispatch(isJoin(true));
   };
-
-  socket.on('ROOM:JOINED', (users) => {
-    console.log(users, 'NEW USERs');
-  });
 
   window.socket = socket;
 

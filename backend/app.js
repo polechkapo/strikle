@@ -1,8 +1,8 @@
 require('dotenv').config();
-const express = require('express');
-// поля
-const { sequelize } = require('./db/models');
 const config = require('./config/config');
+const express = require('express');
+const { sequelize } = require('./db/models');
+const { Message } = require('./db/models')
 const regRouter = require('./routers/reg.router');
 const favoriteRouter = require('./routers/favorite.router');
 const sessionRouter = require('./routers/auth.router');
@@ -21,16 +21,13 @@ const likesRouter = require('./routers/likes.router');
 const chatRouter = require('./routers/chat.router')
 
 const app = express();
-app.use(require('cors')({
-  origin: ['http://localhost:3000'],
-  credentials: true,
-}));
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 config(app);
-const server = require('http').Server(app);
-const io = require('socket.io')(server)
+
 require('./mw/session')(app);
 
 app.use('/api', regRouter);
@@ -49,18 +46,30 @@ app.use('/api', editPassRouter);
 app.use('/api', chatRouter)
 app.use(logoutRouter);
 
-io.on('connection', (socket) => {
-  console.log(socket.to, 'SOCKET!!!!!');
-  socket.on('ROOM:JOIN', (data) => {
-    console.log(data, 'DATA SOCKET');
-    socket.join(data.room_id)
-    socket.to(data.room_id).emit('ROOM:JOINED', { message: 'JOINNN!@!WE!@@!@' })
-  })
+try {
+  io.on('connection', (socket) => {
+    socket.on('ROOM:JOIN', (data) => {
+      const users = [...data.usersJoined]
 
+      socket.join(data.room_id)
+      socket.to(data.room_id).emit('ROOM:JOINED', users)
+    })
 
+    socket.on('ROOM:NEW_MESSAGE', async ({ chat_id, user_id, user_text }) => {
+      const newMessage = await Message.create({ chat_id, user_id, user_text }, { raw: true })
 
-  console.log('user connection', socket.id);
-});
+      socket.to(chat_id).emit('ROOM:NEW_MESSAGE', newMessage)
+    })
+    // socket.on('disconnect', () => {
+    //   console.log(room, 'TUT RABOTAEM');
+    //   socket.on(room).emit('ROOM:LEAVE', '')
+    // })
+
+    console.log('user connection', socket.id);
+  });
+} catch (error) {
+  console.log(error.message);
+}
 
 server.listen(process.env.PORT, async () => {
   console.log(`Сервер отлично шуршит на ${process.env.PORT}`);

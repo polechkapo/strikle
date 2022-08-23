@@ -8,7 +8,6 @@ router.route('/reg')
       const {
         username, email, password, checkPassword,
       } = req.body;
-      console.log(req.body);
 
       if (password !== checkPassword) {
         return res.status(403).json({ validate: false, message: 'Пароли не совпадают' });
