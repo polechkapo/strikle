@@ -22,6 +22,7 @@ import Events from '../Events/EventsPage';
 import EventPage from '../Events/EventPage/EventPage';
 import { loadComments, loadEvents, loadParticipants } from '../store/eventsReducer/reducer';
 import CreateEvent from '../Events/CreateEvent/CreateEvent';
+import MyEvents from '../Events/MyEvents/MyEvents';
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ function App() {
             <Route path="/cabinet" element={<Profile />} />
             <Route path="/tinder" element={<MainTinder />} />
             <Route path="/events/new" element={<CreateEvent />} />
+            <Route path="/events/myevents" element={<MyEvents />} />
           </>
         )
           : (
