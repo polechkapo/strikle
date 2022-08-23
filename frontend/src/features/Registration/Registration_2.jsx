@@ -41,7 +41,7 @@ function Registration2() {
     dispatch(updateUser({
       gender, birthdate, city, bio, avatar,
     }));
-    navigate('/registraton/3');
+    navigate('/');
   };
 
   return (
@@ -86,8 +86,8 @@ function Registration2() {
         </div>
       </form>
       <div className="btnContainer">
-        <div><button className="btnProfile" type="submit">Cледующий шаг</button></div>
-        <div><button className="btnProfile" type="button" onClick={() => navigate('/cabinet')}>Пропустить</button></div>
+        <div><button className="btnProfile" type="submit">Готово</button></div>
+        <div><button className="btnProfile" type="button" onClick={() => navigate('/')}>Пропустить</button></div>
       </div>
     </>
   );

@@ -5,12 +5,16 @@ import { useNavigate } from 'react-router-dom';
 function EventsCard({ event }) {
   const navigate = useNavigate();
   return (
-    <div key={event.id}>
-      <h4>{event.title}</h4>
+    <div key={event.id} className="events__card">
+      <h4 className="events__title">{event.title}</h4>
       <img src={event.photo} alt={event.title} style={{ width: '300px' }} />
       <p>{event.description}</p>
-      <p>{event.date}</p>
-      <button type="button" onClick={() => navigate(`/events/${event.id}`)}>Подробнее</button>
+      <p>
+        Когда:
+        {' '}
+        {new Date(event.date).toLocaleString('ru-RU').substring(0, 17)}
+      </p>
+      <button type="button" onClick={() => navigate(`/events/${event.id}`)} className="btnLogin btnEvents">Подробнее</button>
     </div>
   );
 }

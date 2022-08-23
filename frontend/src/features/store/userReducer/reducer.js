@@ -202,7 +202,6 @@ const userSlice = createSlice({
         // Успешный случай — загрузка прошла хорошо
         const newUser = action.payload;
         state.user = newUser;
-        console.log(newUser);
       })
       .addCase(loadUsers.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом

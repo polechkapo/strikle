@@ -22,45 +22,59 @@ function EventPage() {
   };
 
   return (
-    <div>
-      <div>
-        {currentEvent !== undefined
+    <div className="event__page events__card">
+      {currentEvent !== undefined
            && (
-           <div key={currentEvent.id}>
-             <h4>{currentEvent.title}</h4>
-             <img src={currentEvent.photo} alt={currentEvent.title} style={{ width: '300px' }} />
-             <p>{currentEvent.description}</p>
-             <p>{currentEvent.date}</p>
-             <div>
+           <>
+             <h4 className="events__title">{currentEvent.title}</h4>
+             <div key={currentEvent.id} className="events__card-content">
+               <img src={currentEvent.photo} alt={currentEvent.title} style={{ width: '300px' }} />
                <div>
-                 <ul>Уже идут:</ul>
-                 {currentParticipants && currentParticipants.map((el) => (
-                   <li key={el.id}>
-                     {el['User.username']}
-                   </li>
-                 ))}
+                 <p>{currentEvent.description}</p>
+                 <p>{new Date(currentEvent.date).toLocaleString('ru-RU').substring(0, 17)}</p>
+                 <div>
+                   <div>
+                     <ul className="events__lists">
+                       Уже идут:
+                       {currentParticipants && currentParticipants.map((el) => (
+                         <li key={el.id}>
+                           {el['User.username']}
+                           <img src={el['User.avatar']} alt={el['User.username']} className="event_page-img" />
+                         </li>
+                       ))}
+                     </ul>
+                   </div>
+                 </div>
                </div>
-               <button type="button" onClick={handleButton} id={id}>Хочу присоединиться!</button>
-               <Link to="/events">Назад</Link>
                {/* <button onClick={()=> navigate(-1)}>Back</button> */}
              </div>
-           </div>
+             <div className="buttons__control">
+               <button type="button" onClick={handleButton} id={id} className="btnLogin btnEvents">Я иду</button>
+               <Link to="/events" className="btnLogin btnEvents btn-links">Назад</Link>
+             </div>
+           </>
            )}
-      </div>
-      <div>
+      <div className="comments__wrapper">
+        <h4 className="events__title">Комментарии:</h4>
         {eventComments ? eventComments.map((comment) => (
-          <div key={comment.id}>
+          <div key={comment.id} className="comments">
             <p>
               {comment['User.username']}
               {' '}
               пишет:
             </p>
+            <p>
+              <i>
+                {' '}
+                {new Date(comment.createdAt).toLocaleString('ru-RU').substring(0, 17)}
+              </i>
+            </p>
             <p>{comment.comment}</p>
           </div>
         ))
           : <div>Комментариев пока что нет</div>}
+        <CommentsForm />
       </div>
-      <CommentsForm />
     </div>
   );
 }
