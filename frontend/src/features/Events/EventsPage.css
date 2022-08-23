@@ -1,0 +1,56 @@
+.events__wrapper {
+   width: 90%;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   gap: 50px;
+   margin: 0 auto;
+   justify-content: center;
+   margin-top: 40px;
+   margin-bottom: 70px;
+   padding: 30px;
+   border-top-right-radius: 50px;
+   border-bottom-left-radius: 50px;
+   background-color: white;
+   font-size: 13px;
+}
+
+.events__card {
+   background: #FFFFFF;
+   border-radius: 100px 0px;
+   width: 350px;
+   padding: 40px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.btnEvents {
+   width: 150px;
+   font-size: 15px;
+}
+
+.events__title {
+   font-weight: 400;
+   font-family: 'Rubik Mono One', sans-serif;
+}
+
+.title__events {
+   text-align: center;
+   color: black;
+}
+
+.cards__wrapper {
+   width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 54px;
+}
+
+.events__titles {
+   margin-top: 30px;
+}

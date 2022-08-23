@@ -73,18 +73,18 @@ router.route('/events')
          user_id,
          comment
       });
-      newComment.save();
-      const sendComment = await Comment.findOne({ 
-        where: {event_id,
-          user_id},
-        raw: true,
-        include: {
-          raw: true,
-          model: User,
-          attributes: ['id', 'username'],
-        }, 
-       })
-      res.send(sendComment);
+
+      const resultComment = await Comment.findOne({where: {event_id,
+        user_id,
+        comment
+      },
+      raw: true,
+      include: {
+        model: User,
+        attributes: ['id', 'username'],
+      }, 
+      });
+      res.send(resultComment);
       res.end();
   })
 

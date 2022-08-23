@@ -12,6 +12,7 @@ const editProfileRouter = require('./routers/profile.router')
 const photoUploadFileRouter = require('./routers/upload.router');
 const refreshRouter = require('./routers/refresh.router');
 const loginSpotifyRouter = require('./routers/spotifyLogin.router');
+const profileSpotifyRouter = require('./routers/spotifyProfile.router')
 const logoutRouter = require('./routers/logout.routers');
 const lyricsRouter = require('./routers/lyrics.router');
 const bodyParser = require("body-parser");
