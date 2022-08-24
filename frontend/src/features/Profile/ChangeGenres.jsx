@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { editGenre, loadGenres, loadUserGenres } from '../store/genresReducer/reducer';
+// import { useNavigate } from 'react-router-dom';
+import { editGenre } from '../store/genresReducer/reducer';
 
 function ChangeGenres() {
   const userGenre = useSelector((state) => state.genres.userGenre);
@@ -11,7 +11,7 @@ function ChangeGenres() {
 
   const [genresArr, setGenresArr] = useState([]);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // useEffect(() => {
   //   dispatch(loadUserGenres());

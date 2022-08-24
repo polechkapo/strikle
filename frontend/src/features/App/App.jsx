@@ -23,6 +23,8 @@ import InputChat from '../Chat/InputChat';
 import socket from '../Chat/socket';
 import { setMessages } from '../store/chatReducer/reducer';
 import { initUserGenre, loadGenres, loadUserGenres } from '../store/genresReducer/reducer';
+import { loadUserTracks } from '../store/artistsReducer/reducer';
+
 function App() {
   const dispatch = useDispatch();
 
@@ -47,6 +49,7 @@ function App() {
     dispatch(initUserGenre());
     dispatch(loadUsers());
     dispatch(loadGenres());
+    dispatch(loadUserTracks());
   }, []);
 
   console.log(user);
