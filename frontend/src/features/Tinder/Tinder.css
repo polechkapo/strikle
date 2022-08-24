@@ -91,6 +91,7 @@ justify-content: center;
  .card__photo {
   margin-top: -70px;
   height: 250px;
+  border-radius: 29px 0;
  }
  
  .cardContent {
@@ -186,7 +187,8 @@ justify-content: center;
 }
 
 .modal__img {
-  width: 100px;
+  width: 252px;
+  height: 250px;
 }
 /* 
 .modal__content.active {
@@ -306,4 +308,34 @@ color: #000000;
 .button__card {
   font-size: 27px;
   width: 200px;
+}
+
+.match {
+  display: flex;
+  flex-direction: row;
+  gap: 31px;
+}
+
+.match__item {
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+  align-items: center;
+}
+
+.modal__match {
+  box-shadow: 0px 4px 25px rgb(0 0 0 / 10%);
+  border-radius: 0px 100px;
+  width: 662px;
+}
+
+.buttons__match {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.match__name {
+  font-size: 23px;
+  font-weight: 400px;
 }

@@ -151,26 +151,27 @@ function Tinder() {
       </div>
       {(match !== false && modal)
       && (
-      <div className="modal">
-        <div className="modal__content">
-          Это мэтч!
-          <div>
-            <img src={user.avatar} alt="" className="modal__img" />
-            <p>{user.username}</p>
-            и
+      <div className="modal modal__edit-bg">
+        <div className="modal__content modal_edit modal__match">
+          <h1 className="h1Main home__title">Yeah, like</h1>
+          <div className="match">
+            <div className="match__item">
+              <img src={user.avatar} alt="" className="modal__img" />
+              <p className="match__name">{user.username}</p>
+            </div>
             {users.filter((el) => el.id === match.user_id_1).map((el) => (
-              <div key={el.id}>
+              <div key={el.id} className="match__item">
                 <img src={el.avatar} alt="" className="modal__img" />
                 {' '}
-                <p>{el.username}</p>
+                <p className="match__name">{el.username}</p>
               </div>
             ))}
           </div>
-          <div className="buttons">
-            <button type="button" onClick={() => setModal(!modal)}>
+          <div className="buttons__match">
+            <button type="button" onClick={() => setModal(!modal)} className="genres__button-control">
               Продолжить
             </button>
-            <button onClick={() => navigate('/cabinet')} type="button">
+            <button onClick={() => navigate('/cabinet')} type="button" className="genres__button-control">
               Написать
             </button>
           </div>
