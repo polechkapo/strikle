@@ -6,14 +6,19 @@
    min-height: 100vh;
    overflow: hidden;
    background: linear-gradient(#e66465, #9198e5);
- } */
- 
- #root {
+ }
+#root {
    display: flex;
    flex-direction: column;
-   justify-content: center;
+justify-content: center;
    align-items: center;
    background-size: auto;
+   width: 100%;
+ }
+ */
+
+ #root {
+  width: 100%;
  }
  
  .app>div {
