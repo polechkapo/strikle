@@ -83,8 +83,8 @@
 
 .favGen {
     height: 40px;
-    color: dimgray !important;
-    background: white!important;
+    color: dimgray;
+    background: white;
     box-shadow: 0px 4px 20px rgb(0 0 0 / 8%);
     border-radius: 100px !important;
     border: none;
@@ -222,4 +222,8 @@ background: transparent;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+}
+
+.btnGenres {
+    width: 100px;
 }
