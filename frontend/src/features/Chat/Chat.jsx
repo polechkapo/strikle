@@ -33,7 +33,7 @@ export default function Chat() {
       </div>
       <div ref={messagesRef} className="chat-messages">
         {!chat.messages ? (<p>Загрузка....</p>) : (chat.messages.map((mesage) => (
-          <div className="messages" key={mesage.id}>
+          <div className={mesage.user_id === userAuth.user.id ? 'messages-me' : 'messages-notme'} key={mesage.id}>
             <span>{mesage['User.username']}</span>
             <p>{mesage.user_text}</p>
           </div>

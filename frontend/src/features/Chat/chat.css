@@ -4,11 +4,21 @@
   height: 300px;
     margin: auto;
   }
-  .message {
-    flex: 1;
-    height: calc(100% - 155px);
-    overflow: auto;
+  .messages-me {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin: 10px;
   }
+
+  .messages-notme {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px;
+}
+
+  
   
   .chat-page {
     display: flex;
