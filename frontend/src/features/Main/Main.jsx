@@ -17,9 +17,6 @@ function Main() {
         </p>
         <button className="btnMain" type="button" onClick={() => navigate('/registraton')}>Регистрация</button>
       </div>
-      <div className="btn2">
-        <button className="btnMain" id="btnMain2" type="button" onClick={() => navigate('/login')}>Войти</button>
-      </div>
       <div id="imgMain1" />
       <div id="imgMain2" />
       <div id="imgMain3" />

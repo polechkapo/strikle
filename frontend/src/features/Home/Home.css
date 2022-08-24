@@ -11,16 +11,20 @@
    margin-top: 13%;
    padding-left: 80px;
    z-index: 10;
+   position: relative;
 }
 
 .home__title {
    margin-left: 0;
    font-family: 'Rubik Mono One', sans-serif;
+   color: black;
 }
 
 .home__content {
    width: 80%;
    gap: 5px;
+   flex-direction: column;
+   align-items: center;
 }
 
 .spoty__login {

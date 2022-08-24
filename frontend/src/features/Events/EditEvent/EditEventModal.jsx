@@ -43,7 +43,7 @@ function EditEventModal({ event, setEditModal }) {
 
   return (
     <div className="modal modal__edit-bg">
-      <div className="modal__content modal_edit ">
+      <div className="modal__content modal_edit">
         <h1 className="h1Reg2 my__events home__title" id="h1Main">Отредактируй свой ивент</h1>
         <div className="avatar create__avatar">
           {

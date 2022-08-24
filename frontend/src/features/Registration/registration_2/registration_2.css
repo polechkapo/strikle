@@ -7,12 +7,11 @@ body {
 }
 
 img {
-    width: 200px;
     border-radius: 50%;   
 }
 
 .inputs_reg {
-    width: 760px;
+    width: 900px;
     padding: 30px;
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
@@ -21,6 +20,7 @@ img {
     flex-direction: row-reverse;
     justify-content: space-around;
     font-size: 13px;
+    margin: 0 auto;
 }
 .h1Reg2 {
     color: white;
@@ -44,6 +44,7 @@ img {
     flex-direction: column;
     margin: 20px;
     gap: 10px;
+    width: 56%;
 }
 
 .inputProfile {
@@ -80,4 +81,9 @@ img {
     border-radius: 100px;
     color: white;
     margin: 20px;
+}
+
+.profWrap {
+    margin: 0 auto;
+    margin-left: 17%;
 }
