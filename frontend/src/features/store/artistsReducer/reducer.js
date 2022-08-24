@@ -99,7 +99,9 @@ const artistSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(editTracks.fulfilled, (state, action) => {
-        state.tracks = action.payload;
+        // console.log(newTracks);
+        const newTracks = action.payload;
+        state.userTracks = newTracks;
       });
   },
 });

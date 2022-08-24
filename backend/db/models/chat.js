@@ -9,25 +9,26 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ User }) {
-      Chat.belongsTo(User, ({ foreignKey: 'user_who', onDelete: 'cascade' }));
+    static associate({ User, Message }) {
+      Chat.belongsTo(User, ({ foreignKey: 'user_id_1' }));
+      Chat.belongsTo(User, ({ foreignKey: 'user_id_2' }));
+      Chat.hasMany(Message, ({ foreignKey: 'chat_id' }))
     }
   }
   Chat.init({
-    user_who: {
+    user_id_1: {
       allowNull: false,
       type: DataTypes.INTEGER,
       references: {
         model: 'Users',
       },
     },
-    message: {
-      allowNull: false,
-      type: DataTypes.TEXT,
-    },
-    user_which: {
+    user_id_2: {
       allowNull: false,
       type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+      },
     },
   }, {
     sequelize,

@@ -7,7 +7,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      user_who: {
+      user_id_1: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -15,13 +15,12 @@ module.exports = {
         },
         onDelete: 'cascade',
       },
-      message: {
-        allowNull: false,
-        type: Sequelize.TEXT,
-      },
-      user_which: {
+      user_id_2: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+        },
       },
       createdAt: {
         allowNull: false,

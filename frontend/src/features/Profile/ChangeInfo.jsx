@@ -71,7 +71,7 @@ function ChangeInfo() {
               <button type="submit">Поиск</button>
               <button type="submit" onClick={() => navigate(-1)}>Назад</button> */}
 
-        <button className="btnMain" id="btnProfile" type="submit">Сохранить изменения</button>
+        <button className="btnLogin" id="btnProfile" type="submit">Сохранить изменения</button>
       </form>
     </div>
   );

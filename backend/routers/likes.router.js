@@ -26,17 +26,13 @@ router.route('/like')
 
   router.route('/match')
     .post( async (req, res) => {
-      console.log('я тут', req.body);
       const {card_id } = req.body
-      console.log(req.body)
       const like = await Like.findOne({ 
         where: {
          user_id_take: card_id,
          user_id_get: req.session.userId
         },
       });
-
-      console.log(like)
 
       if(like) {
         const match = await Pair.create({

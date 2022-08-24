@@ -4,7 +4,6 @@ const SpotifyWebApi = require("spotify-web-api-node");
 router.route('/')
 .post( (req, res) => {
     const code = req.body.code
-    console.log(code, 'SERVER CODE');
     const spotifyApi = new SpotifyWebApi({
       redirectUri: process.env.ARTREDIRECT_URI,
       clientId: process.env.CLIENT_ID,
