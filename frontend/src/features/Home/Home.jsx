@@ -1,8 +1,13 @@
+/* eslint-disable max-len */
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 function Home() {
+  const { user } = useSelector((state) => state.user);
+  const { userGenre } = useSelector((state) => state.genres);
+
   const navigate = useNavigate();
   return (
     <>
@@ -18,15 +23,29 @@ function Home() {
         <div className="imgLog8" />
       </div>
       <div className="home__wrapper">
-        <h1 className="h1Reg2 home__title">Дополни аккаунт</h1>
-        <div className="genres__content home__content">
-          <p>Это поможет сделать поиск для тебя лучше</p>
-          <div className="buttons__home">
-            <button className="btnLogin" type="button" onClick={() => navigate('/search')}>Выбери песни</button>
-            <button className="btnLogin" type="button" onClick={() => navigate('/genres')}>Выбери жанры</button>
-            <button className="btnLogin" type="button" onClick={() => navigate('/profile')}>Заполни профиль</button>
-          </div>
-        </div>
+        {(user.Artists === undefined || user.Artists.length === 0 || userGenre === undefined || userGenre.length === 0)
+          ? (
+            <>
+              <h1 className="h1Reg2 home__title">Дополни аккаунт</h1>
+              <div className="genres__content home__content">
+                <p>Это поможет сделать поиск для тебя лучше</p>
+                <div className="buttons__home">
+                  {(user.Artists === undefined || user.Artists.length === 0) && <button className="btnLogin" type="button" onClick={() => navigate('/search')}>Выбери песни</button>}
+                  {(userGenre === undefined || userGenre.length === 0) && <button className="btnLogin" type="button" onClick={() => navigate('/genres')}>Выбери жанры</button>}
+                  {/* <button className="btnLogin" type="button" onClick={() => navigate('/profile')}>Заполни профиль</button> */}
+                </div>
+              </div>
+
+            </>
+          )
+          : (
+            <div className="genres__content home__content">
+              <h1 className="h1Reg2 home__title">Начнем?</h1>
+              <button className="btnLogin" type="button" onClick={() => navigate('/tinder')}>Найти кого-нибудь</button>
+              <button className="btnLogin" type="button" onClick={() => navigate('/events')}>Ивенты</button>
+              <button className="btnLogin" type="button" onClick={() => navigate('/chat')}>Личка</button>
+            </div>
+          )}
       </div>
 
     </>

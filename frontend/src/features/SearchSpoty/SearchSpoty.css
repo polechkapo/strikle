@@ -10,3 +10,8 @@
    color: white;
    margin-top: 30px;
 }
+
+.container__wrapper {
+   margin: 0 auto;
+   width: 900px;
+}

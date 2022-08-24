@@ -23,6 +23,7 @@ import EventPage from '../Events/EventPage/EventPage';
 import { loadComments, loadEvents, loadParticipants } from '../store/eventsReducer/reducer';
 import CreateEvent from '../Events/CreateEvent/CreateEvent';
 import MyEvents from '../Events/MyEvents/MyEvents';
+import { initUserGenre, loadUserGenres } from '../store/genresReducer/reducer';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,8 @@ function App() {
     dispatch(loadEvents());
     dispatch(loadComments());
     dispatch(loadParticipants());
+    dispatch(loadUserGenres());
+    dispatch(initUserGenre());
   }, []);
 
   console.log(user);

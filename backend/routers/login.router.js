@@ -20,7 +20,8 @@ router.route('/')
 
     if (userCheck.email === email && passwordCompare) {
       req.session.userId = userCheck.id;
-      return res.json({ userCheck, login: true });
+      const user = await User.findOne({ where: { id: req.session.userId } });
+      return res.json({ user, login: true });
 
     }
     return res.json({ login: false });

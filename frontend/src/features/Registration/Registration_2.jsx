@@ -63,14 +63,17 @@ function Registration2() {
             </form>
           </label>
         </div>
-        <div id="container2" />
         <div id="container3">
-          <select className="inputProfile" name="gender">
-            <option disabled>Какого ты пола?</option>
-            <option value="Ж">Ж</option>
-            <option value="М">М</option>
-          </select>
-          <label htmlFor="birth">
+          <label htmlFor="gender" className="label__inputs">
+            Какого ты пола?
+            <select className="inputProfile" name="gender" id="gender">
+              <option disabled>Какого ты пола?</option>
+              <option value="Ж">Ж</option>
+              <option value="М">М</option>
+            </select>
+          </label>
+          <label htmlFor="birth" className="label__inputs">
+            Когда у тебя день рождения?
             <input
               placeholder="Когда твой день рождения?"
               className="inputProfile"
@@ -81,14 +84,17 @@ function Registration2() {
               max="2004-01-01"
             />
           </label>
-          <input className="inputProfile" type="text" id="city" name="city" placeholder="Из какого ты города?" />
+          <label htmlFor="city" className="label__inputs">
+            Из какого ты города?
+            <input className="inputProfile" type="text" id="city" name="city" />
+          </label>
           <textarea className="textareaProfile" name="bio" id="bio" cols="30" rows="10" placeholder="Расскажи о себе и о том, кого бы ты хотел  найти на Страйкл" />
+          <div className="btnContainer profWrap">
+            <div><button className="btnLogin" type="submit">Готово</button></div>
+            <div><button className="btnLogin" type="button" onClick={() => navigate('/')}>Пропустить</button></div>
+          </div>
         </div>
       </form>
-      <div className="btnContainer">
-        <div><button className="btnProfile" type="submit">Готово</button></div>
-        <div><button className="btnProfile" type="button" onClick={() => navigate('/')}>Пропустить</button></div>
-      </div>
     </>
   );
 }
