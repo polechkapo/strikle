@@ -50,7 +50,7 @@ export default function InputChat() {
     dispatch(addedRoomId(data.chat.id));
     dispatch(setUsers(data.users.filter((user) => user.id !== user1.id)));
     dispatch(isJoin(true));
-  }
+  };
 
   window.socket = socket;
 
