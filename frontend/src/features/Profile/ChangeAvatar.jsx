@@ -29,7 +29,6 @@ function ChangeAvatar() {
 
   return (
     <div>
-      <h1>Изменение фотографии профиля</h1>
       <label htmlFor="avatar">
         <div className="avatar">
           <img className="photo" src={`${user.user.avatar}`} alt="avatar" style={{ width: 100 }} />

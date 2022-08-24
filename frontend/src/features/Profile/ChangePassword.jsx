@@ -21,12 +21,13 @@ function ChangePassword() {
 
   return (
     <div>
-      <h1>Изменение пароля</h1>
-      <form onSubmit={handleForm}>
+      <h1 id="h1Main" className="h1Profile">Изменение пароля</h1>
+      <form id="changePass" onSubmit={handleForm}>
 
         {/* Password */}
         <input
           type="password"
+          className="passwordProfile"
           name="oldPassword"
           id="oldPassword"
           placeholder="Введи старый пароль"
@@ -42,7 +43,7 @@ function ChangePassword() {
           title="Пароль должен содержать по крайней мере одно число, одну заглавную и строчную буквы, а также не менее 8 и более символов"
         />
         <input type="password" name="checkPassword" id="checkPassword" placeholder="Введи новый пароль еще раз" />
-        <button type="submit">Сохранить изменения</button>
+        <button className="btnMain" id="btnProfile" type="submit">Сохранить изменения</button>
       </form>
     </div>
   );

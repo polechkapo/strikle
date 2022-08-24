@@ -37,18 +37,18 @@ function ChangeGenres() {
 
   return (
     <>
-      <div>
-        <h4>Ваши любимые жанры</h4>
+      <div id="changeInfo">
+        <h4 className="h1Profile">Ваши любимые жанры</h4>
         {userGenre.map((genre) => (
           <button key={genre.id} id={genre.id} type="button">
             {genre.Genre.title}
           </button>
         ))}
       </div>
-      <h4>Выбери новые жанры:</h4>
-      <div>
+      <div className="divGenres" id="divGenres">
+        <h4 className="h1Profile">Выбери новые жанры:</h4>
         {genres.genres && genres.genres.map((genre) => (
-          <button key={genre.id} id={genre.id} type="button" onClick={handleButton}>
+          <button className="btnGenres" key={genre.id} id={genre.id} type="button" onClick={handleButton}>
             {genre.title}
           </button>
         ))}

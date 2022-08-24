@@ -29,7 +29,7 @@ function ChangeInfo() {
 
   return (
     <div>
-      <form onSubmit={handleForm}>
+      <form id="changeInfo" onSubmit={handleForm}>
         <input
           type="email"
           name="email"
@@ -48,6 +48,7 @@ function ChangeInfo() {
         />
 
         <input
+          className="cityProfile"
           type="text"
           id="city"
           name="city"
@@ -55,6 +56,7 @@ function ChangeInfo() {
           onChange={(event) => setCity(event.target.value)}
         />
         <textarea
+          className="bioProfile"
           name="bio"
           id="bio"
           cols="30"
@@ -67,7 +69,7 @@ function ChangeInfo() {
               <button type="submit">Поиск</button>
               <button type="submit" onClick={() => navigate(-1)}>Назад</button> */}
 
-        <button type="submit">Сохранить изменения</button>
+        <button className="btnMain" id="btnProfile" type="submit">Сохранить изменения</button>
       </form>
     </div>
   );

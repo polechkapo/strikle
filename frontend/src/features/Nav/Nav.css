@@ -1,5 +1,10 @@
 .divNav {
     display: flex;
+    width: 900px;
+    justify-content:space-around;
+    flex-direction: row-reverse;
+    gap: -20px;
+    margin: 20px;
     justify-content: flex-end;
     margin-bottom: 0px;
     align-items: center;
