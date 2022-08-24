@@ -1,6 +1,9 @@
+/* eslint-disable max-len */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-no-useless-fragment */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import socket from './socket';
 import Chat from './Chat';
@@ -10,12 +13,25 @@ import {
 
 export default function InputChat() {
   const dispatch = useDispatch();
-  const [userId, setUserid] = useState('');
+  // const [userId, setUserid] = useState('');
   const joined = useSelector((state) => state.chats.joined);
   const user1 = useSelector((state) => state.user.user);
   const pair = useSelector((state) => state.chats.pairs);
 
-  const onEnter = async () => {
+  // const onEnter = async () => {
+
+  // };
+
+  useEffect(() => {
+    dispatch(loadPairs());
+    // return () => {
+    //   dispatch(isJoin(false));
+    // };
+  }, []);
+
+  async function onJoin(event) {
+    console.log(event.target.parentElement.id);
+    const userId = event.target.parentElement.id;
     const response = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'Application/json' },
@@ -34,28 +50,28 @@ export default function InputChat() {
     dispatch(addedRoomId(data.chat.id));
     dispatch(setUsers(data.users.filter((user) => user.id !== user1.id)));
     dispatch(isJoin(true));
-  };
-
-  useEffect(() => {
-    dispatch(loadPairs());
-  }, []);
+  }
 
   window.socket = socket;
 
   return (
     <>
-      {!joined ? (
-        <div style={{ margin: '100px' }}>
-          <input type="number" placeholder="Введи ID собеседника" value={userId} onChange={(e) => setUserid(e.target.value)} />
-          <button type="button" onClick={onEnter}>Войти</button>
-        </div>
-      ) : (<Chat />)}
-      <div>
-        {pair && pair.map((el) => (
-          <div key={el.id}>
-            123
+      <div className="chat-page">
+        {!joined ? (
+          <div style={{ margin: '100px' }}>
+            {/* <input type="number" placeholder="Введи ID собеседника" value={userId} onChange={(e) => setUserid(e.target.value)} />
+          <button type="button" onClick={onEnter}>Войти</button> */}
           </div>
-        ))}
+        ) : (<Chat />)}
+
+        <div>
+          {pair && pair.map((el) => (
+            <div key={el.id} id={el.id} onClick={onJoin}>
+              {el.username}
+              <img src={`${el.avatar}`} alt="" />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

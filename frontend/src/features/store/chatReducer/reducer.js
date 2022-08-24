@@ -48,7 +48,7 @@ const chatSlice = createSlice({
       state.joined = action.payload;
     },
     setUsers: (state, action) => {
-      state.usersInRoom.push(...action.payload);
+      state.usersInRoom = [...action.payload];
     },
     setMessages: (state, action) => {
       state.messages.push(action.payload);
@@ -66,7 +66,7 @@ const chatSlice = createSlice({
       .addCase(loadMessage.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
         const message = action.payload.allMessage;
-        state.messages = [...state.messages, ...message];
+        state.messages = [...message];
       })
       .addCase(loadPairs.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
