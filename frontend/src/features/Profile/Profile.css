@@ -1,0 +1,217 @@
+.divProfile {
+    background-color: linen;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.h1Profile {
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 20px;
+    margin-top: 5%;
+}
+.container1 {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 1%;
+    margin: 0 79px;
+}
+.container2 {
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+.passwordProfile, .cityProfile, .bioProfile, .emailInfo, .nameInfo, .cityProfile, .bioProfile, .passwordProfile, .passw, .checkPass {
+    Width: 600px;
+    Height: 40px;
+    background: #FFFFFF;
+    padding: 20px;
+    border: none;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    margin-bottom: 10px;
+    color: dimgrey;
+    
+    /* align-content: center; */
+}
+.bioProfile {
+    height: 100px;
+}
+.btnGenres {
+    height: 50px;
+    color: white !important;
+    background: #FD608C!important;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px !important;
+    border: none;
+    margin-top: 20px;
+    z-index: 2;
+}
+#h1ProfileLk {
+    font-size: 30px;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+#changeInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#changePass {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#btnProfile {
+    width: 300px;
+}
+#divGenres {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.favGen {
+    height: 40px;
+    width: 120px;
+    color: white !important;
+    background: #FD608C!important;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px !important;
+    border: none;
+    margin-top: 20px;
+    z-index: 2;
+}
+.photoChAvatar {
+    /* margin-top: 15%; */
+    width: 230px !important;
+    /* height: 50% !important; */
+    border-top-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+    z-index: 2;
+    margin-top: -40px;
+}
+#btnChGen {
+    margin-top: 3%;
+}
+.imgsProfile {
+    position: absolute;
+}
+#image1 {
+    background-image: url('./img_Profile/Ellipse\ 25\ \(3\).png');
+    background-size: cover;
+    width: 26%;
+    height: 48%;
+    right: 30%;
+    z-index: 1;
+}
+#image2 {
+    background-image: url('./img_Profile/Ellipse\ 27.png');
+    background-size: cover;
+    width: 35%;
+    height: 48%;
+    top: 15%;
+    left: -5%;
+    z-index: 2;
+}
+#image3 {
+    background-image: url('./img_Profile/Ellipse\ 31\ \(1\).png');
+    background-size: cover;
+    width: 11%;
+    height: 15%;
+    top: 15%;
+    right: 10%;
+    z-index: 1;
+}
+#image4 {
+    background-image: url('./img_Profile/Ellipse\ 32.png');
+    background-size: cover;
+    width: 11%;
+    height: 15%;
+    top: 15%;
+    right: 20%;
+    z-index: 1;
+}
+#image5 {
+    background-image: url('./img_Profile/Rectangle\ 58.png');
+    background-size: cover;
+    width: 11%;
+    height: 20%;
+    top: 15%;
+    right: 21%;
+    z-index: 1;
+}
+#image6 {
+    background-image: url('./img_Profile/Ellipse\ 27.png');
+    background-size: cover;
+    width: 50%;
+    height: 70%;
+    bottom: -103%;
+    right: 10%;
+    z-index: 1;
+}
+#image7 {
+    background-image: url('./img_Profile/pattern.png');
+    background-size: cover;
+    width: 150%;
+    height: 150%;
+    top: 60%;
+    right: 50%;
+    z-index: 1;
+}
+input[type='file'] {
+    color: transparent;  
+  }
+
+/* input#file-upload-button {
+background: transparent;
+}
+
+.upload_input {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    width: 140px;
+} */
+.avatar {
+    display: flex;
+    flex-direction: column;
+}
+#formAvatar {
+    width: 120px;
+    margin-top: 5%;
+    background: #FFFFFF;
+    border: none;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    padding: 10px;
+    text-align: center;
+    /* margin-left: 60%; */
+}
+.container3 {
+    margin: 20px;
+}
+.container4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 79px;
+    z-index: 2;
+}
+/* .divArtists, .flex-grow-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+.tracksList {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}

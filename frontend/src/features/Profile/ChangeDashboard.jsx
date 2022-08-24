@@ -5,7 +5,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { editTracks } from '../store/artistsReducer/reducer';
 import useAuth from './useAuth';
@@ -15,7 +15,7 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 export default function ChangeDashboard({ code }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const accessToken = useAuth(code);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -81,7 +81,7 @@ export default function ChangeDashboard({ code }) {
 
   const handleButtons = () => {
     dispatch(editTracks(tracksArr));
-    window.location.href = '/cabinet'
+    window.location.href = '/cabinet';
     // navigate('/cabinet');
   };
 
@@ -94,7 +94,7 @@ export default function ChangeDashboard({ code }) {
         onChange={(e) => setSearch(e.target.value)}
       />
       <div className="flex-grow-1 my-2" style={{ overflowY: 'auto' }}>
-        <button type="button" onClick={handleButtons}>Изменить</button>
+        <button className="btnMain" type="button" onClick={handleButtons}>Изменить</button>
         {searchResults.map((track) => (
           <div key={track.uri}>
             <img src={track.albumUrl} alt="" />
@@ -104,8 +104,7 @@ export default function ChangeDashboard({ code }) {
           </div>
         ))}
       </div>
-      <div>
-      </div>
+      <div />
     </Container>
   );
 }

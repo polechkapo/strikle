@@ -29,34 +29,38 @@ function ChangeInfo() {
 
   return (
     <div>
-      <form onSubmit={handleForm}>
+      <form id="changeInfo" onSubmit={handleForm}>
         <input
+          className="emailInfo"
           type="email"
           name="email"
-          id="email"
+          // id="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           pattern="^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$"
           title="Введите действующую почту"
         />
         <input
+          className="nameInfo"
           type="text"
           name="name"
-          id="name"
+          // id="name"
           value={username}
           onChange={(event) => setUsername(event.target.value)}
         />
 
         <input
+          className="cityProfile"
           type="text"
-          id="city"
+          // id="city"
           name="city"
           value={city}
           onChange={(event) => setCity(event.target.value)}
         />
         <textarea
+          className="bioProfile"
           name="bio"
-          id="bio"
+          // id="bio"
           cols="30"
           rows="10"
           value={bio}
@@ -67,7 +71,7 @@ function ChangeInfo() {
               <button type="submit">Поиск</button>
               <button type="submit" onClick={() => navigate(-1)}>Назад</button> */}
 
-        <button type="submit">Сохранить изменения</button>
+        <button className="btnMain" id="btnProfile" type="submit">Сохранить изменения</button>
       </form>
     </div>
   );

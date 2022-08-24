@@ -29,14 +29,17 @@ function ChangeAvatar() {
 
   return (
     <div>
-      <h1>Изменение фотографии профиля</h1>
       <label htmlFor="avatar">
         <div className="avatar">
-          <img className="photo" src={`${user.user.avatar}`} alt="avatar" style={{ width: 100 }} />
+          <img className="photoChAvatar" src={`${user.user.avatar}`} alt="avatar" />
+          <form id="formAvatar" action="/multer" method="post">
+            <input className="visually-hidden" id="multer" type="file" onChange={handlerUloadPhoto} />
+            <label htmlFor="multer">
+              {' '}
+              <span>Добавить</span>
+            </label>
+          </form>
         </div>
-        <form action="/multer" method="post">
-          <input type="file" onChange={handlerUloadPhoto} />
-        </form>
       </label>
     </div>
   );

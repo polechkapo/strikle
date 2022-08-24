@@ -6,7 +6,7 @@ import { editGenre, loadGenres, loadUserGenres } from '../store/genresReducer/re
 
 function ChangeGenres() {
   const userGenre = useSelector((state) => state.genres.userGenre);
-  const genres = useSelector((state) => state.genres)
+  const genres = useSelector((state) => state.genres);
 
   const [genresArr, setGenresArr] = useState([]);
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function ChangeGenres() {
 
   useEffect(() => {
     dispatch(loadUserGenres());
-    dispatch(loadGenres())
+    dispatch(loadGenres());
   }, []);
   const handleButton = (event) => {
     event.preventDefault();
@@ -37,21 +37,23 @@ function ChangeGenres() {
 
   return (
     <>
-      <div>
-        <h4>Ваши любимые жанры</h4>
-        {userGenre.map((genre) => <button key={genre.id} id={genre.id} type="button" >
-          {genre.Genre.title}
-        </button>)}
+      <h4 className="h1Profile">Ваши любимые жанры</h4>
+      <div id="divGenres">
+        {userGenre.map((genre) => (
+          <button className="favGen" key={genre.id} id={genre.id} type="button">
+            {genre.Genre.title}
+          </button>
+        ))}
       </div>
-      <h4>Выбери новые жанры:</h4>
-      <div>
+      <h4 className="h1Profile">Выбери новые жанры:</h4>
+      <div className="divGenres" id="divGenres">
         {genres.genres && genres.genres.map((genre) => (
-          <button key={genre.id} id={genre.id} type="button" onClick={handleButton}>
+          <button className="btnGenres" key={genre.id} id={genre.id} type="button" onClick={handleButton}>
             {genre.title}
           </button>
         ))}
-        <button type="button" onClick={handleButtons}>Изменить</button>
       </div>
+      <button className="btnMain" id="btnChGen" type="button" onClick={handleButtons}>Изменить</button>
     </>
   );
 }
