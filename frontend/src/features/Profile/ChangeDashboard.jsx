@@ -94,7 +94,7 @@ export default function ChangeDashboard({ code }) {
         onChange={(e) => setSearch(e.target.value)}
       />
       <div className="flex-grow-1 my-2" style={{ overflowY: 'auto' }}>
-        <button type="button" onClick={handleButtons}>Изменить</button>
+        <button className="btnMain" type="button" onClick={handleButtons}>Изменить</button>
         {searchResults.map((track) => (
           <div key={track.uri}>
             <img src={track.albumUrl} alt="" />

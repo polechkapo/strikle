@@ -15,21 +15,21 @@ function ChangeArtists() {
   console.log(userTrack, 'Это юзертрек');
   return (
     <div>
-      <h3>Здесь можно изменить список твоих любимых артистов!</h3>
-      <div style={{ display: 'flex' }}>
+      <h3 className="h1Profile">Здесь можно изменить список твоих любимых артистов!</h3>
+      <div className="tracksList">
         {userTrack ? userTrack.map((track) => (
-          <div key={track.id} style={{ margin: '20px' }}>
+          <div key={track.id}>
             <img src={track.albumUrl} alt="" />
             <p>{track.artist}</p>
           </div>
-        )) : <h3>Загрузка артистов</h3>}
+        )) : <h3 className="h1Profile">Загрузка артистов</h3>}
       </div>
       {code ? <ChangeDashboard code={code} />
         : (
-          <>
-            <h3>Войди чтобы изменить</h3>
+          <div className="divArtists">
+            <h3 className="h1Profile">Войди чтобы изменить</h3>
             <SpotifyLogin />
-          </>
+          </div>
         )}
     </div>
   );
