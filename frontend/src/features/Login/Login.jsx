@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../store/userReducer/reducer';
 import './Login.css';
@@ -7,14 +7,22 @@ import './Login.css';
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { user, errorMessage } = useSelector((state) => state.user);
+  console.log(user, '<------------------- это юзер');
   async function handleLogin(event) {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
     console.log(email, password);
     dispatch(loginUser({ email, password }));
-    navigate('/');
+    if (errorMessage) {
+      document.querySelector('form').reset();
+    }
   }
+  useEffect(() => {
+    console.log(10);
+    return () => navigate('/');
+  }, []);
 
   return (
     <div id="bodyReg1" className="logContainer">
@@ -24,6 +32,7 @@ export default function Login() {
           <input id="emailLog" type="email" name="email" placeholder="Введите почту" />
           <input id="passwordLog" type="password" name="password" placeholder="Введите пароль" />
           <button className="btnLogin" type="submit">Подключиться</button>
+          {errorMessage && <p>{errorMessage}</p>}
         </form>
       </div>
       <div className="divLog" />

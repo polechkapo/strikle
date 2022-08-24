@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({ User }) {
-      Genre.belongsToMany(User, ({ foreignKey: 'genre_id', through: 'User_Genres', otherKey: 'user_id' }));
+      Genre.belongsToMany(User, ({ foreignKey: 'genre_id', through: 'User_Genres', otherKey: 'user_id', onDelete: 'cascade' }));
     }
   }
   Genre.init({

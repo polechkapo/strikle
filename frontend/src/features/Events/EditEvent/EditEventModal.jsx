@@ -1,13 +1,13 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { createEvent } from '../../store/eventsReducer/reducer';
+import { editEvent } from '../../store/eventsReducer/reducer';
 
-function CreateEvent() {
-  const navigate = useNavigate();
+function EditEventModal({ event, setEditModal }) {
+  const [photo, setPhoto] = useState(event.photo);
   const dispatch = useDispatch();
-  const [photo, setPhoto] = useState(null);
+
   const handlerUloadPhoto = React.useCallback(async (e) => {
     console.log(e.target.files);
     try {
@@ -27,32 +27,35 @@ function CreateEvent() {
     }
   });
 
-  const handleCreateForm = (event) => {
-    event.preventDefault();
+  const handleEditForm = (e) => {
+    e.preventDefault();
     const data = {
-      date: event.target.date?.value,
-      title: event.target.title?.value,
-      description: event.target.description?.value,
+      date: e.target.date?.value,
+      title: e.target.title?.value,
+      description: e.target.description?.value,
       photo,
+      id: e.target.id,
     };
-
-    dispatch(createEvent(data));
-    navigate('/events');
+    console.log(data);
+    dispatch(editEvent(data));
+    setEditModal(false);
   };
 
   return (
-    <>
-      <h1 className="h1Reg2" id="h1Main">Coздай свой ивент</h1>
-      <div className="events__wrapper create__wrapper">
+    <div className="modal modal__edit-bg">
+      <div className="modal__content modal_edit ">
+        <h1 className="h1Reg2 my__events home__title" id="h1Main">Отредактируй свой ивент</h1>
         <div className="avatar create__avatar">
-          {photo && <img className="photo" src={photo} alt="avatar" style={{ width: 300, borderRadius: 0 }} />}
+          {
+              photo && <img className="photo" src={photo} alt="avatar" style={{ width: 100 }} />
+            }
           <form action="/multer" method="post">
             <label htmlFor="file">
               <input type="file" onChange={handlerUloadPhoto} name="file" id="file" multiple />
             </label>
           </form>
         </div>
-        <form className="inputs_reg event__inputs" onSubmit={handleCreateForm}>
+        <form className="inputs_reg event__inputs" onSubmit={handleEditForm} id={event.id}>
           <label htmlFor="date" className="date__label">
             Укажи дату мероприятия:
             <input
@@ -62,20 +65,22 @@ function CreateEvent() {
               name="date"
               min={moment().format('YYYY-MM-DD HH:mm')}
               max="2024-01-01"
-              defaultValue={moment().format('YYYY-MM-DD HH:mm')}
+              defaultValue={event.date}
             />
+            Сейчас:
+            {'  '}
+            {new Date(event.date).toLocaleString('ru-RU').substring(0, 17)}
           </label>
-          <input className="inputProfile event__input" type="text" id="title" name="title" placeholder="Напиши название ивента" />
-          <textarea className="textareaProfile event__input" name="description" id="description" cols="30" rows="10" placeholder="Напиши подробности о своем ивенте" />
+          <input className="inputProfile event__input" type="text" id="title" name="title" defaultValue={event.title} />
+          <textarea className="textareaProfile event__input" name="description" id="description" cols="30" rows="10" defaultValue={event.description} />
           <div className="btnContainer">
             <button className="btnLogin btnEvents" type="submit">Готово</button>
-            <div><button className="btnLogin btnEvents" type="button" onClick={() => navigate('/events')}>Назад</button></div>
+            <div><button className="btnLogin btnEvents" type="button" onClick={() => setEditModal(false)}>Назад</button></div>
           </div>
         </form>
       </div>
-
-    </>
+    </div>
   );
 }
 
-export default CreateEvent;
+export default EditEventModal;
