@@ -51,7 +51,6 @@ router.route('/genre')
           attributes: ['id', 'title'],
         }, 
     });
-      console.log(allUserGenres);
       if (allUserGenres) {
         return res.status(200).json(allUserGenres)
       } else {
