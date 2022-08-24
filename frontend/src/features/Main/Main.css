@@ -86,3 +86,8 @@ body {
     /* font-family: 'Russo One', sans-serif; */
     /* font-family: 'Yeseva One', cursive; */
 }
+
+html {
+    width: 100%;
+    height: 100%;
+}
