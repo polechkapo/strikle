@@ -52,6 +52,10 @@ export default function InputChat() {
     dispatch(isJoin(true));
   };
 
+  useEffect(() => {
+    dispatch(loadPairs());
+  }, []);
+
   window.socket = socket;
 
   return (
