@@ -14,11 +14,11 @@ function MainTinder() {
   useEffect(() => {
     dispatch(loadLikes());
   }, []);
-
+  console.log('MAIN TINDER');
   const db = useSelector((state) => state.user.users);
   return (
     <div>
-      {db !== undefined ? <Tinder /> : <div>Подождите</div>}
+      {db ? <Tinder /> : <div>Подождите</div>}
     </div>
   );
 }
