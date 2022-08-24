@@ -7,8 +7,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: undefined,
-  users: undefined,
+  user: null,
+  users: null,
+  errorMessage: null,
 };
 
 const loadUser = createAsyncThunk(
@@ -58,7 +59,7 @@ const registerUser = createAsyncThunk(
     console.log(data);
 
     if (data.error) {
-      throw data.error;
+      throw data.errorMessage;
     }
 
     return data;
@@ -79,7 +80,7 @@ const loginUser = createAsyncThunk(
     console.log(data);
 
     if (data.error) {
-      throw data.error;
+      throw data.errorMessage;
     }
 
     return data;
@@ -202,7 +203,6 @@ const userSlice = createSlice({
         // Успешный случай — загрузка прошла хорошо
         const newUser = action.payload;
         state.user = newUser;
-        console.log(newUser);
       })
       .addCase(loadUsers.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
@@ -222,8 +222,10 @@ const userSlice = createSlice({
        .addCase(registerUser.fulfilled, (state, action) => {
          // Успешный случай — загрузка прошла хорошо
          console.log(state.user, '<===== user');
-         const newUser = action.payload;
+         const newUser = action.payload.user;
          state.user = newUser;
+         const message = action.payload.errorMessage;
+        state.errorMessage = message;
        })
        .addCase(loginUser.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
@@ -232,9 +234,11 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
-        console.log(state.user, '<===== user login');
-        const newUser = action.payload;
+        const newUser = action.payload.user;
         state.user = newUser;
+        const message = action.payload.errorMessage;
+        state.errorMessage = message;
+        console.log(state.user, state.errorMessage);
       })
        .addCase(updateUser.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
@@ -272,7 +276,7 @@ const userSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(deleteUser.fulfilled, (state) => {
-        state.user = undefined;
+        state.user = null;
       });
   },
 });

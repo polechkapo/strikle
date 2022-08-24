@@ -12,18 +12,19 @@ router.route('/')
       raw: true,
     });
 
+console.log(userCheck, 'etrewuyrtuwyetruywatefuywteurytewuytueywtuf');
     if (!userCheck) {
-      return res.json({ login: false });
+      return res.json({ user: null, errorMessage: 'Такого пользователя нет!' });
     }
 
     const passwordCompare = await bcrypt.compare(password, userCheck.password);
 
     if (userCheck.email === email && passwordCompare) {
       req.session.userId = userCheck.id;
-      return res.json({ userCheck, login: true });
+      return res.json({ user: userCheck, errorMessage: null });
 
     }
-    return res.json({ login: false });
+    return res.json({ user: null, errorMessage: 'Неверный логин или пароль!' });
   });
 
-module.exports = router
+module.exports = router;

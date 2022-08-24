@@ -8,11 +8,12 @@
    background: linear-gradient(#e66465, #9198e5);
  } */
  
- #root>div {
+ #root {
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
+   background-size: auto;
  }
  
  .app>div {
@@ -104,9 +105,11 @@
  }
  
  .buttons {
-   margin: 20px;
-   display: flex;
-   justify-content: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 87%;
+  left: 35%;
  }
  
  .buttons button {

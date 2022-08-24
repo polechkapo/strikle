@@ -13,6 +13,7 @@ module.exports = {
         references: {
           model: 'Users',
         },
+        onDelete: 'cascade',
       },
       title: {
         allowNull: false,
@@ -21,7 +22,7 @@ module.exports = {
       photo: {
         type: Sequelize.TEXT,
       },
-      descripton: {
+      description: {
         allowNull: false,
         type: Sequelize.TEXT,
       },

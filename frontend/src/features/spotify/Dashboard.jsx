@@ -129,7 +129,7 @@ export default function Dashboard({ code }) {
         onChange={(e) => setSearch(e.target.value)}
       />
       <div className="flex-grow-1 my-2" style={{ overflowY: 'auto' }}>
-        <button type="button" onClick={handleButtons}>Готово</button>
+        <button type="button" onClick={handleButtons} className="btnProfile">Готово</button>
         {searchResults.map((track) => (
           <div key={track.uri}>
             <img src={track.albumUrl} alt="" />
