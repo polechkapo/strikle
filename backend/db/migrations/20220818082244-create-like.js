@@ -13,6 +13,7 @@ module.exports = {
         references: {
           model: 'Users',
         },
+        onDelete: 'cascade',
       },
       user_id_get: {
         allowNull: false,
@@ -20,6 +21,7 @@ module.exports = {
         references: {
           model: 'Users',
         },
+        onDelete: 'cascade',
       },
       createdAt: {
         allowNull: false,
