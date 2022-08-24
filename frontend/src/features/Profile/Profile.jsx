@@ -19,8 +19,6 @@ function Profile() {
       <div className="imgsProfile" id="image3" />
       <div className="imgsProfile" id="image4" />
       <div className="imgsProfile" id="image5" />
-      <div className="imgsProfile" id="image6" />
-      <div className="imgsProfile" id="image7" />
       <h1 className="h1Profile" id="h1ProfileLk">Личный кабинет</h1>
       {user
         ? (
@@ -37,6 +35,8 @@ function Profile() {
             <div className="container4">
               <ChangeGenres />
               <ChangeArtists />
+              <div className="imgsProfile" id="image7" />
+              <div className="imgsProfile" id="image6" />
             </div>
           </>
         )

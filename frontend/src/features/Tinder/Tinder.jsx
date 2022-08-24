@@ -12,6 +12,7 @@ import TinderCard from 'react-tinder-card';
 import { initUserGenre, loadGenres, loadUsersGenres } from '../store/genresReducer/reducer';
 import { addLike, findMatch, loadLikes } from '../store/tinderReducer/reducer';
 import './Tinder.css';
+import { loadUsers } from '../store/userReducer/reducer';
 
 function Tinder() {
   const { users, user } = useSelector((state) => state.user);
@@ -28,6 +29,7 @@ function Tinder() {
     dispatch(loadLikes());
     dispatch(loadUsersGenres());
     dispatch(loadGenres());
+    dispatch(loadUsers());
   }, []);
 
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
