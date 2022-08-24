@@ -19,6 +19,7 @@ const artistsRouter = require('./routers/artists.router');
 const editPassRouter = require('./routers/password.router');
 const likesRouter = require('./routers/likes.router');
 const chatRouter = require('./routers/chat.router')
+const loadPairsRouter = require('./routers/chatpage.router')
 
 const app = express();
 const server = require('http').Server(app)
@@ -30,21 +31,22 @@ config(app);
 
 require('./mw/session')(app);
 
+app.use(logoutRouter);
+app.use('/login', loginSpotifyRouter);
+app.use('/lyrics', lyricsRouter);
 app.use('/api', regRouter);
-app.use('/api/favorite', favoriteRouter);
+app.use('/api', loadPairsRouter)
+app.use('/api', editProfileRouter)
+app.use('/api', editPassRouter);
+app.use('/api', chatRouter)
 app.use('/api', sessionRouter);
 app.use('/api', genreRouter);
 app.use('/api', likesRouter);
 app.use('/api', artistsRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/multer', photoUploadFileRouter)
-app.use('/api', editProfileRouter)
+app.use('/api/favorite', favoriteRouter);
 app.use('/api/refresh', refreshRouter);
-app.use('/login', loginSpotifyRouter);
-app.use('/lyrics', lyricsRouter);
-app.use('/api', editPassRouter);
-app.use('/api', chatRouter)
-app.use(logoutRouter);
 
 try {
   io.on('connection', (socket) => {

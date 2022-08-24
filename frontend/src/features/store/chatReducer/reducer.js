@@ -6,6 +6,7 @@ const initialState = {
   roomId: null,
   usersInRoom: [],
   messages: [],
+  pairs: null,
 };
 
 const loadMessage = createAsyncThunk(
@@ -21,7 +22,20 @@ const loadMessage = createAsyncThunk(
     if (data.error) {
       throw data.error;
     }
+    return data;
+  },
+);
 
+const loadPairs = createAsyncThunk(
+  'chat/loadpairs',
+
+  async () => {
+    const response = await fetch('/api/chatpage');
+    const data = await response.json();
+    console.log(data, 'DATA LOAD PAIRS');
+    if (data.error) {
+      throw data.error;
+    }
     return data;
   },
 );
@@ -52,9 +66,16 @@ const chatSlice = createSlice({
       .addCase(loadMessage.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
         const message = action.payload.allMessage;
-        console.log(message, 'MESSAGE REDUCER');
         state.messages = [...state.messages, ...message];
-        console.log(message, 'MESSAGE REDUCER');
+      })
+      .addCase(loadPairs.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        state.error = action.error.message;
+      })
+      .addCase(loadPairs.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        const message = action.payload.allPairsUser;
+        state.messages = [...state.messages, ...message];
       });
   },
 

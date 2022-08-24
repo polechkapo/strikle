@@ -1,12 +1,12 @@
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-no-useless-fragment */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import socket from './socket';
+import Chat from './Chat';
 import {
   addedRoomId, isJoin, loadMessage, setUsers,
 } from '../store/chatReducer/reducer';
-import Chat from './Chat';
 
 export default function InputChat() {
   const dispatch = useDispatch();
@@ -23,7 +23,6 @@ export default function InputChat() {
       }),
     });
     const data = await response.json();
-    console.log(data, 'DATA CHAT');
     socket.emit('ROOM:JOIN', {
       user_id_2: Number(userId),
       user_id_1: user1.id,
@@ -35,6 +34,10 @@ export default function InputChat() {
     dispatch(setUsers(data.users.filter((user) => user.id !== user1.id)));
     dispatch(isJoin(true));
   };
+
+  useEffect(() => {
+
+  }, []);
 
   window.socket = socket;
 
