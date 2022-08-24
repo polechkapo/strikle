@@ -59,17 +59,18 @@ export default function InputChat() {
     <>
       <div className="chat-page">
         {!joined ? (
-          <div style={{ margin: '100px' }}>
+          <div className="chat_startpage">
+            <p className="chat__press">Нажмите на собеседника, чтобы начать с ним чат</p>
             {/* <input type="number" placeholder="Введи ID собеседника" value={userId} onChange={(e) => setUserid(e.target.value)} />
           <button type="button" onClick={onEnter}>Войти</button> */}
           </div>
         ) : (<Chat />)}
 
-        <div>
+        <div className="pairs">
           {pair && pair.map((el) => (
-            <div key={el.id} id={el.id} onClick={onJoin}>
-              {el.username}
-              <img style={{ height: '150px', weight: '150px' }} src={`${el.avatar}`} alt="" />
+            <div key={el.id} id={el.id} onClick={onJoin} className="user_mess">
+              <img className="user__mess-avatar" src={`${el.avatar}`} alt="" />
+              <p>{el.username}</p>
             </div>
           ))}
         </div>
