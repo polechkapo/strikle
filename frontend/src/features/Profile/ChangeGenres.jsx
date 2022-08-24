@@ -37,23 +37,23 @@ function ChangeGenres() {
 
   return (
     <>
-      <div id="changeInfo">
-        <h4 className="h1Profile">Ваши любимые жанры</h4>
+      <h4 className="h1Profile">Ваши любимые жанры</h4>
+      <div id="divGenres">
         {userGenre.map((genre) => (
-          <button key={genre.id} id={genre.id} type="button">
+          <button className="favGen" key={genre.id} id={genre.id} type="button">
             {genre.Genre.title}
           </button>
         ))}
       </div>
+      <h4 className="h1Profile">Выбери новые жанры:</h4>
       <div className="divGenres" id="divGenres">
-        <h4 className="h1Profile">Выбери новые жанры:</h4>
         {genres.genres && genres.genres.map((genre) => (
           <button className="btnGenres" key={genre.id} id={genre.id} type="button" onClick={handleButton}>
             {genre.title}
           </button>
         ))}
-        <button type="button" onClick={handleButtons}>Изменить</button>
       </div>
+      <button className="btnMain" id="btnChGen" type="button" onClick={handleButtons}>Изменить</button>
     </>
   );
 }

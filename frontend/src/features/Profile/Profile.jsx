@@ -14,20 +14,31 @@ function Profile() {
 
   return (
     <div className="divProfile">
+      <div className="imgsProfile" id="image1" />
+      <div className="imgsProfile" id="image2" />
+      <div className="imgsProfile" id="image3" />
+      <div className="imgsProfile" id="image4" />
+      <div className="imgsProfile" id="image5" />
+      <div className="imgsProfile" id="image6" />
+      <div className="imgsProfile" id="image7" />
       <h1 className="h1Profile" id="h1ProfileLk">Личный кабинет</h1>
       {user
         ? (
-          <div className="container1">
-            <div className="container2">
-              <ChangeInfo />
-              <ChangePassword />
+          <>
+            <div className="container1">
+              <div className="container2">
+                <ChangeInfo />
+                <ChangePassword />
+              </div>
+              <div className="container3">
+                <ChangeAvatar />
+              </div>
+            </div>
+            <div className="container4">
               <ChangeGenres />
               <ChangeArtists />
             </div>
-            <div>
-              <ChangeAvatar />
-            </div>
-          </div>
+          </>
         )
         : <div>Loading</div>}
     </div>

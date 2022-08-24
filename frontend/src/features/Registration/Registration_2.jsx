@@ -54,8 +54,8 @@ function Registration2() {
             <div className="avatar">
               {
               photo
-                ? <img className="photo" src={photo} alt="avatar" style={{ width: 100 }} />
-                : <img className="photo" src={`${empty}`} alt="avatar" />
+                ? <img className="photoReg" src={photo} alt="avatar" style={{ width: 100 }} />
+                : <img className="photoReg" src={`${empty}`} alt="avatar" />
             }
             </div>
             <form action="/multer" method="post">
