@@ -5,7 +5,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { editTracks } from '../store/artistsReducer/reducer';
 import useAuth from './useAuth';
@@ -15,7 +14,6 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 export default function ChangeDashboard({ code }) {
-  const navigate = useNavigate();
   const accessToken = useAuth(code);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -81,8 +79,7 @@ export default function ChangeDashboard({ code }) {
 
   const handleButtons = () => {
     dispatch(editTracks(tracksArr));
-    window.location.href = '/cabinet'
-    // navigate('/cabinet');
+    window.location.href = '/cabinet';
   };
 
   return (
@@ -103,8 +100,6 @@ export default function ChangeDashboard({ code }) {
             <button type="button" onClick={handleTrack} id={track.uri}>💖</button>
           </div>
         ))}
-      </div>
-      <div>
       </div>
     </Container>
   );

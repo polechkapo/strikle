@@ -74,8 +74,8 @@ const chatSlice = createSlice({
       })
       .addCase(loadPairs.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
-        const message = action.payload.allPairsUser;
-        state.messages = [...state.messages, ...message];
+        const pair = action.payload.allPairsUser;
+        state.pairs = pair;
       });
   },
 
@@ -83,6 +83,7 @@ const chatSlice = createSlice({
 
 export {
   loadMessage,
+  loadPairs,
 };
 
 export const { isJoin } = chatSlice.actions;
@@ -94,5 +95,6 @@ export const selectAuth = (state) => state.chat.joined;
 export const selectSetUsers = (state) => state.chat.usersInRoom;
 export const selectSetMessage = (state) => state.chat.messages;
 export const selectRoomId = (state) => state.chat.roomId;
+export const selectPairs = (state) => state.chat.pairs;
 
 export default chatSlice.reducer;

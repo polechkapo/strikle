@@ -80,6 +80,16 @@ module.exports = {
       password: await bcrypt.hash('12345678', 10),
       createdAt: new Date(),
       updatedAt: new Date()
+    },    {
+      username: 'VItaliy',
+      email: 'baga7@doma.ru',
+      birth_date: '2004-01-01',
+      gender: 'Ж',
+      bio: 'Я бага',
+      city: 'Дагестан',
+      password: await bcrypt.hash('12345678', 10),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
   ], {});
 

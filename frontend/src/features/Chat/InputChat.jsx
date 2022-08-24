@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import socket from './socket';
 import Chat from './Chat';
 import {
-  addedRoomId, isJoin, loadMessage, setUsers,
+  addedRoomId, isJoin, loadMessage, loadPairs, setUsers,
 } from '../store/chatReducer/reducer';
 
 export default function InputChat() {
@@ -13,6 +13,7 @@ export default function InputChat() {
   const [userId, setUserid] = useState('');
   const joined = useSelector((state) => state.chats.joined);
   const user1 = useSelector((state) => state.user.user);
+  const pair = useSelector((state) => state.chats.pairs);
 
   const onEnter = async () => {
     const response = await fetch('/api/chat', {
@@ -36,7 +37,7 @@ export default function InputChat() {
   };
 
   useEffect(() => {
-
+    dispatch(loadPairs());
   }, []);
 
   window.socket = socket;
@@ -49,6 +50,13 @@ export default function InputChat() {
           <button type="button" onClick={onEnter}>Войти</button>
         </div>
       ) : (<Chat />)}
+      <div>
+        {pair && pair.map((el) => (
+          <div key={el.id}>
+            123
+          </div>
+        ))}
+      </div>
     </>
   );
 }

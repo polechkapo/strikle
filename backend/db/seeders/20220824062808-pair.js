@@ -39,7 +39,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },{
-      user_id_1: 3,
+      user_id_1: 8,
       user_id_2: 1,
       createdAt: new Date(),
       updatedAt: new Date(),
