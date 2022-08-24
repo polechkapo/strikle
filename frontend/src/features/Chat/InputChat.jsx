@@ -10,6 +10,7 @@ import Chat from './Chat';
 import {
   addedRoomId, isJoin, loadMessage, loadPairs, setUsers,
 } from '../store/chatReducer/reducer';
+import './chat.css';
 
 export default function InputChat() {
   const dispatch = useDispatch();
