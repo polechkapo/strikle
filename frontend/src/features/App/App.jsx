@@ -9,7 +9,7 @@ import Registration3 from '../Registration/Registration_3';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import SearchSpoty from '../SearchSpoty/SearchSpoty';
-import { loadUser } from '../store/userReducer/reducer';
+import { loadUser, loadUsers } from '../store/userReducer/reducer';
 import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
 import ChangeArtists from '../Profile/ChangeArtists';
@@ -33,6 +33,7 @@ function App() {
     dispatch(loadParticipants());
     dispatch(loadUserGenres());
     dispatch(initUserGenre());
+    dispatch(loadUsers());
   }, []);
 
   console.log(user);
