@@ -37,11 +37,11 @@ app.use(logoutRouter);
 app.use('/login', loginSpotifyRouter);
 app.use('/lyrics', lyricsRouter);
 app.use('/loginspotify', profileSpotifyRouter)
-app.use('/api', regRouter);
+app.use('/api', editPassRouter);
 app.use('/api', eventsRouter);
+app.use('/api', regRouter);
 app.use('/api', loadPairsRouter)
 app.use('/api', editProfileRouter)
-app.use('/api', editPassRouter);
 app.use('/api', chatRouter)
 app.use('/api', sessionRouter);
 app.use('/api', genreRouter);
@@ -51,8 +51,6 @@ app.use('/api/login', loginRouter);
 app.use('/api/multer', photoUploadFileRouter)
 app.use('/api/favorite', favoriteRouter);
 app.use('/api/refresh', refreshRouter);
-
-
 
 try {
   io.on('connection', (socket) => {

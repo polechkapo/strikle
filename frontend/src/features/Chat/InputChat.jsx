@@ -68,7 +68,7 @@ export default function InputChat() {
           {pair && pair.map((el) => (
             <div key={el.id} id={el.id} onClick={onJoin}>
               {el.username}
-              <img src={`${el.avatar}`} alt="" />
+              <img style={{ height: '150px', weight: '150px' }} src={`${el.avatar}`} alt="" />
             </div>
           ))}
         </div>
