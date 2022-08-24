@@ -205,7 +205,8 @@ const eventsSlice = createSlice({
       .addCase(addParticipant.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
         const participant = action.payload;
-        state.participants = [...state.participants, participant];
+        console.log(participant, 'REDUCERs');
+        state.participants = [...participant];
       })
       .addCase(createEvent.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
