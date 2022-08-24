@@ -91,7 +91,6 @@ router.route('/events')
   router.route('/participant')
     .post( async (req, res) => {
       const { user_id, event_id } = req.body
-      console.log(user_id, event_id, 'asdfghjghjkdfghjkdfghjdfghjdfghj');
       const newParticipant = await Participant.create({
          user_id,
          event_id,
@@ -111,6 +110,56 @@ router.route('/events')
       res.send(sendParticipant);
       res.end();
   })
+
+  router.route('/events/new')
+  .post( async (req, res) => {
+    const { date, title, description, photo } = req.body
+    console.log(req.body)
+    const newEvent = await Event.create({
+       user_id: req.session.userId,
+       date,
+       title,
+       photo,
+       description,
+
+    });
+    newEvent.save();
+    res.send(newEvent);
+})
+
+router.route('/events/delete')
+  .delete(async (req, res) => {
+    const { id } = req.body;
+    await Event.destroy({ where: { id } });
+    res.send(id);
+  });
+
+router.route('/events/edit')
+  .put(async (req, res) => {
+    try {
+    const { date, title, description, photo, id} = req.body;
+    if(date === '') {
+      const editEvent = await Event.findOne({ where: { id } });
+      editEvent.title = title,
+      editEvent.description = description,
+      editEvent.photo = photo,
+      editEvent.save();
+      res.status(203).json(editEvent);
+      res.end();
+    } else {
+      const editEvent = await Event.findOne({ where: { id } });
+      editEvent.title = title,
+      editEvent.description = description,
+      editEvent.photo = photo,
+      editEvent.date = date,
+      editEvent.save();
+      res.status(203).json(editEvent);
+      res.end();
+    }
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+  });
 
 
 module.exports = router

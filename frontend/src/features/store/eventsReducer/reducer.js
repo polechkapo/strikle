@@ -73,6 +73,69 @@ const addComment = createAsyncThunk(
   },
 );
 
+const createEvent = createAsyncThunk(
+  'events/createEvent',
+
+  async (payload) => {
+    console.log(payload, 'events');
+    const response = await fetch('/api/events/new', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(
+        payload,
+      ),
+    });
+    const data = await response.json();
+
+    if (data.error) {
+      throw data.error;
+    }
+    return data;
+  },
+);
+
+const deleteEvent = createAsyncThunk(
+  'events/deleteEvent',
+
+  async (payload) => {
+    console.log(payload, 'events');
+    const response = await fetch('/api/events/delete', {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(
+        payload,
+      ),
+    });
+    const data = await response.json();
+
+    if (data.error) {
+      throw data.error;
+    }
+    return data;
+  },
+);
+
+const editEvent = createAsyncThunk(
+  'events/editEvent',
+
+  async (payload) => {
+    console.log(payload, 'events');
+    const response = await fetch('/api/events/edit', {
+      method: 'PUT',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(
+        payload,
+      ),
+    });
+    const data = await response.json();
+
+    if (data.error) {
+      throw data.error;
+    }
+    return data;
+  },
+);
+
 const addParticipant = createAsyncThunk(
   'participants/addParticipant',
 
@@ -143,6 +206,35 @@ const eventsSlice = createSlice({
         // Успешный случай — загрузка прошла хорошо
         const participant = action.payload;
         state.participants = [...state.participants, participant];
+      })
+      .addCase(createEvent.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        state.error = action.error.message;
+      })
+      .addCase(createEvent.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        const event = action.payload;
+        state.events = [...state.events, event];
+      })
+      .addCase(deleteEvent.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        state.error = action.error.message;
+      })
+      .addCase(deleteEvent.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        const id = action.payload;
+        state.events = state.events.filter((el) => el.id !== +id);
+      })
+      .addCase(editEvent.rejected, (state, action) => {
+        // Сценарий провала — загрузка не увенчалась успехом
+        state.error = action.error.message;
+      })
+      .addCase(editEvent.fulfilled, (state, action) => {
+        // Успешный случай — загрузка прошла хорошо
+        const event = action.payload;
+        state.events = state.events.map((el) => ((el.id !== event.id) ? el : {
+          ...el, title: event.title, photo: event.photo, description: event.description,
+        }));
       });
   },
 });
@@ -153,6 +245,9 @@ export {
   addComment,
   loadParticipants,
   addParticipant,
+  createEvent,
+  deleteEvent,
+  editEvent,
 };
 
 export default eventsSlice.reducer;

@@ -13,6 +13,7 @@ module.exports = {
         references: {
           model: 'Users',
         },
+        onDelete: 'cascade',
       },
       message: {
         allowNull: false,

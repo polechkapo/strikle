@@ -13,6 +13,7 @@ module.exports = {
         references: {
           model: 'Users',
         },
+        onDelete: 'cascade',
       },
       event_id: {
         allowNull: false,
@@ -20,6 +21,7 @@ module.exports = {
         references: {
           model: 'Events',
         },
+        onDelete: 'cascade',
       },
       createdAt: {
         allowNull: false,
