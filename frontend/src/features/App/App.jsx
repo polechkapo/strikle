@@ -22,6 +22,7 @@ import MyEvents from '../Events/MyEvents/MyEvents';
 import InputChat from '../Chat/InputChat';
 import socket from '../Chat/socket';
 import { setMessages } from '../store/chatReducer/reducer';
+import { initUserGenre, loadUserGenres } from '../store/genresReducer/reducer';
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,8 @@ function App() {
     dispatch(loadEvents());
     dispatch(loadComments());
     dispatch(loadParticipants());
+    dispatch(loadUserGenres());
+    dispatch(initUserGenre());
   }, []);
 
   console.log(user);

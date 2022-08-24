@@ -59,6 +59,7 @@
 
 .event__page {
    width: 80%;
+   margin: 0 auto;
 }
 
 .events__card-content {
