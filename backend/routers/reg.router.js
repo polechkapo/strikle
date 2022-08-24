@@ -15,9 +15,9 @@ router.route('/reg')
       }
 
       const userRegFailed = await User.findOne({ where: { email } });
-
+console.log( '<--------------Юзер с сущ имейлом');
       if (userRegFailed) {
-        return res.status(403).json({ user: userRegFailed, errorMessage: 'Пользователь с таким email уже существует' });
+        return res.status(403).json({ user: null, errorMessage: 'Пользователь с таким email уже существует' });
       } else {
         const user = await User.create({ username, email, password: await bcrypt.hash(password, 10) });
         req.session.userId = user.id;

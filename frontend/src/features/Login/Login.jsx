@@ -28,11 +28,11 @@ export default function Login() {
     <div id="bodyReg1" className="logContainer">
       <div className="formLog">
         <form id="formReg1" onSubmit={handleLogin}>
-          {errorMessage && <p>{errorMessage}</p>}
           <h1 className="h1Login" id="h1Main">С возвращением</h1>
           <input id="emailLog" type="email" name="email" placeholder="Введите почту" />
           <input id="passwordLog" type="password" name="password" placeholder="Введите пароль" />
           <button className="btnLogin" type="submit">Подключиться</button>
+          {errorMessage && <p>{errorMessage}</p>}
         </form>
       </div>
       <div className="divLog" />
