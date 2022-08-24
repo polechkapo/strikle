@@ -8,3 +8,8 @@
   height: calc(100% - 155px);
   overflow: auto;
 }
+
+.chat-page {
+  display: flex;
+  align-items: center;
+}
