@@ -18,7 +18,7 @@ function Tinder() {
   const { users, user } = useSelector((state) => state.user);
   const { usersGenres, userGenre } = useSelector((state) => state.genres);
   const { likes, match } = useSelector((state) => state.likes);
-
+  console.log('TINDER');
   const likesCards = likes.map((el) => el.user_id_get);
   const db = users.filter((el) => !likesCards.includes(el.id));
   const [modal, setModal] = useState(true);
@@ -152,34 +152,34 @@ function Tinder() {
         <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} className="genres__button-control button__card" onClick={() => swipe('right')} type="button">💖</button>
       </div>
       {(match !== false && modal)
-      && (
-      <div className="modal modal__edit-bg">
-        <div className="modal__content modal_edit modal__match">
-          <h1 className="h1Main home__title">Yeah, like</h1>
-          <div className="match">
-            <div className="match__item">
-              <img src={user.avatar} alt="" className="modal__img" />
-              <p className="match__name">{user.username}</p>
-            </div>
-            {users.filter((el) => el.id === match.user_id_1).map((el) => (
-              <div key={el.id} className="match__item">
-                <img src={el.avatar} alt="" className="modal__img" />
-                {' '}
-                <p className="match__name">{el.username}</p>
+        && (
+          <div className="modal modal__edit-bg">
+            <div className="modal__content modal_edit modal__match">
+              <h1 className="h1Main home__title">Yeah, like</h1>
+              <div className="match">
+                <div className="match__item">
+                  <img src={user.avatar} alt="" className="modal__img" />
+                  <p className="match__name">{user.username}</p>
+                </div>
+                {users.filter((el) => el.id === match.user_id_1).map((el) => (
+                  <div key={el.id} className="match__item">
+                    <img src={el.avatar} alt="" className="modal__img" />
+                    {' '}
+                    <p className="match__name">{el.username}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+              <div className="buttons__match">
+                <button type="button" onClick={() => setModal(!modal)} className="genres__button-control">
+                  Продолжить
+                </button>
+                <button onClick={() => navigate('/cabinet')} type="button" className="genres__button-control">
+                  Написать
+                </button>
+              </div>
+            </div>
           </div>
-          <div className="buttons__match">
-            <button type="button" onClick={() => setModal(!modal)} className="genres__button-control">
-              Продолжить
-            </button>
-            <button onClick={() => navigate('/cabinet')} type="button" className="genres__button-control">
-              Написать
-            </button>
-          </div>
-        </div>
-      </div>
-      )}
+        )}
     </div>
   );
 }
