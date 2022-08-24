@@ -19,12 +19,12 @@
     flex-direction: row;
     gap: 1%;
     margin: 0 79px;
-    z-index: 3;
+    z-index: 2;
 }
 .container2 {
     display: flex;
     flex-direction: column;
-    z-index: 3;
+    z-index: 2;
 }
 .passwordProfile, .cityProfile, .bioProfile, .emailInfo, .nameInfo, .cityProfile, .bioProfile, .passwordProfile, .passw, .checkPass {
     Width: 600px;
@@ -56,6 +56,7 @@
     font-size: 30px;
     margin-left: 10%;
     z-index: 100;
+    z-index: 2;
 }
 #changeInfo {
     display: flex;
@@ -125,7 +126,7 @@
     height: 48%;
     top: 15%;
     left: -5%;
-    z-index: 2;
+    z-index: 1;
 }
 #image3 {
     /* position: fixed; */
@@ -133,7 +134,7 @@
     background-size: cover;
     width: 11%;
     height: 15%;
-    top: 15%;
+    top: 18%;
     right: 10%;
     z-index: 1;
 }
@@ -143,7 +144,7 @@
     background-size: cover;
     width: 11%;
     height: 15%;
-    top: 15%;
+    top: 18%;
     right: 20%;
     z-index: 1;
 }
@@ -208,6 +209,7 @@ background: transparent;
 }
 .container3 {
     margin: 20px;
+    z-index: 2;
 }
 .container4 {
     display: flex;
@@ -215,7 +217,6 @@ background: transparent;
     align-items: center;
     flex-wrap: wrap;
     margin: 0 79px;
-    z-index: 2;
 }
 /* .divArtists, .flex-grow-1 {
     display: flex;
