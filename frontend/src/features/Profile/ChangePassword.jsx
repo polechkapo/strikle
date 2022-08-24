@@ -50,7 +50,7 @@ function ChangePassword() {
           // id="checkPassword"
           placeholder="Введи новый пароль еще раз"
         />
-        <button className="btnMain" id="btnProfile" type="submit">Сохранить изменения</button>
+        <button className="btnLogin" id="btnProfile" type="submit">Сохранить изменения</button>
       </form>
     </div>
   );

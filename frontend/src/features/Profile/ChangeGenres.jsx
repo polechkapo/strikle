@@ -7,22 +7,24 @@ import { editGenre, loadGenres, loadUserGenres } from '../store/genresReducer/re
 function ChangeGenres() {
   const userGenre = useSelector((state) => state.genres.userGenre);
   const genres = useSelector((state) => state.genres);
+  const [genresModal, setGenresModal] = useState(false);
 
   const [genresArr, setGenresArr] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(loadUserGenres());
-    dispatch(loadGenres());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(loadUserGenres());
+  //   dispatch(loadGenres());
+  // }, []);
+
   const handleButton = (event) => {
     event.preventDefault();
     const value = event.target.id;
     if (!genresArr.includes(value)) {
       if (genresArr.length < 5) {
         setGenresArr([...genresArr, value]);
-        event.target.style.backgroundColor = 'red';
+        event.target.style.backgroundColor = '#FD608C';
       }
     } else {
       setGenresArr(genresArr.filter((el) => el !== value));
@@ -32,7 +34,8 @@ function ChangeGenres() {
 
   const handleButtons = () => {
     dispatch(editGenre(genresArr));
-    navigate('/cabinet');
+    setGenresModal(!genresModal);
+    // navigate('/cabinet');
   };
 
   return (
@@ -40,20 +43,29 @@ function ChangeGenres() {
       <h4 className="h1Profile">Ваши любимые жанры</h4>
       <div id="divGenres">
         {userGenre.map((genre) => (
-          <button className="favGen" key={genre.id} id={genre.id} type="button">
+          <p className="favGen" key={genre.id} id={genre.id}>
             {genre.Genre.title}
-          </button>
+          </p>
         ))}
       </div>
-      <h4 className="h1Profile">Выбери новые жанры:</h4>
-      <div className="divGenres" id="divGenres">
-        {genres.genres && genres.genres.map((genre) => (
-          <button className="btnGenres" key={genre.id} id={genre.id} type="button" onClick={handleButton}>
-            {genre.title}
-          </button>
-        ))}
+      <button className="btnLogin" id="btnProfile" type="button" onClick={() => setGenresModal(!genresModal)}>Изменить</button>
+      {genresModal
+      && (
+      <div className="modal modal__edit-bg">
+        <div className="modal__content modal_edit modal__match">
+          <h4 className="h1Profile">Выбери новые жанры:</h4>
+          <div className="divGenres" id="divGenres">
+            {genres.genres && genres.genres.map((genre) => (
+              <button className="favGen" key={genre.id} id={genre.id} type="button" onClick={handleButton}>
+                {genre.title}
+              </button>
+            ))}
+          </div>
+          <button className="btnLogin" id="btnChGen" type="button" onClick={handleButtons}>Изменить</button>
+        </div>
       </div>
-      <button className="btnMain" id="btnChGen" type="button" onClick={handleButtons}>Изменить</button>
+      )}
+
     </>
   );
 }
