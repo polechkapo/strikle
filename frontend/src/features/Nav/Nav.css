@@ -1,14 +1,11 @@
 .divNav {
     display: flex;
-<<<<<<< HEAD
     width: 900px;
     justify-content:space-around;
     flex-direction: row-reverse;
     gap: -20px;
     margin: 20px;
-=======
     justify-content: flex-end;
->>>>>>> b91f6561c099bf3eff1ed89047f5da49fb11b597
     margin-bottom: 0px;
     align-items: center;
     gap: 54px;
@@ -47,13 +44,8 @@ text-decoration: none;
 }
 
 .nav__wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
-    align-items: center;
-    width: 1200px;
-    padding-top: 20px;
+    position: absolute;
+    left: 1%;
+    top: 0%;
     z-index: 10;
 }
