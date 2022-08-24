@@ -34,8 +34,10 @@ config(app);
 require('./mw/session')(app);
 
 app.use(logoutRouter);
+app.use('/loginsporify', profileSpotifyRouter)
 app.use('/login', loginSpotifyRouter);
 app.use('/lyrics', lyricsRouter);
+app.use('/api', eventsRouter)
 app.use('/api', regRouter);
 app.use('/api', loadPairsRouter)
 app.use('/api', editProfileRouter)
