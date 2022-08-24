@@ -20,6 +20,8 @@ import { loadComments, loadEvents, loadParticipants } from '../store/eventsReduc
 import CreateEvent from '../Events/CreateEvent/CreateEvent';
 import MyEvents from '../Events/MyEvents/MyEvents';
 import { initUserGenre, loadGenres, loadUserGenres } from '../store/genresReducer/reducer';
+import { loadUserTracks } from '../store/artistsReducer/reducer';
+
 function App() {
   const dispatch = useDispatch();
 
@@ -34,6 +36,7 @@ function App() {
     dispatch(initUserGenre());
     dispatch(loadUsers());
     dispatch(loadGenres());
+    dispatch(loadUserTracks());
   }, []);
 
   console.log(user);

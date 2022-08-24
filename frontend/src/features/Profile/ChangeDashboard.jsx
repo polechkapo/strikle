@@ -1,9 +1,10 @@
+/* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
 /* eslint-disable consistent-return */
 /* eslint-disable no-return-assign */
 import React, { useState, useEffect } from 'react';
-import { Container, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 import SpotifyWebApi from 'spotify-web-api-node';
@@ -61,10 +62,12 @@ export default function ChangeDashboard({ code }) {
   const [tracksArr, setTracksArr] = useState([]);
 
   const handleTrack = (event) => {
-    const img = event.target.parentNode.childNodes[0].attributes[0].nodeValue;
-    const title = event.target.parentNode.childNodes[1].innerText;
-    const artist = event.target.parentNode.childNodes[2].innerText;
+    const img = event.target.parentNode.childNodes[0].childNodes[0].childNodes[0].attributes[0].nodeValue;
+    const title = event.target.parentNode.childNodes[0].childNodes[1].childNodes[0].innerText;
+    const artist = event.target.parentNode.childNodes[0].childNodes[1].childNodes[1].innerText;
     const { id } = event.target;
+
+    console.log(img, title, artist, id);
 
     if (!tracksArr.some((el) => el.id === id)) {
       if (tracksArr.length < 5) {
@@ -81,30 +84,40 @@ export default function ChangeDashboard({ code }) {
 
   const handleButtons = () => {
     dispatch(editTracks(tracksArr));
-    window.location.href = '/cabinet';
+    console.log(tracksArr);
+    // window.location.href = '/cabinet';
     // navigate('/cabinet');
   };
 
   return (
-    <Container className="d-flex flex-column py-2" style={{ height: '100vh' }}>
+    <div>
+      <h4 className="h1Profile">Выбери новые треки:</h4>
       <Form.Control
         type="search"
         placeholder="Search Songs/Artists"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <div className="flex-grow-1 my-2" style={{ overflowY: 'auto' }}>
-        <button className="btnMain" type="button" onClick={handleButtons}>Изменить</button>
-        {searchResults.map((track) => (
-          <div key={track.uri}>
-            <img src={track.albumUrl} alt="" />
-            <p>{track.title}</p>
-            <p>{track.artist}</p>
-            <button type="button" onClick={handleTrack} id={track.uri}>💖</button>
-          </div>
-        ))}
+      <div className="search__wrapper" style={{ overflowY: 'auto' }}>
+        <button className="btnLogin" id=".btnLogin" type="button" onClick={handleButtons}>Изменить</button>
+        <div className="trackListSearch">
+          {searchResults.map((track) => (
+            <div key={track.uri} className="track__card">
+              <div className="card__titleTrack">
+                <div>
+                  <img src={track.albumUrl} alt="" />
+                </div>
+                <div>
+                  <p>{track.title}</p>
+                  <p>{track.artist}</p>
+                </div>
+              </div>
+              <button type="button" onClick={handleTrack} id={track.uri} className="button_like">💖</button>
+            </div>
+          ))}
+        </div>
       </div>
       <div />
-    </Container>
+    </div>
   );
 }
