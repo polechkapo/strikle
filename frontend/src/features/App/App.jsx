@@ -19,10 +19,23 @@ import EventPage from '../Events/EventPage/EventPage';
 import { loadComments, loadEvents, loadParticipants } from '../store/eventsReducer/reducer';
 import CreateEvent from '../Events/CreateEvent/CreateEvent';
 import MyEvents from '../Events/MyEvents/MyEvents';
+import InputChat from '../Chat/InputChat';
+import socket from '../Chat/socket';
+import { setMessages } from '../store/chatReducer/reducer';
 import { initUserGenre, loadUserGenres } from '../store/genresReducer/reducer';
 
 function App() {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    socket.on('ROOM:JOINED', (users) => {
+      console.log(users, 'JOINED INPUTCHAT');
+    });
+    socket.on('ROOM:NEW_MESSAGES', (message) => {
+      dispatch(setMessages(message));
+      console.log(message, 'APPJSX NEW MESSAGE');
+    });
+  }, []);
 
   const user = useSelector((state) => state.user);
 
@@ -43,6 +56,7 @@ function App() {
       <Routes>
         {user.user ? (
           <>
+            <Route path="/chat" element={<InputChat />} />
             <Route path="/artist" element={<ChangeArtists />} />
             <Route path="/events" element={<Events />} />
             <Route path="/events/:id" element={<EventPage />} />
@@ -58,6 +72,7 @@ function App() {
         )
           : (
             <>
+              <Route path="/chat" element={<InputChat />} />
               <Route path="/search" element={<SearchSpoty />} />
               <Route path="/" element={<Main />} />
               <Route path="/registraton" element={<Registration1 />} />

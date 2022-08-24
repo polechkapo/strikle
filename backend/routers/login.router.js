@@ -22,6 +22,7 @@ console.log(userCheck, 'etrewuyrtuwyetruywatefuywteurytewuytueywtuf');
     if (userCheck.email === email && passwordCompare) {
       req.session.userId = userCheck.id;
       const user = await User.findOne({ where: { id: req.session.userId } });
+
       return res.json({ user, errorMessage: null });
 
     }

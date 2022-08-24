@@ -25,6 +25,7 @@ function Nav() {
         <div className="divNav">
           <Link to="/tinder" className="nav__link">Тиндер</Link>
           <Link to="/" className="nav__link">Главная</Link>
+          <Link to="/chat" className="nav__link">Чат</Link>
           <Link to="/cabinet" className="nav__link">Аккаунт</Link>
           <Link to="/events" className="nav__link">Ивенты</Link>
           <button className="btnNav" type="button" onClick={handleDestroy}>Выйти</button>

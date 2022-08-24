@@ -104,7 +104,6 @@ export default function ChangeDashboard({ code }) {
           </div>
         ))}
       </div>
-      <div />
     </Container>
   );
 }

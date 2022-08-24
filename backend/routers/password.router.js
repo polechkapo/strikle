@@ -7,8 +7,7 @@ router.route('/editpass')
     try {
       const id = req.session.userId;
       const { oldPassword, password, checkPassword } = req.body;
-      
-      console.log(oldPassword);
+
       if (oldPassword) {
         
         if (password !== checkPassword) {
