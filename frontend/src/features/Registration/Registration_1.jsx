@@ -20,6 +20,7 @@ function Registration1() {
     dispatch(registerUser({
       email, username, password, checkPassword,
     })); // кидаем в санку
+    navigate('/profile');
   };
 
   useEffect(() => {

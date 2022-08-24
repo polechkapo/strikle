@@ -21,15 +21,26 @@ function Nav() {
       <div>
         <img src={logo} alt="Spikle" className="nav__logo" />
       </div>
-      {user.user && (
-      <div className="divNav">
-        <Link to="/tinder" className="nav__link">Тиндер</Link>
-        <Link to="/" className="nav__link">Главная</Link>
-        <Link to="/cabinet" className="nav__link">Аккаунт</Link>
-        <Link to="/events" className="nav__link">Ивенты</Link>
-        <button className="btnNav" type="button" onClick={handleDestroy}>Выйти</button>
-      </div>
-      )}
+      {user.user ? (
+        <div className="divNav">
+          <Link to="/tinder" className="nav__link">Тиндер</Link>
+          <Link to="/" className="nav__link">Главная</Link>
+          <Link to="/cabinet" className="nav__link">Аккаунт</Link>
+          <Link to="/events" className="nav__link">Ивенты</Link>
+          <button className="btnNav" type="button" onClick={handleDestroy}>Выйти</button>
+        </div>
+      )
+        : (
+          <div className="divNav">
+            <div className="btn2">
+              <button className="btnMain btnReg" id="btnMain2" type="button" onClick={() => navigate('/registraton')}>Зарегистрироваться</button>
+            </div>
+            <div className="btn2">
+              <button className="btnMain" id="btnMain2" type="button" onClick={() => navigate('/login')}>Войти</button>
+            </div>
+
+          </div>
+        )}
     </div>
   );
 }

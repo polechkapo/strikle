@@ -28,7 +28,6 @@ function Tinder() {
     dispatch(loadLikes());
     dispatch(loadUsersGenres());
     dispatch(loadGenres());
-    dispatch(initUserGenre());
   }, []);
 
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
@@ -114,66 +113,65 @@ function Tinder() {
               className="card"
               id={character.id}
             >
-              <div className="wrapper__profile">
-                <img src={character.avatar} alt="" className="card__photo" />
-                <div className="artists__list">
-                  {character.Artists.length > 0 && character.Artists.map((artist) => (
-                    <div key={artist.id} className="artist__item">
-                      <img src={`${artist.albumUrl}`} alt={artist.artist} />
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  {usersGenres.map((genre) => (genre.user_id === character.id
-                    ? <p key={genre.Genre.id}>{genre.Genre.title}</p>
-                    : ''))}
-                </div>
+              <img src={character.avatar} alt="" className="card__photo" />
+              <div className="card__genres">
+                {usersGenres.map((genre) => (genre.user_id === character.id
+                  ? <p key={genre.Genre.id} className="genres__button genres__card">{genre.Genre.title}</p>
+                  : ''))}
               </div>
-              <h3>
-                {character.username}
-                ,
-                {' '}
-                {differenceInYears(new Date(Date.now()), new Date(character.birth_date))}
-              </h3>
-              <p>{character.bio}</p>
-              <p>{character.city}</p>
-              <p>
-                Cовпадение:
-                {' '}
-                {calculatePercentOfMatch(character)}
-                %
-              </p>
+              <div className="card__desc">
+                <h3 className="card__percent">
+                  {character.username}
+                  ,
+                  {' '}
+                  {differenceInYears(new Date(Date.now()), new Date(character.birth_date))}
+                </h3>
+                <p>{character.bio}</p>
+                <p>{character.city}</p>
+              </div>
+              <div className="artists__list">
+                {character.Artists.length > 0 && character.Artists.map((artist) => (
+                  <div key={artist.id} className="artist__item">
+                    <img src={`${artist.albumUrl}`} alt={artist.artist} className="card__artists" />
+                  </div>
+                ))}
+                <p className="card__percent">
+                  {' '}
+                  {calculatePercentOfMatch(character)}
+                  %
+                </p>
+              </div>
             </div>
-
           </TinderCard>
         ))}
       </div>
       <div className="buttons">
-        <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('left')} type="button">❌</button>
-        <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('right')} type="button">💖</button>
+        <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} className="genres__button-control button__card" onClick={() => swipe('left')} type="button">❌</button>
+        <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} className="genres__button-control button__card" onClick={() => swipe('right')} type="button">💖</button>
       </div>
       {(match !== false && modal)
       && (
-      <div className="modal">
-        <div className="modal__content">
-          Это мэтч!
-          <div>
-            <img src={user.avatar} alt="" className="modal__img" />
-            <p>{user.username}</p>
-            и
+      <div className="modal modal__edit-bg">
+        <div className="modal__content modal_edit modal__match">
+          <h1 className="h1Main home__title">Yeah, like</h1>
+          <div className="match">
+            <div className="match__item">
+              <img src={user.avatar} alt="" className="modal__img" />
+              <p className="match__name">{user.username}</p>
+            </div>
             {users.filter((el) => el.id === match.user_id_1).map((el) => (
-              <div key={el.id}>
+              <div key={el.id} className="match__item">
                 <img src={el.avatar} alt="" className="modal__img" />
                 {' '}
-                <p>{el.username}</p>
+                <p className="match__name">{el.username}</p>
               </div>
             ))}
           </div>
-          <div className="buttons">
-            <button type="button" onClick={() => setModal(!modal)}>
+          <div className="buttons__match">
+            <button type="button" onClick={() => setModal(!modal)} className="genres__button-control">
               Продолжить
             </button>
-            <button onClick={() => navigate('/cabinet')} type="button">
+            <button onClick={() => navigate('/cabinet')} type="button" className="genres__button-control">
               Написать
             </button>
           </div>

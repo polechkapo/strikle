@@ -7,7 +7,7 @@ function SearchSpoty() {
   const code = new URLSearchParams(window.location.search).get('code');
 
   return (
-    <div>
+    <div className="container__wrapper">
 
       <h1 id="h1Main" className="spoty__title">Выбери любимые песни:</h1>
 

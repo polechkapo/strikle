@@ -6,14 +6,19 @@
    min-height: 100vh;
    overflow: hidden;
    background: linear-gradient(#e66465, #9198e5);
- } */
- 
- #root {
+ }
+#root {
    display: flex;
    flex-direction: column;
-   justify-content: center;
+justify-content: center;
    align-items: center;
    background-size: auto;
+   width: 100%;
+ }
+ */
+
+ #root {
+  width: 100%;
  }
  
  .app>div {
@@ -43,9 +48,9 @@
  
  .swipe {
   position: absolute;
-  top: 13%;
+  top: 19%;
   width: 70%;
-  left: 16%;
+  left: 15%;
  }
  
  .cardContainer {
@@ -58,24 +63,35 @@
  
 .artists__list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
  .card {
    position: relative;
    background-color: #fff;
-   width: 100%;
    height: 500px;
    /* max-width: 260px;
    height: 300px; */
-   border-radius: 20px;
+   /* border-radius: 20px;
    background-size: cover;
-   background-position: center;
+   background-position: center; */
+   background: #FFFFFF;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 0px 100px;
+  align-items: center;
+  width: 800px;
+  margin: 0 auto;
  }
 
  .card__photo {
-  width: 300px;
+  margin-top: -70px;
+  height: 250px;
+  border-radius: 29px 0;
  }
  
  .cardContent {
@@ -87,12 +103,6 @@
  
  }
  
- .card h3 {
-   position: absolute;
-   bottom: 0;
-   margin: 10px;
-   /* color: #fff; */
- }
  
  .infoText {
    width: 100%;
@@ -108,11 +118,13 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 87%;
-  left: 35%;
+  top: 80%;
+  left: 0;
+  right: 0;
+  gap: 30px;
  }
  
- .buttons button {
+ /* .buttons button {
    flex-shrink: 0;
    padding: 10px;
    border-radius: 5px;
@@ -125,7 +137,7 @@
    font-weight: bolder;
    width: 160px;
    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.10);
- }
+ } */
  
  .buttons button:hover {
    transform: scale(1.05);
@@ -175,7 +187,8 @@
 }
 
 .modal__img {
-  width: 100px;
+  width: 252px;
+  height: 250px;
 }
 /* 
 .modal__content.active {
@@ -241,3 +254,88 @@ input {
   line-height: 26px;
   border: none;
 } */
+
+.card__desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card__percent {
+  text-align: right;
+  margin-right: 29px;
+}
+
+.card_avatar {
+  margin-top: -70px;
+}
+
+.card__artists {
+  width: 80px;
+}
+
+.artist__item {
+  width: 80px;
+}
+
+
+.card__genres {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.genres__card {
+  font-size: 12px;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.card__percent {
+/* font-family: 'Rubik Mono One', sans-serif; */
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+/* line-height: 58px; */
+text-align: right;
+letter-spacing: -0.015em;
+margin-left: 20px;
+color: #000000;
+
+}
+
+.button__card {
+  font-size: 27px;
+  width: 200px;
+}
+
+.match {
+  display: flex;
+  flex-direction: row;
+  gap: 31px;
+}
+
+.match__item {
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+  align-items: center;
+}
+
+.modal__match {
+  box-shadow: 0px 4px 25px rgb(0 0 0 / 10%);
+  border-radius: 0px 100px;
+  width: 662px;
+}
+
+.buttons__match {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.match__name {
+  font-size: 23px;
+  font-weight: 400px;
+}

@@ -1,11 +1,5 @@
 .divNav {
     display: flex;
-    width: 900px;
-    justify-content:space-around;
-    flex-direction: row-reverse;
-    gap: -20px;
-    margin: 20px;
-    justify-content: flex-end;
     margin-bottom: 0px;
     align-items: center;
     gap: 54px;
@@ -44,8 +38,17 @@ text-decoration: none;
 }
 
 .nav__wrapper {
-    position: absolute;
-    left: 1%;
-    top: 0%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+    padding-top: 20px;
     z-index: 10;
+    position: relative;
+}
+
+.btnReg {
+    width: 190px!important;
 }

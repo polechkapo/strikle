@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 // import Player from "../Player"
 import { Container, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { addTracks } from '../store/artistsReducer/reducer';
 // import axios from 'axios';
@@ -23,6 +24,7 @@ export default function Dashboard({ code }) {
   const added = useSelector((state) => state.tracks.tracks);
   console.log('ERROR STAT', added);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // const [playingTrack, setPlayingTrack] = useState();
   // const [lyrics, setLyrics] = useState('');
 
@@ -109,6 +111,7 @@ export default function Dashboard({ code }) {
 
   const handleButtons = () => {
     dispatch(addTracks(tracksArr));
+    navigate('/');
   };
 
   return (
