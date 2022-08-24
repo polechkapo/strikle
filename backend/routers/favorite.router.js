@@ -66,9 +66,8 @@ router.route('/')
     try {
       const { genres } = req.body;
       const user_id = req.session.userId
-      console.log('START', user_id, genres);
       if (genres) {
-        console.log('SERVER GENRE', genres, user_id);
+
         for (let i = 0; i < genres.length; i++) {
           await User_Genre.create({
             genre_id: Number(genres[i]),
