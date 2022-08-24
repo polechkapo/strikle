@@ -61,7 +61,10 @@ function ChangeGenres() {
               </button>
             ))}
           </div>
-          <button className="btnLogin" id="btnChGen" type="button" onClick={handleButtons}>Изменить</button>
+          <div className="buttons__control">
+            <button className="btnLogin btnGenres" type="button" onClick={handleButtons}>Изменить</button>
+            <button className="btnLogin btnGenres" type="button" onClick={() => setGenresModal(false)}>Назад</button>
+          </div>
         </div>
       </div>
       )}
