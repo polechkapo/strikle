@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../store/userReducer/reducer';
 import './registration_1/registration_1.css';
@@ -7,6 +7,8 @@ import './registration_1/registration_1.css';
 function Registration1() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user, errorMessage } = useSelector((state) => state.user);
+  console.log(user, '<------------------- это юзер');
 
   const handleForm = (event) => {
     event.preventDefault();
@@ -20,6 +22,15 @@ function Registration1() {
     })); // кидаем в санку
     navigate('/profile');
   };
+
+  useEffect(() => {
+    console.log(10);
+    return () => navigate('/profile');
+  }, []);
+  // console.log(errorMessage, 'ЭррорМессадж');
+  // if (!errorMessage) {
+  //   navigate('/');
+  // };
 
   return (
     <div id="bodyReg1">
@@ -52,6 +63,7 @@ function Registration1() {
           />
           <input type="password" name="checkPassword" id="checkPassword" placeholder="Введи пароль еще раз" />
           <button id="btnReg1" type="submit">Cледующий шаг</button>
+          {errorMessage && <p>{errorMessage}</p>}
         </form>
       </div>
       <div>
