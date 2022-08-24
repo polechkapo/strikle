@@ -8,6 +8,8 @@ body {
 
 .photoReg {
     width: 200px;
+}
+img {
     border-radius: 50%;   
 }
 
