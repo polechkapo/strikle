@@ -4,7 +4,11 @@ const { Event, Comment, User, Participant } = require('../db/models')
 router.route('/events')
   .get(async (req, res) => {
     try {
-      const allEvents = await Event.findAll({ raw: true })
+      const allEvents = await Event.findAll({
+        raw: true, include: [{
+          model: User
+        }]
+      })
 
       if (allEvents) {
         return res.status(200).json(allEvents)

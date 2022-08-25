@@ -9,11 +9,12 @@ function EventPage() {
   const { user } = useSelector((state) => state.user);
   const { events, comments, participants } = useSelector((state) => state.events);
   const currentEvent = events.find((el) => el.id === +id);
+  console.log(currentEvent, 'currentEvent');
   const eventComments = comments.filter((comment) => comment.event_id === Number(id));
 
   const currentParticipants = participants.filter((el) => el.event_id === Number(id));
 
-  console.log(currentParticipants);
+  console.log(currentParticipants, 'ЭТОТ ЭВЕНТ');
   const dispatch = useDispatch();
 
   const handleButton = (event) => {
@@ -30,6 +31,12 @@ function EventPage() {
             <h4 className="events__title">{currentEvent.title}</h4>
             <div key={currentEvent.id} className="events__card-content">
               <img src={currentEvent.photo} alt={currentEvent.title} style={{ width: '300px' }} />
+              <p>
+                Создал ивент:
+                {' '}
+                {currentEvent['Users.username']}
+                {' '}
+              </p>
               <div>
                 <p>{currentEvent.description}</p>
                 <p>{new Date(currentEvent.date).toLocaleString('ru-RU').substring(0, 17)}</p>

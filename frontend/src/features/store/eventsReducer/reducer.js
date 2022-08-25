@@ -140,7 +140,6 @@ const addParticipant = createAsyncThunk(
   'participants/addParticipant',
 
   async (payload) => {
-    console.log(payload);
     const response = await fetch('/api/participant', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -205,7 +204,6 @@ const eventsSlice = createSlice({
       .addCase(addParticipant.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
         const participant = action.payload;
-        console.log(participant, 'REDUCERs');
         state.participants = [...participant];
       })
       .addCase(createEvent.rejected, (state, action) => {
