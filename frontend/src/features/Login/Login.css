@@ -43,9 +43,9 @@
 .imgLog1 {
     background-image: url('./Ellipse\ 25.png');
     background-size: cover;
-    position: absolute;
-    bottom: 3%;
-    right: 6%;
+    position: fixed;
+    bottom: 5%;
+    right: 8%;
     width: 24%;
     height: 44%;
     z-index: 5;
@@ -53,7 +53,7 @@
 .imgLog2 {
     background-image: url('./Rectangle\ 55\ \(1\).png');
     background-size: cover;
-    position: absolute;
+    position: fixed;
     top: 17%;
     right: 25%;
     width: 26%;
@@ -63,7 +63,7 @@
 .imgLog3 {
     background-image: url('./Rectangle\ 56\ \(1\).png');
     background-size: cover;
-    position: absolute;
+    position: fixed;
     top: 6%;
     right: 6%;
     width: 22%;
@@ -73,7 +73,7 @@
 .imgLog4 {
     background-image: url('./Ellipse\ 25\ \(2\).png');
     background-size: cover;
-    position: absolute;
+    position: fixed;
     bottom: 8%;
     right: 320px;
     width: 200px;
@@ -83,7 +83,7 @@
 .imgLog5 {
     background-image: url('./Rectangle\ 58.png');
     background-size: cover;
-    position: absolute;
+    position: fixed;
     top: 40px;
     right: 380px;
     width: 150px;
@@ -93,7 +93,7 @@
 .imgLog6 {
     background-image: url('./Rectangle\ 59.png');
     background-size: cover;
-    position: absolute;
+    position: fixed;
     top: 50px;
     right: 250px;
     width: 130px;
@@ -103,7 +103,7 @@
 .imgLog7 {
     background-image: url('./Ellipse\ 32.png');
     background-size: cover;
-    position: absolute;
+    position: fixed;
     top: 50px;
     right: 360px;
     width: 130px;
@@ -113,7 +113,7 @@
 .imgLog8 {
     background-image: url('./Rectangle\ 59\ \(1\).png');
     background-size: cover;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0px;
     width: 130px;

@@ -58,8 +58,11 @@ function Registration2() {
                 : <img className="photoReg" src={`${empty}`} alt="avatar" />
             }
             </div>
-            <form action="/multer" method="post">
-              <input type="file" onChange={handlerUloadPhoto} />
+            <form id="formAvatar" action="/multer" method="post">
+              <label htmlFor="file">
+                <input type="file" className="visually-hidden" onChange={handlerUloadPhoto} />
+                <span>Изменить фото</span>
+              </label>
             </form>
           </label>
         </div>

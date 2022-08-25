@@ -49,7 +49,7 @@ body {
     background-size: cover;
     width: 23%;
     height: 42%;
-    position: absolute;
+    position: fixed;
     right: 7%;
     bottom: 2%;
     z-index: 3;
@@ -60,7 +60,7 @@ body {
     background-size: cover;
     width: 22%;
     height: 45%;
-    position: absolute;
+    position: fixed;
     right: 26%;
     bottom: 27%;
     z-index: 2;
@@ -70,7 +70,7 @@ body {
     background-size: cover;
     width: 20%;
     height: 45%;
-    position: absolute;
+    position: fixed;
     right: 7%;
     top: 10%;
     z-index: 1;

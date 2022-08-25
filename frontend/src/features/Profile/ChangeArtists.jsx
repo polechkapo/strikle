@@ -10,7 +10,7 @@ function ChangeArtists() {
   const { userTracks } = useSelector((state) => state.tracks);
   return (
     <div className="tracks__wrapper">
-      <h3 className="h1Profile">Твои любимые треки:</h3>
+      <h3 id="h1Artists" className="h1Profile">Твои любимые треки</h3>
       <div className="tracksList">
         {userTracks ? userTracks.map((track) => (
           <div key={track.id} className="track__card">
@@ -25,7 +25,7 @@ function ChangeArtists() {
       {code ? <ChangeDashboard code={code} />
         : (
           <div className="divArtists">
-            <h3 className="h1Profile">Войди чтобы изменить</h3>
+            <h3 id="h1Artists" className="h1Profile">Войди, чтобы изменить</h3>
             <SpotifyLogin />
           </div>
         )}

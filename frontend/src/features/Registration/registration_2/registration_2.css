@@ -110,3 +110,7 @@ body {
     margin: 0 auto;
     margin-left: 17%;
 }
+.modalBtn {
+    display: flex;
+    align-items: center;
+}
