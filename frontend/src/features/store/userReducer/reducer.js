@@ -10,6 +10,7 @@ const initialState = {
   user: null,
   users: null,
   errorMessage: null,
+  checkEditPassword: false,
 };
 
 const loadUser = createAsyncThunk(
@@ -170,16 +171,11 @@ const deleteUser = createAsyncThunk(
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  // reducers: {
-  //   addUser: (state, action) => {
-  //     const newUser = action.payload;
-  //     state.user = newUser;
-  //   },
-  //   updateUser: (state, action) => {
-  //     const newInfo = action.payload;
-  //     state.user = { ...state.user, newInfo };
-  //   },
-  // },
+  reducers: {
+    falseMessage: (state, action) => {
+      state.checkEditPassword = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadUser.rejected, (state, action) => {
@@ -246,7 +242,7 @@ const userSlice = createSlice({
       })
       .addCase(editPassUser.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
-        state.checkEditPassword = action.payload;
+        state.checkEditPassword = action.payload.updatePassword;
       })
       .addCase(deleteUser.rejected, (state, action) => {
         state.error = action.error.message;
@@ -268,10 +264,9 @@ export {
   loadUsers,
 };
 
-// export const {
-//   addUser,
-//   updateUser,
-// } = userSlice.actions;
+export const {
+  falseMessage,
+} = userSlice.actions;
 
 export const selectUser = (state) => state.user;
 export const selectUsers = (state) => state.users;

@@ -16,7 +16,6 @@ function ChangeGenres() {
   useEffect(() => {
 
   }, []);
-  console.log(genresArr, 'genresArr', oldUserGenre);
   const handleButton = (event) => {
     event.preventDefault();
     const value = Number(event.target.id);

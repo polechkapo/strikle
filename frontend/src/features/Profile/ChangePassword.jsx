@@ -1,11 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { editPassUser } from '../store/userReducer/reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { editPassUser, falseMessage } from '../store/userReducer/reducer';
 
 function ChangePassword() {
-  // const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  const { checkEditPassword } = useSelector((state) => state.user);
+  console.log(checkEditPassword, 'checkEditPassword');
   const handleForm = (event) => {
     event.preventDefault();
     const password = event.target.password.value;
@@ -15,9 +15,13 @@ function ChangePassword() {
     dispatch(editPassUser({
       oldPassword, password, checkPassword,
     }));
-    // navigate('/cabinet');
   };
-
+  if (checkEditPassword) {
+    document.querySelector('#changePass').reset();
+    setTimeout(() => {
+      dispatch(falseMessage(false));
+    }, 5000);
+  }
   return (
     <div>
       <h1 id="h1Main" className="h1Profile">Изменение пароля</h1>
@@ -49,6 +53,11 @@ function ChangePassword() {
           // id="checkPassword"
           placeholder="Введи новый пароль еще раз"
         />
+        {checkEditPassword && (
+          <div>
+            <p>Изменения успешно применены</p>
+          </div>
+        )}
         <button className="btnLogin" id="btnProfile" type="submit">Сохранить изменения</button>
       </form>
     </div>
