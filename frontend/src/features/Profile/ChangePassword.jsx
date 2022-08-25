@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { editPassUser } from '../store/userReducer/reducer';

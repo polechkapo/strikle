@@ -34,7 +34,6 @@ function App() {
     });
     socket.on('ROOM:NEW_MESSAGES', (message) => {
       dispatch(setMessages(message));
-      console.log(message, 'APPJSX NEW MESSAGE');
     });
   }, []);
 

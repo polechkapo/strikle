@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { addTracks } from '../store/artistsReducer/reducer';
+import { loadUser } from '../store/userReducer/reducer';
 // import axios from 'axios';
 // import TrackSearchResult from './TrackSearchResult';
 import useAuth from './useAuth';
@@ -22,7 +23,6 @@ export default function Dashboard({ code }) {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const added = useSelector((state) => state.tracks.tracks);
-  console.log('ERROR STAT', added);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [playingTrack, setPlayingTrack] = useState();
@@ -53,6 +53,10 @@ export default function Dashboard({ code }) {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
   }, [accessToken]);
+
+  useEffect(() => () => {
+    dispatch(loadUser());
+  }, []);
 
   useEffect(() => {
     if (!search) return setSearchResults([]);

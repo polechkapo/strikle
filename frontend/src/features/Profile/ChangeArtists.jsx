@@ -8,10 +8,6 @@ function ChangeArtists() {
   const code = new URLSearchParams(window.location.search).get('code');
 
   const { userTracks } = useSelector((state) => state.tracks);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(loadUserTracks());
-  // }, []);
   return (
     <div className="tracks__wrapper">
       <h3 className="h1Profile">Твои любимые треки:</h3>
