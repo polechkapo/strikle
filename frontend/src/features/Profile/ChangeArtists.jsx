@@ -11,7 +11,6 @@ function ChangeArtists() {
   // useEffect(() => {
   //   dispatch(loadUserTracks());
   // }, []);
-  console.log(userTracks, 'Это юзертрек');
   return (
     <div className="tracks__wrapper">
       <h3 className="h1Profile">Твои любимые треки:</h3>
