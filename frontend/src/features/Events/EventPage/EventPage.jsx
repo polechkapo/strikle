@@ -34,7 +34,7 @@ function EventPage() {
               <p>
                 Создал ивент:
                 {' '}
-                {currentEvent['Users.username']}
+                {currentEvent['User.username']}
                 {' '}
               </p>
               <div>
