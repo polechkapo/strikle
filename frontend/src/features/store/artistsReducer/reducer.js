@@ -88,7 +88,7 @@ const artistSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(loadUserTracks.fulfilled, (state, action) => {
-        state.userTracks = action.payload.answer;
+        state.userTracks = action.payload;
       })
       .addCase(editTracks.rejected, (state, action) => {
         state.error = action.error.message;
