@@ -4,7 +4,8 @@
   "description": "todo разобраться с мультером разобраться со споти база сделать бэк(скелеты) сделать фронт(скелеты)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "cd backend && npm i && npx sequelize db:migrate && cd ../frontend && npm i && DISABLE_ESLINT_PLUGIN=true npm run build",
+    "start": "cd backend && npm start"
   },
   "repository": {
     "type": "git",

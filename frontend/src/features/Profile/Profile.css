@@ -96,6 +96,20 @@
     padding: 9px 25px;
     text-align: center;
 }
+
+.favGenOld {
+    height: 40px;
+    color: dimgray;
+    background: #fb5e8b;
+    box-shadow: 0px 4px 20px rgb(0 0 0 / 8%);
+    border-radius: 100px !important;
+    border: none;
+    margin-top: 20px;
+    z-index: 2;
+    padding: 9px 25px;
+    text-align: center;
+}
+
 .photoChAvatar {
     /* margin-top: 15%; */
     width: 230px !important;
@@ -201,13 +215,14 @@ background: transparent;
 #formAvatar {
     width: 120px;
     margin-top: 5%;
+    margin-bottom: 5%;
     background: #FFFFFF;
     border: none;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
     border-radius: 100px;
     padding: 10px;
     text-align: center;
-    /* margin-left: 60%; */
+    margin-left: 25%;
 }
 .container3 {
     margin: 20px;
@@ -288,4 +303,46 @@ background: transparent;
     align-items: center;
     flex-direction: column;
     margin-top: 26px;
+}
+#h1Artists {
+    text-align: center !important;
+}
+.h1Ganres{
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 20px;
+    margin-top: 5%;
+    z-index: 2;
+    text-align: center;
+}
+
+
+.searchCabinet {
+    border-radius: 20px;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.error_page {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 50px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 70px;
+    padding: 30px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-color: white;
+    font-size: 13px;
+    position: relative;
+    width: 900px;
+    align-items: center;
+}
+.pArtists {
+    margin-top: 10px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    color: gray;
 }

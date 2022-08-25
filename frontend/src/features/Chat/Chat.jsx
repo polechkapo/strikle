@@ -9,7 +9,6 @@ export default function Chat() {
   const [messageValue, setMessagevalue] = useState('');
   const chat = useSelector((state) => state.chats);
   const messagesRef = useRef(null);
-  console.log(chat, 'CHAT USERROOM');
 
   const onSendMessage = () => {
     socket.emit('ROOM:NEW_MESSAGE', {

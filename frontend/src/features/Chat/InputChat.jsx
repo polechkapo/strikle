@@ -31,7 +31,6 @@ export default function InputChat() {
   }, []);
 
   async function onJoin(event) {
-    console.log(event.target.parentElement.id);
     const userId = event.target.parentElement.id;
     const response = await fetch('/api/chat', {
       method: 'POST',
@@ -60,7 +59,7 @@ export default function InputChat() {
       <div className="chat-page">
         {!joined ? (
           <div className="chat_startpage">
-            <p className="chat__press">Нажмите на собеседника, чтобы начать с ним чат</p>
+            <p className="chat__press">Здесь появятся твои переписки</p>
             {/* <input type="number" placeholder="Введи ID собеседника" value={userId} onChange={(e) => setUserid(e.target.value)} />
           <button type="button" onClick={onEnter}>Войти</button> */}
           </div>

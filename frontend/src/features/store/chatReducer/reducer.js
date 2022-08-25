@@ -32,7 +32,6 @@ const loadPairs = createAsyncThunk(
   async () => {
     const response = await fetch('/api/chatpage');
     const data = await response.json();
-    console.log(data, 'DATA LOAD PAIRS');
     if (data.error) {
       throw data.error;
     }

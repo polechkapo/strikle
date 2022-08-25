@@ -67,8 +67,6 @@ export default function ChangeDashboard({ code }) {
     const artist = event.target.parentNode.childNodes[0].childNodes[1].childNodes[1].innerText;
     const { id } = event.target;
 
-    console.log(img, title, artist, id);
-
     if (!tracksArr.some((el) => el.id === id)) {
       if (tracksArr.length < 5) {
         setTracksArr([...tracksArr, {
@@ -84,9 +82,6 @@ export default function ChangeDashboard({ code }) {
 
   const handleButtons = () => {
     dispatch(editTracks(tracksArr));
-    console.log(tracksArr);
-    // window.location.href = '/cabinet';
-    // navigate('/cabinet');
   };
 
   return (
@@ -97,6 +92,7 @@ export default function ChangeDashboard({ code }) {
         placeholder="Search Songs/Artists"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        className="searchCabinet"
       />
       <div className="search__wrapper" style={{ overflowY: 'auto' }}>
         <button className="btnLogin" id=".btnLogin" type="button" onClick={handleButtons}>Изменить</button>

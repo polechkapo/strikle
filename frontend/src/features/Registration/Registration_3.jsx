@@ -43,6 +43,7 @@ function Registration3() {
   return (
     <div className="genres">
       <h1 id="h1Main" className="genres__title">Выбери любимые жанры:</h1>
+      <p className="ganresP">Тебе нужно выбрать 5 любимых жанров</p>
       <div className="genres__content">
         { genres.genres && genres.genres.map((genre) => (
           <button key={genre.id} id={genre.id} type="button" onClick={handleButton} className="genres__button">

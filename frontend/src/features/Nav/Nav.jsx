@@ -13,13 +13,13 @@ function Nav() {
 
   const handleDestroy = () => {
     dispatch(deleteUser());
-    navigate('/');
+    window.location.href = '/';
   };
 
   return (
     <div className="nav__wrapper">
       <div>
-        <img src={logo} alt="Spikle" className="nav__logo" />
+        <Link to="/"><img src={logo} alt="Spikle" className="nav__logo" /></Link>
       </div>
       {user.user ? (
         <div className="divNav">

@@ -47,7 +47,6 @@ router.route('/like')
       }
 
       // like.save();
-      // console.log(like.id, like.user_id_take, like.user_id_get);
       // res.send({id: like.id, user_id_take: like.user_id_take, user_id_get: like.user_id_get});
       // res.end();
   })

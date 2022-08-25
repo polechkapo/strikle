@@ -24,7 +24,6 @@ const initialState = {
 const addTracks = createAsyncThunk(
   'tracks/addTracks',
   async (payload) => {
-    console.log(payload, ',++++ thunk');
     const response = await fetch('/api/artists', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -34,7 +33,6 @@ const addTracks = createAsyncThunk(
     });
 
     const data = await response.json();
-    console.log('DATA ARTIST', data);
     if (data.error) {
       throw data.error;
     }
@@ -45,7 +43,6 @@ const addTracks = createAsyncThunk(
 const editTracks = createAsyncThunk(
   'tracks/editTracks',
   async (payload) => {
-    console.log(payload, ',++++ thunk');
     const response = await fetch('/api/artists', {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
@@ -55,7 +52,6 @@ const editTracks = createAsyncThunk(
     });
 
     const data = await response.json();
-    console.log('DATA ARTIST', data);
     if (data.error) {
       throw data.error;
     }
@@ -70,7 +66,6 @@ const loadUserTracks = createAsyncThunk(
     const response = await fetch('/api/artists');
 
     const data = await response.json();
-    console.log('DATA ARTIST', data);
     if (data.error) {
       throw data.error;
     }
@@ -99,7 +94,6 @@ const artistSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(editTracks.fulfilled, (state, action) => {
-        // console.log(newTracks);
         const newTracks = action.payload;
         state.userTracks = newTracks;
       });

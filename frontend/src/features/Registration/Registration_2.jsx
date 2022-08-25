@@ -12,7 +12,6 @@ function Registration2() {
   const [photo, setPhoto] = useState(null);
 
   const handlerUloadPhoto = React.useCallback(async (e) => {
-    console.log(e.target.files);
     try {
       const picturesData = [...e.target.files];
       const file = new FormData();
@@ -37,7 +36,6 @@ function Registration2() {
     const city = event.target.city.value;
     const bio = event.target.bio.value;
     const avatar = photo;
-    console.log(avatar, 'form');
     dispatch(updateUser({
       gender, birthdate, city, bio, avatar,
     }));
@@ -58,15 +56,18 @@ function Registration2() {
                 : <img className="photoReg" src={`${empty}`} alt="avatar" />
             }
             </div>
-            <form action="/multer" method="post">
-              <input type="file" onChange={handlerUloadPhoto} />
+            <form id="formAvatar" action="/multer" method="post">
+              <label htmlFor="file">
+                <input type="file" id="file" className="visually-hidden" onChange={handlerUloadPhoto} />
+                <span>Добавить фото</span>
+              </label>
             </form>
           </label>
         </div>
         <div id="container3">
           <label htmlFor="gender" className="label__inputs">
             Какого ты пола?
-            <select className="inputProfile" name="gender" id="gender">
+            <select className="inputProfile input_gender" name="gender" id="gender">
               <option disabled>Какого ты пола?</option>
               <option value="Ж">Ж</option>
               <option value="М">М</option>

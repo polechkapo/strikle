@@ -4,7 +4,6 @@ import empty from './empty.jpeg';
 export default function Multer() {
   const [photo, setPhoto] = useState(null);
 
-  console.log(photo);
   const hendlerUloadPhoto = React.useCallback(async (e) => {
     try {
       const picturesData = [...e.target.files];

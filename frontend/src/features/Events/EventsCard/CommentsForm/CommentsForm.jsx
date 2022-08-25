@@ -17,7 +17,7 @@ function CommentsForm() {
   return (
     <div>
       <form onSubmit={handleCommentForm} id={id} className="comments_form">
-        <textarea name="comment" id={user.id} cols="30" rows="10" placeholder="Оставь комментарий здесь" className="textareaProfile" />
+        <textarea name="comment" id={user.id} cols="30" rows="10" placeholder="Оставь комментарий здесь" className="textareaComments" />
         <button type="submit" className="btnLogin">Добавить</button>
       </form>
     </div>

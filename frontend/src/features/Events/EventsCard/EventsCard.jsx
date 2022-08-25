@@ -8,7 +8,7 @@ function EventsCard({ event }) {
     <div key={event.id} className="events__card">
       <h4 className="events__title">{event.title}</h4>
       <img src={event.photo} alt={event.title} style={{ width: '300px' }} />
-      <p>{event.description}</p>
+      <p className="event__info">{event.description}</p>
       <p>
         Когда:
         {' '}

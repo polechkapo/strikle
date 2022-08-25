@@ -9,12 +9,10 @@ function EventPage() {
   const { user } = useSelector((state) => state.user);
   const { events, comments, participants } = useSelector((state) => state.events);
   const currentEvent = events.find((el) => el.id === +id);
-  console.log(currentEvent, 'currentEvent');
   const eventComments = comments.filter((comment) => comment.event_id === Number(id));
 
   const currentParticipants = participants.filter((el) => el.event_id === Number(id));
 
-  console.log(currentParticipants, 'ЭТОТ ЭВЕНТ');
   const dispatch = useDispatch();
 
   const handleButton = (event) => {
@@ -31,26 +29,24 @@ function EventPage() {
             <h4 className="events__title">{currentEvent.title}</h4>
             <div key={currentEvent.id} className="events__card-content">
               <img src={currentEvent.photo} alt={currentEvent.title} style={{ width: '300px' }} />
-              <p>
-                Создал ивент:
-                {' '}
-                {currentEvent['User.username']}
-                {' '}
-              </p>
-              <div>
-                <p>{currentEvent.description}</p>
-                <p>{new Date(currentEvent.date).toLocaleString('ru-RU').substring(0, 17)}</p>
-                <div>
-                  <div>
-                    <ul className="events__lists">
-                      Уже идут:
-                      {currentParticipants && currentParticipants.map((el) => (
-                        <li key={el.id}>
-                          {el['User.username']}
-                          <img src={el['User.avatar']} alt={el['User.username']} className="event_page-img" />
-                        </li>
-                      ))}
-                    </ul>
+              <div className="event__description">
+                <p className="event__info">{currentEvent.description}</p>
+                <p id="textEvent">{new Date(currentEvent.date).toLocaleString('ru-RU').substring(0, 17)}</p>
+                <p>
+                  Создал ивент:
+                  {' '}
+                  {currentEvent['User.username']}
+                  {' '}
+                </p>
+                <div className="events__lists-wrapper">
+                  <p>Уже идут:</p>
+                  <div className="events__lists">
+                    {currentParticipants && currentParticipants.map((el) => (
+                      <div key={el.id}>
+                        {/* {el['User.username']} */}
+                        <img src={el['User.avatar']} alt={el['User.username']} className="event_page-img" />
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -66,23 +62,25 @@ function EventPage() {
         <h4 className="events__title">Комментарии:</h4>
         {eventComments ? eventComments.map((comment) => (
           <div key={comment.id} className="comments">
-            <p>
-              {comment['User.username']}
-              {' '}
-              пишет:
-            </p>
-            <p>
-              <i>
-                {' '}
-                {new Date(comment.createdAt).toLocaleString('ru-RU').substring(0, 17)}
-              </i>
-            </p>
+            <div className="comments2">
+              <p>
+                {comment['User.username']}
+                {' :'}
+                {/* пишет: */}
+              </p>
+              <p>
+                <i className="textComments">
+                  {' '}
+                  {new Date(comment.createdAt).toLocaleString('ru-RU').substring(0, 17)}
+                </i>
+              </p>
+            </div>
             <div className="comTextEvents">{comment.comment}</div>
           </div>
         ))
           : <div>Комментариев пока что нет</div>}
-        <CommentsForm />
       </div>
+      <CommentsForm />
     </div>
   );
 }

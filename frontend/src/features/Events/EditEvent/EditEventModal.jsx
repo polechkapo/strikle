@@ -9,7 +9,6 @@ function EditEventModal({ event, setEditModal }) {
   const dispatch = useDispatch();
 
   const handlerUloadPhoto = React.useCallback(async (e) => {
-    console.log(e.target.files);
     try {
       const picturesData = [...e.target.files];
       const file = new FormData();
@@ -36,7 +35,6 @@ function EditEventModal({ event, setEditModal }) {
       photo,
       id: e.target.id,
     };
-    console.log(data);
     dispatch(editEvent(data));
     setEditModal(false);
   };
@@ -49,9 +47,10 @@ function EditEventModal({ event, setEditModal }) {
           {
               photo && <img className="photo" src={photo} alt="avatar" style={{ width: 100 }} />
             }
-          <form action="/multer" method="post">
+          <form id="formAvatar" className="modalBtn" action="/multer" method="post">
             <label htmlFor="file">
-              <input type="file" onChange={handlerUloadPhoto} name="file" id="file" multiple />
+              <input type="file" className="visually-hidden" onChange={handlerUloadPhoto} name="file" id="file" multiple />
+              <span>Изменить фото</span>
             </label>
           </form>
         </div>

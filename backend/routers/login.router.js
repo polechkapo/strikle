@@ -12,7 +12,6 @@ router.route('/')
       raw: true,
     });
 
-console.log(userCheck, 'etrewuyrtuwyetruywatefuywteurytewuytueywtuf');
     if (!userCheck) {
       return res.json({ user: null, errorMessage: 'Такого пользователя нет!' });
     }

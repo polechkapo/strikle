@@ -13,7 +13,6 @@ export default function Login() {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log(email, password);
     dispatch(loginUser({ email, password }));
     if (errorMessage) {
       document.querySelector('form').reset();
