@@ -3,7 +3,6 @@
    flex-direction: row;
    flex-wrap: wrap;
    gap: 30px;
-   width: 1140px;
    padding: 30px;
    border-top-right-radius: 50px;
    border-bottom-left-radius: 50px;
@@ -12,6 +11,7 @@
    flex-direction: row-reverse;
    justify-content: space-around;
    font-size: 13px;
+   margin: 0 auto;
 }
 
 .genres__title {
@@ -49,12 +49,20 @@
 }
 
 .genres {
-   margin-top: 42px;
+   display: flex;
+   flex-direction: column;
+   margin: 0 auto;
+   width: 1000px;
+   margin-top: 50px;
 }
 
-button:hover {
+/* button:hover {
    opacity: 0.7;
 }
+
+button:active {
+   opacity: 1;
+} */
 
 a:hover {
    opacity: 0.7;

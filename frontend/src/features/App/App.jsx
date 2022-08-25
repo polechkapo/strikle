@@ -9,7 +9,7 @@ import Registration3 from '../Registration/Registration_3';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import SearchSpoty from '../SearchSpoty/SearchSpoty';
-import { loadUser } from '../store/userReducer/reducer';
+import { loadUser, loadUsers } from '../store/userReducer/reducer';
 import Home from '../Home/Home';
 import Nav from '../Nav/Nav';
 import ChangeArtists from '../Profile/ChangeArtists';
@@ -22,7 +22,8 @@ import MyEvents from '../Events/MyEvents/MyEvents';
 import InputChat from '../Chat/InputChat';
 import socket from '../Chat/socket';
 import { setMessages } from '../store/chatReducer/reducer';
-import { initUserGenre, loadUserGenres } from '../store/genresReducer/reducer';
+import { initUserGenre, loadGenres, loadUserGenres } from '../store/genresReducer/reducer';
+import { loadUserTracks } from '../store/artistsReducer/reducer';
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +47,9 @@ function App() {
     dispatch(loadParticipants());
     dispatch(loadUserGenres());
     dispatch(initUserGenre());
+    dispatch(loadUsers());
+    dispatch(loadGenres());
+    dispatch(loadUserTracks());
   }, []);
 
   console.log(user);
