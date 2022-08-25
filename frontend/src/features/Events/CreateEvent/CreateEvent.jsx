@@ -9,7 +9,6 @@ function CreateEvent() {
   const dispatch = useDispatch();
   const [photo, setPhoto] = useState(null);
   const handlerUloadPhoto = React.useCallback(async (e) => {
-    console.log(e.target.files);
     try {
       const picturesData = [...e.target.files];
       const file = new FormData();

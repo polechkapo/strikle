@@ -31,7 +31,6 @@ export default function InputChat() {
   }, []);
 
   async function onJoin(event) {
-    console.log(event.target.parentElement.id);
     const userId = event.target.parentElement.id;
     const response = await fetch('/api/chat', {
       method: 'POST',

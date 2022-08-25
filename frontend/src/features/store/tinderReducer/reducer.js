@@ -45,7 +45,6 @@ const findMatch = createAsyncThunk(
   'likes/findLike',
 
   async (payload) => {
-    console.log(payload, 'thunk match');
     const response = await fetch('/api/match', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },

@@ -5,7 +5,6 @@ import { editPassUser, falseMessage } from '../store/userReducer/reducer';
 function ChangePassword() {
   const dispatch = useDispatch();
   const { checkEditPassword } = useSelector((state) => state.user);
-  console.log(checkEditPassword, 'checkEditPassword');
   const handleForm = (event) => {
     event.preventDefault();
     const password = event.target.password.value;

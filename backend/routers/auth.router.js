@@ -21,7 +21,6 @@ router.route('/session')
 
   router.route('/all')
   .get(async (req, res) => {
-    console.log('я на бэке')
     let users = '';
     if (req.session.userId) {
       users = await User.findAll( {

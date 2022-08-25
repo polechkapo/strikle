@@ -9,12 +9,10 @@ function EventPage() {
   const { user } = useSelector((state) => state.user);
   const { events, comments, participants } = useSelector((state) => state.events);
   const currentEvent = events.find((el) => el.id === +id);
-  console.log(currentEvent, 'currentEvent');
   const eventComments = comments.filter((comment) => comment.event_id === Number(id));
 
   const currentParticipants = participants.filter((el) => el.event_id === Number(id));
 
-  console.log(currentParticipants, 'ЭТОТ ЭВЕНТ');
   const dispatch = useDispatch();
 
   const handleButton = (event) => {

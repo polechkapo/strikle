@@ -12,7 +12,6 @@ function Registration2() {
   const [photo, setPhoto] = useState(null);
 
   const handlerUloadPhoto = React.useCallback(async (e) => {
-    console.log(e.target.files);
     try {
       const picturesData = [...e.target.files];
       const file = new FormData();
@@ -37,7 +36,6 @@ function Registration2() {
     const city = event.target.city.value;
     const bio = event.target.bio.value;
     const avatar = photo;
-    console.log(avatar, 'form');
     dispatch(updateUser({
       gender, birthdate, city, bio, avatar,
     }));

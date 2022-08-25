@@ -24,7 +24,6 @@ const initialState = {
 const addTracks = createAsyncThunk(
   'tracks/addTracks',
   async (payload) => {
-    console.log(payload, ',++++ thunk');
     const response = await fetch('/api/artists', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -44,7 +43,6 @@ const addTracks = createAsyncThunk(
 const editTracks = createAsyncThunk(
   'tracks/editTracks',
   async (payload) => {
-    console.log(payload, ',++++ thunk');
     const response = await fetch('/api/artists', {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },

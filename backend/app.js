@@ -3,6 +3,7 @@ const config = require('./config/config');
 const express = require('express');
 const { sequelize } = require('./db/models');
 const { Message, User } = require('./db/models')
+const path = require('path')
 const regRouter = require('./routers/reg.router');
 const favoriteRouter = require('./routers/favorite.router');
 const sessionRouter = require('./routers/auth.router');
@@ -55,6 +56,9 @@ app.use('/api/login', loginRouter);
 app.use('/api/multer', photoUploadFileRouter)
 app.use('/api/favorite', favoriteRouter);
 app.use('/api/refresh', refreshRouter);
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
 
 try {
   io.on('connection', (socket) => {
@@ -74,10 +78,6 @@ try {
       })
       io.to(chat_id).emit('ROOM:NEW_MESSAGES', newMessage)
     })
-    // socket.on('disconnect', () => {
-    //   console.log(room, 'TUT RABOTAEM');
-    //   socket.on(room).emit('ROOM:LEAVE', '')
-    // })
 
     console.log('user connection', socket.id);
   });

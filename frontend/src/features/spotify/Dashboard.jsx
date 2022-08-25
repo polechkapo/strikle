@@ -98,8 +98,6 @@ export default function Dashboard({ code }) {
     const title = event.target.parentNode.childNodes[0].childNodes[1].childNodes[0].innerText;
     const artist = event.target.parentNode.childNodes[0].childNodes[1].childNodes[1].innerText;
     const { id } = event.target;
-    // console.log(img, title, artist);
-    // console.log(id);
 
     if (!tracksArr.some((el) => el.id === id)) {
       if (tracksArr.length < 5) {

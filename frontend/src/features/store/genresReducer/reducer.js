@@ -110,9 +110,7 @@ const genresSlice = createSlice({
   initialState,
   reducers: {
     editArrGenres: (state, action) => {
-      console.log('REDYCER GENRE');
       const newGenres = action.payload;
-      console.log(newGenres, 'newGenres');
       state.userGenre = state.userGenre.filter((el) => el.genre_id !== newGenres);
     },
   },

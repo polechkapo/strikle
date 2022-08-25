@@ -56,7 +56,6 @@ const addComment = createAsyncThunk(
   'comments/addComment',
 
   async (payload) => {
-    console.log(payload);
     const response = await fetch('/api/comment', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -77,7 +76,6 @@ const createEvent = createAsyncThunk(
   'events/createEvent',
 
   async (payload) => {
-    console.log(payload, 'events');
     const response = await fetch('/api/events/new', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -98,7 +96,6 @@ const deleteEvent = createAsyncThunk(
   'events/deleteEvent',
 
   async (payload) => {
-    console.log(payload, 'events');
     const response = await fetch('/api/events/delete', {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' },
@@ -119,7 +116,6 @@ const editEvent = createAsyncThunk(
   'events/editEvent',
 
   async (payload) => {
-    console.log(payload, 'events');
     const response = await fetch('/api/events/edit', {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },

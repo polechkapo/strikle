@@ -18,7 +18,6 @@ function Tinder() {
   const { users, user } = useSelector((state) => state.user);
   const { usersGenres, userGenre } = useSelector((state) => state.genres);
   const { likes, match } = useSelector((state) => state.likes);
-  console.log('TINDER');
   const likesCards = likes.map((el) => el.user_id_get);
   const db = users.filter((el) => !likesCards.includes(el.id));
   const [modal, setModal] = useState(true);
