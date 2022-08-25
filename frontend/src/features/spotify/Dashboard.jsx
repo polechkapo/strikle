@@ -126,6 +126,7 @@ export default function Dashboard({ code }) {
         </div>
       )}
       <Form.Control
+        className="searchSpoty"
         type="search"
         placeholder="Search Songs/Artists"
         value={search}
@@ -134,11 +135,11 @@ export default function Dashboard({ code }) {
       <div className="flex-grow-1 my-2" style={{ overflowY: 'auto' }}>
         <button type="button" onClick={handleButtons} className="btnProfile">Готово</button>
         {searchResults.map((track) => (
-          <div key={track.uri}>
+          <div className="tracksDash" key={track.uri}>
             <img src={track.albumUrl} alt="" />
             <p>{track.title}</p>
             <p>{track.artist}</p>
-            <button type="button" onClick={handleTrack} id={track.uri}>💖</button>
+            <button className="btnSearch" type="button" onClick={handleTrack} id={track.uri}>💖</button>
           </div>
         ))}
         {/* {searchResults.length === 0 && (

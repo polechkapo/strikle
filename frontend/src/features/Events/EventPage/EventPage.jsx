@@ -77,7 +77,7 @@ function EventPage() {
                 {new Date(comment.createdAt).toLocaleString('ru-RU').substring(0, 17)}
               </i>
             </p>
-            <p>{comment.comment}</p>
+            <div className="comTextEvents">{comment.comment}</div>
           </div>
         ))
           : <div>Комментариев пока что нет</div>}

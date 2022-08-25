@@ -40,7 +40,7 @@ function ChangeGenres() {
 
   return (
     <>
-      <h4 className="h1Profile">Ваши любимые жанры</h4>
+      <h4 className="h1Profile">Твои любимые жанры:</h4>
       <div id="divGenres">
         {userGenre.map((genre) => (
           <p className="favGen" key={genre.id} id={genre.id}>
