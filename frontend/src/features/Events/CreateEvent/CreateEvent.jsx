@@ -46,9 +46,10 @@ function CreateEvent() {
       <div className="events__wrapper create__wrapper">
         <div className="avatar create__avatar">
           {photo && <img className="photo" src={photo} alt="avatar" style={{ width: 300, borderRadius: 0 }} />}
-          <form action="/multer" method="post">
+          <form id="formAvatar" action="/multer" method="post">
             <label htmlFor="file">
-              <input type="file" onChange={handlerUloadPhoto} name="file" id="file" multiple />
+              <input type="file" className="visually-hidden" onChange={handlerUloadPhoto} name="file" id="file" multiple />
+              <span>Добавить фото</span>
             </label>
           </form>
         </div>

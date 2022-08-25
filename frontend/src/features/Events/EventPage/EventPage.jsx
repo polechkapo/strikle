@@ -31,26 +31,26 @@ function EventPage() {
             <h4 className="events__title">{currentEvent.title}</h4>
             <div key={currentEvent.id} className="events__card-content">
               <img src={currentEvent.photo} alt={currentEvent.title} style={{ width: '300px' }} />
-              <p>
-                Создал ивент:
-                {' '}
-                {currentEvent['User.username']}
-                {' '}
-              </p>
               <div>
                 <p>{currentEvent.description}</p>
-                <p>{new Date(currentEvent.date).toLocaleString('ru-RU').substring(0, 17)}</p>
+                <p id="textEvent">{new Date(currentEvent.date).toLocaleString('ru-RU').substring(0, 17)}</p>
+                <p>
+                  Создал ивент:
+                  {' '}
+                  {currentEvent['User.username']}
+                  {' '}
+                </p>
                 <div>
                   <div>
-                    <ul className="events__lists">
+                    <div className="events__lists">
                       Уже идут:
                       {currentParticipants && currentParticipants.map((el) => (
-                        <li key={el.id}>
-                          {el['User.username']}
+                        <div key={el.id}>
+                          {/* {el['User.username']} */}
                           <img src={el['User.avatar']} alt={el['User.username']} className="event_page-img" />
-                        </li>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -66,17 +66,19 @@ function EventPage() {
         <h4 className="events__title">Комментарии:</h4>
         {eventComments ? eventComments.map((comment) => (
           <div key={comment.id} className="comments">
-            <p>
-              {comment['User.username']}
-              {' '}
-              пишет:
-            </p>
-            <p>
-              <i>
-                {' '}
-                {new Date(comment.createdAt).toLocaleString('ru-RU').substring(0, 17)}
-              </i>
-            </p>
+            <div className="comments2">
+              <p>
+                {comment['User.username']}
+                {' :'}
+                {/* пишет: */}
+              </p>
+              <p>
+                <i className="textComments">
+                  {' '}
+                  {new Date(comment.createdAt).toLocaleString('ru-RU').substring(0, 17)}
+                </i>
+              </p>
+            </div>
             <div className="comTextEvents">{comment.comment}</div>
           </div>
         ))
