@@ -13,7 +13,7 @@ function Nav() {
 
   const handleDestroy = () => {
     dispatch(deleteUser());
-    navigate('/');
+    window.location.href = '/';
   };
 
   return (

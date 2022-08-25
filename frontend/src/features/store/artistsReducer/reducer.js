@@ -34,7 +34,6 @@ const addTracks = createAsyncThunk(
     });
 
     const data = await response.json();
-    console.log('DATA ARTIST', data);
     if (data.error) {
       throw data.error;
     }
@@ -55,7 +54,6 @@ const editTracks = createAsyncThunk(
     });
 
     const data = await response.json();
-    console.log('DATA ARTIST', data);
     if (data.error) {
       throw data.error;
     }
@@ -70,7 +68,6 @@ const loadUserTracks = createAsyncThunk(
     const response = await fetch('/api/artists');
 
     const data = await response.json();
-    console.log('DATA ARTIST', data);
     if (data.error) {
       throw data.error;
     }
@@ -93,13 +90,12 @@ const artistSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(loadUserTracks.fulfilled, (state, action) => {
-        state.userTracks = action.payload;
+        state.userTracks = action.payload.answer;
       })
       .addCase(editTracks.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(editTracks.fulfilled, (state, action) => {
-        // console.log(newTracks);
         const newTracks = action.payload;
         state.userTracks = newTracks;
       });

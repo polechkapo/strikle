@@ -31,10 +31,8 @@ const loadUsers = createAsyncThunk(
   'user/initAllUsers',
 
   async () => {
-    console.log('я в санке');
     const response = await fetch('/api/all');
     const data = await response.json();
-    console.log(data, 'DATA USERS');
     if (data.error) {
       throw data.error;
     }
@@ -48,7 +46,6 @@ const registerUser = createAsyncThunk(
 
   async (payload) => {
     // сюда прилетает пэйлоад из компонента
-    console.log(payload);
     const response = await fetch('/api/reg', { // сюда кидаем фетч 
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -56,7 +53,6 @@ const registerUser = createAsyncThunk(
 
     });
     const data = await response.json();
-    console.log(data);
 
     if (data.error) {
       throw data.errorMessage;
@@ -70,14 +66,12 @@ const loginUser = createAsyncThunk(
   'user/loginUser',
 
   async (payload) => {
-    console.log(payload, 'thunk');
     const response = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'Application/json' },
       body: JSON.stringify(payload),
     });
     const data = await response.json();
-    console.log(data);
 
     if (data.error) {
       throw data.errorMessage;
@@ -92,7 +86,6 @@ const updateUser = createAsyncThunk(
 
   async (payload) => {
     // сюда прилетает пэйлоад из компонента
-    console.log(payload, 'update fetch');
     const response = await fetch('/api/reg', { // сюда кидаем фетч 
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
@@ -100,7 +93,6 @@ const updateUser = createAsyncThunk(
 
     });
     const data = await response.json();
-    console.log(data, '<===== data fetch');
 
     if (data.error) {
       throw data.error;
@@ -116,7 +108,6 @@ const editUser = createAsyncThunk(
 
   async (payload) => {
     // сюда прилетает пэйлоад из компонента
-    console.log(payload, 'edit fetch');
     const response = await fetch('/api/profile', { // сюда кидаем фетч 
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
@@ -124,7 +115,6 @@ const editUser = createAsyncThunk(
 
     });
     const data = await response.json();
-    console.log(data, '<===== data edit fetch');
 
     if (data.error) {
       throw data.error;
@@ -140,7 +130,6 @@ const editPassUser = createAsyncThunk(
 
   async (payload) => {
     // сюда прилетает пэйлоад из компонента
-    console.log(payload, 'edit pass');
     const response = await fetch('/api/editpass', { // сюда кидаем фетч 
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
@@ -149,7 +138,6 @@ const editPassUser = createAsyncThunk(
     });
 
     const data = await response.json();
-    console.log(data, '<===== data edit fetch');
 
     if (data.error) {
       throw data.error;
@@ -170,7 +158,6 @@ const deleteUser = createAsyncThunk(
     });
 
     const data = await response.json();
-    console.log(data, '<===== data fetch');
 
     if (data.error) {
       throw data.error;
@@ -212,16 +199,13 @@ const userSlice = createSlice({
         // Успешный случай — загрузка прошла хорошо
         const allUsers = action.payload;
         state.users = allUsers;
-        console.log(allUsers);
       })
       .addCase(registerUser.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
-        console.log(state.error, '<===== error register');
         state.error = action.error.message;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
-        console.log(state.user, '<===== user');
         const newUser = action.payload;
         state.user = newUser;
         const message = action.payload.errorMessage;
@@ -229,7 +213,6 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
-        console.log(state.error, '<===== error login');
         state.error = action.error.message;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
@@ -238,38 +221,31 @@ const userSlice = createSlice({
         state.user = newUser;
         const message = action.payload.errorMessage;
         state.errorMessage = message;
-        console.log(state.user, state.errorMessage);
       })
       .addCase(updateUser.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
-        console.log(state.error, '<===== error update');
         state.error = action.error.message;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
-        console.log(state.user, '<===== Updateuser');
         const newInfo = action.payload;
         state.user = newInfo;
       })
       .addCase(editUser.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
-        console.log(state.error, '<===== error edit');
         state.error = action.error.message;
       })
       .addCase(editUser.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
-        console.log(state.user, '<===== Edituser');
         const newInfo = action.payload;
         state.user = newInfo;
       })
       .addCase(editPassUser.rejected, (state, action) => {
         // Сценарий провала — загрузка не увенчалась успехом
-        console.log(state.error, '<===== error edit');
         state.error = action.error.message;
       })
       .addCase(editPassUser.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
-        console.log(state.user, '<===== Edituser');
         state.checkEditPassword = action.payload;
       })
       .addCase(deleteUser.rejected, (state, action) => {
