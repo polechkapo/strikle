@@ -97,6 +97,7 @@ export default function ChangeDashboard({ code }) {
         placeholder="Search Songs/Artists"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        className="searchCabinet"
       />
       <div className="search__wrapper" style={{ overflowY: 'auto' }}>
         <button className="btnLogin" id=".btnLogin" type="button" onClick={handleButtons}>Изменить</button>
