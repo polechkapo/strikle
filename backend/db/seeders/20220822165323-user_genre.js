@@ -100,12 +100,6 @@ module.exports = {
     },
     {
       user_id: 4,
-      genre_id: 16,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      user_id: 4,
       genre_id: 19,
       createdAt: new Date(),
       updatedAt: new Date(),

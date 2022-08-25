@@ -69,7 +69,7 @@ function Registration2() {
         <div id="container3">
           <label htmlFor="gender" className="label__inputs">
             Какого ты пола?
-            <select className="inputProfile" name="gender" id="gender">
+            <select className="inputProfile input_gender" name="gender" id="gender">
               <option disabled>Какого ты пола?</option>
               <option value="Ж">Ж</option>
               <option value="М">М</option>

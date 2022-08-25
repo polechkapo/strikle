@@ -74,7 +74,7 @@ justify-content: center;
  .card {
    position: relative;
    background-color: #fff;
-   height: 500px;
+   height: 523px;
    /* max-width: 260px;
    height: 300px; */
    /* border-radius: 20px;
@@ -86,6 +86,8 @@ justify-content: center;
   align-items: center;
   width: 800px;
   margin: 0 auto;
+  margin-bottom: 200px;
+  margin-top: 50px;
  }
 
  .card__photo {
@@ -122,6 +124,7 @@ justify-content: center;
   left: 0;
   right: 0;
   gap: 30px;
+  top: 95%;
  }
  
  /* .buttons button {
@@ -338,4 +341,9 @@ color: #000000;
 .match__name {
   font-size: 23px;
   font-weight: 400px;
+}
+
+.card__bio {
+  width: 84%;
+  text-align: center;
 }

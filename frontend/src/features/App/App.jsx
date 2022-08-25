@@ -34,7 +34,6 @@ function App() {
     });
     socket.on('ROOM:NEW_MESSAGES', (message) => {
       dispatch(setMessages(message));
-      console.log(message, 'APPJSX NEW MESSAGE');
     });
   }, []);
 
@@ -76,7 +75,6 @@ function App() {
         )
           : (
             <>
-              <Route path="/chat" element={<InputChat />} />
               <Route path="/search" element={<SearchSpoty />} />
               <Route path="/" element={<Main />} />
               <Route path="/registraton" element={<Registration1 />} />

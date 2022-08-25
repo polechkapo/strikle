@@ -108,12 +108,14 @@ const initUserGenre = createAsyncThunk(
 const genresSlice = createSlice({
   name: 'genres',
   initialState,
-  // reducers: {
-  //   addGenres: (state, action) => {
-  //     const newGenres = action.payload;
-  //     state.userGenres.push(newGenres);
-  //   },
-  // },
+  reducers: {
+    editArrGenres: (state, action) => {
+      console.log('REDYCER GENRE');
+      const newGenres = action.payload;
+      console.log(newGenres, 'newGenres');
+      state.userGenre = state.userGenre.filter((el) => el.genre_id !== newGenres);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadGenres.rejected, (state, action) => {
@@ -179,9 +181,7 @@ export {
   initUserGenre,
 };
 
-// export const {
-//   addGenres,
-// } = genresSlice.actions;
+export const { editArrGenres } = genresSlice.actions;
 
 // export const selectGenres = (state) => state.genres;
 // export const selectUserGenres = (state) => state.userGenres;

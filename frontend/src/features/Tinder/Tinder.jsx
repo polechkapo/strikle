@@ -128,7 +128,7 @@ function Tinder() {
                   {' '}
                   {differenceInYears(new Date(Date.now()), new Date(character.birth_date))}
                 </h3>
-                <p>{character.bio}</p>
+                <p className="card__bio">{character.bio}</p>
                 <p>{character.city}</p>
               </div>
               <div className="artists__list">
@@ -173,7 +173,7 @@ function Tinder() {
                 <button type="button" onClick={() => setModal(!modal)} className="genres__button-control">
                   Продолжить
                 </button>
-                <button onClick={() => navigate('/cabinet')} type="button" className="genres__button-control">
+                <button onClick={() => navigate('/chat')} type="button" className="genres__button-control">
                   Написать
                 </button>
               </div>
