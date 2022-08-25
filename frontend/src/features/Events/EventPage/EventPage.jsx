@@ -31,8 +31,8 @@ function EventPage() {
             <h4 className="events__title">{currentEvent.title}</h4>
             <div key={currentEvent.id} className="events__card-content">
               <img src={currentEvent.photo} alt={currentEvent.title} style={{ width: '300px' }} />
-              <div>
-                <p>{currentEvent.description}</p>
+              <div className="event__description">
+                <p className="event__info">{currentEvent.description}</p>
                 <p id="textEvent">{new Date(currentEvent.date).toLocaleString('ru-RU').substring(0, 17)}</p>
                 <p>
                   Создал ивент:
@@ -40,17 +40,15 @@ function EventPage() {
                   {currentEvent['User.username']}
                   {' '}
                 </p>
-                <div>
-                  <div>
-                    <div className="events__lists">
-                      Уже идут:
-                      {currentParticipants && currentParticipants.map((el) => (
-                        <div key={el.id}>
-                          {/* {el['User.username']} */}
-                          <img src={el['User.avatar']} alt={el['User.username']} className="event_page-img" />
-                        </div>
-                      ))}
-                    </div>
+                <div className="events__lists-wrapper">
+                  <p>Уже идут:</p>
+                  <div className="events__lists">
+                    {currentParticipants && currentParticipants.map((el) => (
+                      <div key={el.id}>
+                        {/* {el['User.username']} */}
+                        <img src={el['User.avatar']} alt={el['User.username']} className="event_page-img" />
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -83,8 +81,8 @@ function EventPage() {
           </div>
         ))
           : <div>Комментариев пока что нет</div>}
-        <CommentsForm />
       </div>
+      <CommentsForm />
     </div>
   );
 }
