@@ -5,12 +5,13 @@ const { User } = require('../db/models');
 router.route('/profile')
   .put(async (req, res) => {
     try {
-      const  id  = req.session.userId;
+      const id = req.session.userId;
       const { email, username, city, bio } = req.body;
-      
+
       const editUser = await User.update({ email, username, city, bio }, { where: { id } });
       if (editUser) {
-        res.status(203).json({ updateUser: true })
+        const user = await User.findOne({ where: { id } })
+        res.status(203).json(user)
       } else {
         res.status(404).json({ updateUser: false })
       }

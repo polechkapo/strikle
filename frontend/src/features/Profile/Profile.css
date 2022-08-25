@@ -96,6 +96,20 @@
     padding: 9px 25px;
     text-align: center;
 }
+
+.favGenOld {
+    height: 40px;
+    color: dimgray;
+    background: #fb5e8b;
+    box-shadow: 0px 4px 20px rgb(0 0 0 / 8%);
+    border-radius: 100px !important;
+    border: none;
+    margin-top: 20px;
+    z-index: 2;
+    padding: 9px 25px;
+    text-align: center;
+}
+
 .photoChAvatar {
     /* margin-top: 15%; */
     width: 230px !important;
