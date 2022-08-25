@@ -356,6 +356,12 @@ module.exports = {
       email: 'p_anya@mail.ru',
       birth_date: '1992-08-12',
       avatar: '/avatars/p_anya.png',
+      gender: 'М',
+      bio: 'Всем привет!',
+      city: 'Санкт-Петербург',
+      password: await bcrypt.hash('123456Qq', 10),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },    
     {
       username: 'VItaliy',
@@ -381,7 +387,6 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },
-
   ], {});
 
   },
