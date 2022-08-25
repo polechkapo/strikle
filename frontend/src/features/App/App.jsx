@@ -24,6 +24,7 @@ import socket from '../Chat/socket';
 import { setMessages } from '../store/chatReducer/reducer';
 import { initUserGenre, loadGenres, loadUserGenres } from '../store/genresReducer/reducer';
 import { loadUserTracks } from '../store/artistsReducer/reducer';
+import NoPage from '../NoPage/NoPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -71,15 +72,16 @@ function App() {
             <Route path="/tinder" element={<MainTinder />} />
             <Route path="/events/new" element={<CreateEvent />} />
             <Route path="/events/myevents" element={<MyEvents />} />
+            <Route path="*" element={<NoPage />} />
           </>
         )
           : (
             <>
-              <Route path="/chat" element={<InputChat />} />
               <Route path="/search" element={<SearchSpoty />} />
               <Route path="/" element={<Main />} />
               <Route path="/registraton" element={<Registration1 />} />
               <Route path="/login" element={<Login />} />
+              <Route path="*" element={<NoPage />} />
             </>
           )}
         {/* <Route path="/multer" element={<Multer />} /> */}

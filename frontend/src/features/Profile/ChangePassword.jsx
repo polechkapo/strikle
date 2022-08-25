@@ -58,7 +58,7 @@ function ChangePassword() {
             <p>Изменения успешно применены</p>
           </div>
         )}
-        <button className="btnLogin" id="btnProfile" type="submit">Сохранить изменения</button>
+        <button className="btnLogin" id="btnProfile" type="submit" name="button">Сохранить изменения</button>
       </form>
     </div>
   );

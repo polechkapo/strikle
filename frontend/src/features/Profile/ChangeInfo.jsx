@@ -39,6 +39,7 @@ function ChangeInfo() {
           onChange={(event) => setEmail(event.target.value)}
           pattern="^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$"
           title="Введите действующую почту"
+          placeholder="Изменить email"
         />
         <input
           className="nameInfo"
@@ -47,6 +48,7 @@ function ChangeInfo() {
           // id="name"
           value={username}
           onChange={(event) => setUsername(event.target.value)}
+          placeholder="Изменить имя"
         />
 
         <input
@@ -56,6 +58,7 @@ function ChangeInfo() {
           name="city"
           value={city}
           onChange={(event) => setCity(event.target.value)}
+          placeholder="Изменить город"
         />
         <textarea
           className="bioProfile"
@@ -65,6 +68,7 @@ function ChangeInfo() {
           rows="10"
           value={bio}
           onChange={(event) => setBio(event.target.value)}
+          placeholder="Изменить био"
         />
 
         {/* <input type="text" placeholder="Поиск исполнителя" />
