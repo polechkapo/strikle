@@ -56,7 +56,7 @@
 #div_reg1 {    
     background-image: url('./Ellipse\ 25\ \(1\).png');
     background-size: cover;
-    position: absolute;
+    position: fixed;
     bottom: 3%;
     right: 4%;
     width: 24%;
@@ -65,7 +65,7 @@
 #div_reg2 {    
     background-image: url('./Rectangle\ 55\ \(1\).png');
     background-size: cover;
-    position: absolute;
+    position: fixed;
     top: 15%;
     right: 23%;
     width: 20%;
@@ -74,7 +74,7 @@
 #div_reg3 {    
     background-image: url('./Rectangle\ 56\ \(1\).png');
     background-size: cover;
-    position: absolute;
+    position: fixed;
     right: 4%;
     top: 13%;
     width: 16%;

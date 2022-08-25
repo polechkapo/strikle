@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
 /* eslint-disable consistent-return */
@@ -93,9 +94,9 @@ export default function Dashboard({ code }) {
   // const tracksArr = [];
 
   const handleTrack = (event) => {
-    const img = event.target.parentNode.childNodes[0].attributes[0].nodeValue;
-    const title = event.target.parentNode.childNodes[1].innerText;
-    const artist = event.target.parentNode.childNodes[2].innerText;
+    const img = event.target.parentNode.childNodes[0].childNodes[0].childNodes[0].attributes[0].nodeValue;
+    const title = event.target.parentNode.childNodes[0].childNodes[1].childNodes[0].innerText;
+    const artist = event.target.parentNode.childNodes[0].childNodes[1].childNodes[1].innerText;
     const { id } = event.target;
     // console.log(img, title, artist);
     // console.log(id);
@@ -138,14 +139,22 @@ export default function Dashboard({ code }) {
       />
       <div className="flex-grow-1 my-2" style={{ overflowY: 'auto' }}>
         <button type="button" onClick={handleButtons} className="btnProfile">Готово</button>
-        {searchResults.map((track) => (
-          <div className="tracksDash" key={track.uri}>
-            <img src={track.albumUrl} alt="" />
-            <p>{track.title}</p>
-            <p>{track.artist}</p>
-            <button className="btnSearch" type="button" onClick={handleTrack} id={track.uri}>💖</button>
-          </div>
-        ))}
+        <div className="trackListSearch">
+          {searchResults.map((track) => (
+            <div key={track.uri} className="track__card">
+              <div className="card__titleTrack">
+                <div>
+                  <img src={track.albumUrl} alt="" />
+                </div>
+                <div>
+                  <p>{track.title}</p>
+                  <p>{track.artist}</p>
+                </div>
+              </div>
+              <button type="button" onClick={handleTrack} id={track.uri} className="button_like">💖</button>
+            </div>
+          ))}
+        </div>
         {/* {searchResults.length === 0 && (
           <div className="text-center" style={{ whiteSpace: "pre" }}>
             {lyrics}
