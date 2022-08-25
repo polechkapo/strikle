@@ -15,3 +15,28 @@
    margin: 0 auto;
    width: 900px;
 }
+.searchSpoty {
+   border-radius: 20px;
+}
+.flex-grow-1 {
+   width: 900px;
+   display: flex;
+   flex-direction: column;
+   justify-content: start;
+   align-items: flex-start;
+   gap: 5px;
+}
+.tracksDash {
+   width: 100%;
+   background-color: white;
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+   padding-left: 10px;
+   padding-right: 10px;
+   border-radius: 3px;
+}
+.btnSearch {
+   border: none;
+   background: transparent;
+}
