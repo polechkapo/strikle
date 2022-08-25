@@ -115,6 +115,7 @@ module.exports = {
       username: 'VItaliy',
       email: 'baga7@doma.ru',
       birth_date: '2004-01-01',
+      avatar: 'https://cdn.store-assets.com/s/391095/f/5163613.jpeg?width=1500',
       gender: 'Ж',
       bio: 'Я бага',
       city: 'Дагестан',

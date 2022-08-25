@@ -76,7 +76,6 @@ function App() {
         )
           : (
             <>
-              <Route path="/chat" element={<InputChat />} />
               <Route path="/search" element={<SearchSpoty />} />
               <Route path="/" element={<Main />} />
               <Route path="/registraton" element={<Registration1 />} />
