@@ -13,9 +13,12 @@ function ChangePassword() {
     const oldPassword = event.target.oldPassword.value;
     const checkPassword = event.target.checkPassword.value;
 
-    dispatch(editPassUser({
-      oldPassword, password, checkPassword,
-    }));
+    // dispatch(editPassUser({
+    //   oldPassword, password, checkPassword,
+    // }));
+
+    console.log(event.target.button.innerText);
+    // event.target.button.innerText = 'Успешно!';
     // navigate('/cabinet');
   };
 
@@ -50,7 +53,7 @@ function ChangePassword() {
           // id="checkPassword"
           placeholder="Введи новый пароль еще раз"
         />
-        <button className="btnLogin" id="btnProfile" type="submit">Сохранить изменения</button>
+        <button className="btnLogin" id="btnProfile" type="submit" name="button">Сохранить изменения</button>
       </form>
     </div>
   );
