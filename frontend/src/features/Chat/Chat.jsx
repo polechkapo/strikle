@@ -27,9 +27,9 @@ export default function Chat() {
   return (
     <div className="chat">
       <div className="user-online">
-        <ul>
-          {chat.usersInRoom && chat.usersInRoom.map((user) => <li key={user.id}>{user.username}</li>)}
-        </ul>
+        <div>
+          {chat.usersInRoom && chat.usersInRoom.map((user) => <p key={user.id}>{user.username}</p>)}
+        </div>
       </div>
       <div ref={messagesRef} className="chat-messages">
         {!chat.messages ? (<p>Загрузка....</p>) : (chat.messages.map((mesage) => (
@@ -39,9 +39,9 @@ export default function Chat() {
           </div>
         )))}
       </div>
-      <form>
-        <textarea value={messageValue} rows="3" onChange={(e) => setMessagevalue(e.target.value)} />
-        <button onClick={onSendMessage} type="button">Отпривить</button>
+      <form className="comments_form chat_form">
+        <input value={messageValue} row="2" onChange={(e) => setMessagevalue(e.target.value)} className="input_chat" placeholder="Напиши что-нибудь здесь" />
+        <button onClick={onSendMessage} type="button" className="btnChat">Отправить</button>
       </form>
     </div>
   );
