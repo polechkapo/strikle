@@ -1,26 +1,27 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { editPassUser } from '../store/userReducer/reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { editPassUser, falseMessage } from '../store/userReducer/reducer';
 
 function ChangePassword() {
-  // const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  const { checkEditPassword } = useSelector((state) => state.user);
+  console.log(checkEditPassword, 'checkEditPassword');
   const handleForm = (event) => {
     event.preventDefault();
     const password = event.target.password.value;
     const oldPassword = event.target.oldPassword.value;
     const checkPassword = event.target.checkPassword.value;
 
-    // dispatch(editPassUser({
-    //   oldPassword, password, checkPassword,
-    // }));
-
-    console.log(event.target.button.innerText);
-    // event.target.button.innerText = 'Успешно!';
-    // navigate('/cabinet');
+    dispatch(editPassUser({
+      oldPassword, password, checkPassword,
+    }));
   };
-
+  if (checkEditPassword) {
+    document.querySelector('#changePass').reset();
+    setTimeout(() => {
+      dispatch(falseMessage(false));
+    }, 5000);
+  }
   return (
     <div>
       <h1 id="h1Main" className="h1Profile">Изменение пароля</h1>
@@ -52,6 +53,11 @@ function ChangePassword() {
           // id="checkPassword"
           placeholder="Введи новый пароль еще раз"
         />
+        {checkEditPassword && (
+          <div>
+            <p>Изменения успешно применены</p>
+          </div>
+        )}
         <button className="btnLogin" id="btnProfile" type="submit" name="button">Сохранить изменения</button>
       </form>
     </div>
