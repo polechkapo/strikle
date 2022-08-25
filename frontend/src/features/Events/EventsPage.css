@@ -37,6 +37,7 @@
 .events__title {
    font-weight: 400;
    font-family: 'Rubik Mono One', sans-serif;
+   text-align: center;
 }
 
 .title__events {
