@@ -3,7 +3,6 @@ import React from 'react';
 export default function TrackSearchResult({ track, chooseTrack }) {
   function handlePlay() {
     chooseTrack(track);
-    console.log(track);
   }
 
   return (

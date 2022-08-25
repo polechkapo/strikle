@@ -9,7 +9,6 @@ function EditEventModal({ event, setEditModal }) {
   const dispatch = useDispatch();
 
   const handlerUloadPhoto = React.useCallback(async (e) => {
-    console.log(e.target.files);
     try {
       const picturesData = [...e.target.files];
       const file = new FormData();
@@ -36,7 +35,6 @@ function EditEventModal({ event, setEditModal }) {
       photo,
       id: e.target.id,
     };
-    console.log(data);
     dispatch(editEvent(data));
     setEditModal(false);
   };

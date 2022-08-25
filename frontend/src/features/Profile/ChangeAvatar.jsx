@@ -6,7 +6,6 @@ function ChangeAvatar() {
   const user = useSelector((state) => state.user);
 
   const handlerUloadPhoto = async (e) => {
-    console.log(e.target.files);
     try {
       const picturesData = [...e.target.files];
       const file = new FormData();
@@ -18,7 +17,6 @@ function ChangeAvatar() {
         body: file,
       });
       const data = await response.json();
-      console.log('ЧТО ТУТ');
       if (data.loadedPhoto) {
         window.location.href = '/cabinet';
       }

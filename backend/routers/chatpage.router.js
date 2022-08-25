@@ -20,7 +20,6 @@ router.route('/chatpage')
       })
 
       const allPairsUser = await User.findAll({ where: { id: arr } })
-      console.log('PAIR arr', arr);
       if (allPairsUser) {
         res.status(200).json({allPairsUser , loadPairs: true })
       } else {

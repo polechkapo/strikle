@@ -98,9 +98,7 @@ router.route('/participant')
   .post(async (req, res) => {
     try {
       const { user_id, event_id } = req.body
-      // console.log(req.body, 'EVENT SERVER');
       const checkUserInEvent = await Participant.findOne({ where: { user_id, event_id } })
-      // console.log(checkUserInEvent, 'checkUserInEvent');
       if (!checkUserInEvent) {
         const newParticipant = await Participant.create({
           user_id,
@@ -119,7 +117,6 @@ router.route('/participant')
         res.end();
       } else {
         const deleteUserInEvent = await Participant.destroy({ where: { user_id, event_id } })
-        // console.log(deleteUserInEvent, 'deleteUserInEvent');
         if (deleteUserInEvent) {
           const allParticipants = await Participant.findAll({
             raw: true,
@@ -129,7 +126,6 @@ router.route('/participant')
               attributes: ['id', 'username', 'avatar'],
             },
           })
-          console.log('SERVERRRR', allParticipants);
           res.status(201).send(allParticipants)
           res.end();
         } else {
@@ -145,7 +141,6 @@ router.route('/participant')
 router.route('/events/new')
   .post(async (req, res) => {
     const { date, title, description, photo } = req.body
-    console.log(req.body)
     const newEvent = await Event.create({
       user_id: req.session.userId,
       date,

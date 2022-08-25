@@ -14,7 +14,6 @@ router.route('/reg')
       }
 
       const userRegFailed = await User.findOne({ where: { email } });
-console.log( '<--------------Юзер с сущ имейлом');
       if (userRegFailed) {
         return res.status(403).json({ user: null, errorMessage: 'Пользователь с таким email уже существует' });
       } else {
@@ -31,8 +30,6 @@ console.log( '<--------------Юзер с сущ имейлом');
       const {
         gender, birthdate, city, bio, avatar
       } = req.body;
-      console.log(req.body);
-      console.log(req.session.userId)
       if (req.session.userId) {
         const updateUser = await User.findOne({ where: { id: req.session.userId } });
         updateUser.gender = gender,
@@ -41,7 +38,6 @@ console.log( '<--------------Юзер с сущ имейлом');
           updateUser.bio = bio,
           updateUser.avatar = avatar,
           updateUser.save();
-        console.log(updateUser);
         res.status(203).json(updateUser);
         res.end();
       } else {

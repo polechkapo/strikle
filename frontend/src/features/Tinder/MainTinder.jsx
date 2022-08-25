@@ -14,7 +14,6 @@ function MainTinder() {
   useEffect(() => {
     dispatch(loadLikes());
   }, []);
-  console.log('MAIN TINDER');
   const db = useSelector((state) => state.user.users);
   return (
     <div>
