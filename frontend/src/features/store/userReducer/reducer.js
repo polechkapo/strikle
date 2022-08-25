@@ -222,7 +222,7 @@ const userSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         // Успешный случай — загрузка прошла хорошо
         console.log(state.user, '<===== user');
-        const newUser = action.payload.user;
+        const newUser = action.payload;
         state.user = newUser;
         const message = action.payload.errorMessage;
         state.errorMessage = message;

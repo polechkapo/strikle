@@ -72,7 +72,7 @@ router.route('/artists')
           },
         }
         )
-        res.status(200).json({ edit: true, answer, user_id });
+        res.status(200).json(answer);
       } else {
         res.status(404).json({ edit: false });
       }
