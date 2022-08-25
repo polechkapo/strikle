@@ -22,6 +22,7 @@ body {
     justify-content: space-around;
     font-size: 13px;
     margin: 0 auto;
+    margin-bottom: 150px;
 }
 .h1Reg2 {
     color: white;
@@ -87,4 +88,8 @@ body {
 .profWrap {
     margin: 0 auto;
     margin-left: 17%;
+}
+.modalBtn {
+    display: flex;
+    align-items: center;
 }

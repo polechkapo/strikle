@@ -290,3 +290,13 @@ background: transparent;
     flex-direction: column;
     margin-top: 26px;
 }
+#h1Artists {
+    text-align: center !important;
+}
+.h1Ganres{
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 20px;
+    margin-top: 5%;
+    z-index: 2;
+    text-align: center;
+}

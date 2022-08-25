@@ -49,7 +49,7 @@ function EditEventModal({ event, setEditModal }) {
           {
               photo && <img className="photo" src={photo} alt="avatar" style={{ width: 100 }} />
             }
-          <form id="formAvatar" action="/multer" method="post">
+          <form id="formAvatar" className="modalBtn" action="/multer" method="post">
             <label htmlFor="file">
               <input type="file" className="visually-hidden" onChange={handlerUloadPhoto} name="file" id="file" multiple />
               <span>Изменить фото</span>
