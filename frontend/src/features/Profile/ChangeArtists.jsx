@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadUserTracks } from '../store/artistsReducer/reducer';
+import React from 'react';
+import { useSelector } from 'react-redux';
+// import { loadUserTracks } from '../store/artistsReducer/reducer';
 import ChangeDashboard from './ChangeDashboard';
 import SpotifyLogin from './SpotifyLogin';
 
@@ -12,7 +12,6 @@ function ChangeArtists() {
   // useEffect(() => {
   //   dispatch(loadUserTracks());
   // }, []);
-  console.log(userTracks, 'Это юзертрек');
   return (
     <div className="tracks__wrapper">
       <h3 className="h1Profile">Твои любимые треки:</h3>
