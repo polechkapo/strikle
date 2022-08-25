@@ -48,9 +48,9 @@ justify-content: center;
  
  .swipe {
   position: absolute;
-  top: 19%;
   width: 70%;
   left: 15%;
+  top: 160%;
  }
  
  .cardContainer {
@@ -124,7 +124,7 @@ justify-content: center;
   left: 0;
   right: 0;
   gap: 30px;
-  top: 95%;
+  top: 800px;
  }
  
  /* .buttons button {
