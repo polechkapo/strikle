@@ -20,7 +20,7 @@ function ChangeArtists() {
               <p>{track.title}</p>
             </div>
           </div>
-        )) : <h3 className="h1Profile">Загрузка артистов</h3>}
+        )) : <p className="pArtists">Любимые исполнители еще не указаны</p>}
       </div>
       {code ? <ChangeDashboard code={code} />
         : (

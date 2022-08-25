@@ -10,6 +10,7 @@ function SearchSpoty() {
     <div className="container__wrapper">
 
       <h1 id="h1Main" className="spoty__title">Выбери любимые песни:</h1>
+      <p className="ganresP">Тебе нужно выбрать 5 любимых песен</p>
 
       {
         code ? <Dashboard code={code} />

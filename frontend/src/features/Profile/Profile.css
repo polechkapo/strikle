@@ -340,3 +340,9 @@ background: transparent;
     width: 900px;
     align-items: center;
 }
+.pArtists {
+    margin-top: 10px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    color: gray;
+}
