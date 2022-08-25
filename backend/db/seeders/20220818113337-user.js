@@ -41,18 +41,6 @@ module.exports = {
       updatedAt: new Date()
     },
     {
-      username: 'Kseniya',
-      email: 'kseniya@mail.ru',
-      birth_date: '1998-02-01',
-      avatar: '/avatars/2022-08-24_12.08.39.png',
-      gender: 'Ж',
-      bio: 'Привет! Предпочитаю общаться с прямыми и искренними людьми, которые также хорошо относятся к животным. О себе: люблю природу, динамичный спорт, исследование других городов и стран, живую музыку, познавать новое, IT.',
-      city: 'Санкт-Петербург',
-      password: await bcrypt.hash('123456qq', 10),
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
       username: 'Ольга',
       email: 'olga@mail.ru',
       birth_date: '1993-08-01',
