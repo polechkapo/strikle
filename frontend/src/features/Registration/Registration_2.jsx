@@ -61,7 +61,7 @@ function Registration2() {
             <form id="formAvatar" action="/multer" method="post">
               <label htmlFor="file">
                 <input type="file" id="file" className="visually-hidden" onChange={handlerUloadPhoto} />
-                <span>Изменить фото</span>
+                <span>Добавить фото</span>
               </label>
             </form>
           </label>
