@@ -34,7 +34,7 @@ function ChangeAvatar() {
             <input className="visually-hidden" id="multer" type="file" onChange={handlerUloadPhoto} />
             <label htmlFor="multer">
               {' '}
-              <span>Добавить</span>
+              <span>Изменить</span>
             </label>
           </form>
         </div>
