@@ -7,7 +7,7 @@ import SpotifyLogin from './SpotifyLogin';
 function ChangeArtists() {
   const code = new URLSearchParams(window.location.search).get('code');
 
-  const { userTracks } = useSelector((state) => state.tracks );
+  const { userTracks } = useSelector((state) => state.tracks);
   // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(loadUserTracks());
