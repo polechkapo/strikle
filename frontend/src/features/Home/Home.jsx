@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loadUserTracks } from '../store/artistsReducer/reducer';
+import { loadUserGenres } from '../store/genresReducer/reducer';
 import './Home.css';
 
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
   const navigate = useNavigate();
   console.log(userTracks, 'userTracks');
   useEffect(() => {
+    dispatch(loadUserGenres());
     dispatch(loadUserTracks());
   }, []);
 
