@@ -69,8 +69,8 @@
    flex-direction: row-reverse;
    gap: 30px;
    justify-content: space-between;
-   width: 80%;
-   align-items: flex-start;
+   width: 800px;
+   align-items: center;
 }
 
 .comments_form {
@@ -182,7 +182,8 @@ p {
 }
 
 .create__wrapper {
-   width: 72%;
+   width: 700px;
+   gap: 0;
 }
 
 .create__avatar {
@@ -247,3 +248,9 @@ p {
 .event__info {
    text-align: center;
 }
+
+.photo__modal {
+   width: 143px;
+   margin-top: 20px;
+}
+

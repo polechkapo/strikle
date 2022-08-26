@@ -76,7 +76,7 @@ function Tinder() {
       }
     }
 
-    const result = Math.round((counter / ((cardAll.length + userAll.length) / 2)) * 100);
+    const result = Math.round((counter / ((cardAll.length + userAll.length) / 5)) * 100);
     return result;
   };
 
