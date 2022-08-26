@@ -102,9 +102,9 @@ module.exports = {
     }], {});
   },
 
-  async down() {
+  async down(queryInterface, Sequelize) {
 
-   await queryInterface.bulkDelete('Genres', null, {});
+    await queryInterface.bulkDelete('Genres', null, {});
 
   },
 };
