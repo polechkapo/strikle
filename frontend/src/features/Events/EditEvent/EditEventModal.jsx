@@ -45,9 +45,9 @@ function EditEventModal({ event, setEditModal }) {
         <h1 className="h1Reg2 my__events home__title" id="h1Main">Отредактируй свой ивент</h1>
         <div className="avatar create__avatar">
           {
-              photo && <img className="photo" src={photo} alt="avatar" style={{ width: 100 }} />
+              photo && <img className="photo photo__modal" src={photo} alt="avatar" style={{ width: 100 }} />
             }
-          <form id="formAvatar" className="modalBtn" action="/multer" method="post">
+          <form id="formAvatar" action="/multer" method="post" className="modalBtn form__create">
             <label htmlFor="file">
               <input type="file" className="visually-hidden" onChange={handlerUloadPhoto} name="file" id="file" multiple />
               <span>Изменить фото</span>
