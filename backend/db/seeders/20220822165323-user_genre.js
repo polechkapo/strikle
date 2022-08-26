@@ -117,6 +117,12 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
+      user_id: 4,
+      genre_id: 4,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
       user_id: 5,
       genre_id: 4,
       createdAt: new Date(),
