@@ -1,14 +1,21 @@
 /* eslint-disable max-len */
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { loadUserTracks } from '../store/artistsReducer/reducer';
 import './Home.css';
 
 function Home() {
   const { user } = useSelector((state) => state.user);
   const { userGenre } = useSelector((state) => state.genres);
-
+  const { userTracks } = useSelector((state) => state.tracks);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log(userTracks, 'userTracks');
+  useEffect(() => {
+    dispatch(loadUserTracks());
+  }, []);
+
   return (
     <>
       <div id="bodyReg1" className="logContainer">
@@ -23,7 +30,7 @@ function Home() {
         <div className="imgLog8" />
       </div>
       <div className="home__wrapper">
-        {(user.Artists === undefined || user.Artists.length === 0 || userGenre === undefined || userGenre.length === 0)
+        {(userTracks === undefined || userTracks.length === 0 || userGenre === undefined || userGenre.length === 0)
           ? (
             <>
               <h1 className="h1Reg2 home__title">Дополни аккаунт</h1>
