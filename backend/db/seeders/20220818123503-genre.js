@@ -103,11 +103,8 @@ module.exports = {
   },
 
   async down() {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+
+   await queryInterface.bulkDelete('Genres', null, {});
+
   },
 };

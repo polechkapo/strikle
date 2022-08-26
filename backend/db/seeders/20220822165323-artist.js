@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Artists', [{
       artist: 'Ludovico Einaudi',
       title: 'Experience',
@@ -1242,15 +1242,10 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },
-  ], {});
+    ], {});
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('Artists', null, {});
   }
 };

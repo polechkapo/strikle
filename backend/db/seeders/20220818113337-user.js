@@ -380,6 +380,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    await queryInterface.bulkDelete('People', null, {});
+    await queryInterface.bulkDelete('Users', null, {});
   }
 };
