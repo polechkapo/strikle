@@ -21,7 +21,6 @@ export default function ChangeDashboard({ code }) {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const added = useSelector((state) => state.tracks.tracks);
-  console.log('ERROR STAT', added);
   const dispatch = useDispatch();
 
   useEffect(() => {

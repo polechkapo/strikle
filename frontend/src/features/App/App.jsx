@@ -31,7 +31,6 @@ function App() {
 
   useEffect(() => {
     socket.on('ROOM:JOINED', (users) => {
-      console.log(users, 'JOINED INPUTCHAT');
     });
     socket.on('ROOM:NEW_MESSAGES', (message) => {
       dispatch(setMessages(message));
@@ -51,8 +50,6 @@ function App() {
     dispatch(loadGenres());
     dispatch(loadUserTracks());
   }, []);
-
-  console.log(user);
 
   return (
     <BrowserRouter>

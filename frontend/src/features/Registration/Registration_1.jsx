@@ -8,7 +8,6 @@ function Registration1() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, errorMessage } = useSelector((state) => state.user);
-  console.log(user, '<------------------- это юзер');
 
   const handleForm = (event) => {
     event.preventDefault();
@@ -23,14 +22,7 @@ function Registration1() {
     navigate('/profile');
   };
 
-  useEffect(() => {
-    console.log(10);
-    return () => navigate('/profile');
-  }, []);
-  // console.log(errorMessage, 'ЭррорМессадж');
-  // if (!errorMessage) {
-  //   navigate('/');
-  // };
+  useEffect(() => () => navigate('/profile'), []);
 
   return (
     <div id="bodyReg1">
