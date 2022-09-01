@@ -10,7 +10,7 @@ function Registration3() {
   const [genresArr, setGenresArr] = useState([]);
   const dispatch = useDispatch();
   const genres = useSelector((state) => state.genres);
-  const userGenre = useSelector((state) => state.genres.userGenre);
+  useSelector((state) => state.genres.userGenre);
 
   const navigate = useNavigate();
 
@@ -42,7 +42,7 @@ function Registration3() {
       <h1 id="h1Main" className="genres__title">Выбери любимые жанры:</h1>
       <p className="ganresP">Тебе нужно выбрать 5 любимых жанров</p>
       <div className="genres__content">
-        { genres.genres && genres.genres.map((genre) => (
+        {genres.genres && genres.genres.map((genre) => (
           <button key={genre.id} id={genre.id} type="button" onClick={handleButton} className="genres__button">
             {genre.title}
           </button>

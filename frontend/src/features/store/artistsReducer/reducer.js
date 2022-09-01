@@ -61,7 +61,7 @@ const editTracks = createAsyncThunk(
 
 const loadUserTracks = createAsyncThunk(
   'tracks/loadUserTracks',
-  async (payload) => {
+  async () => {
     const response = await fetch('/api/artists');
 
     const data = await response.json();

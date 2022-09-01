@@ -7,7 +7,7 @@ import './Login.css';
 export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user, errorMessage } = useSelector((state) => state.user);
+  const { errorMessage } = useSelector((state) => state.user);
   async function handleLogin(event) {
     event.preventDefault();
     const email = event.target.email.value;

@@ -7,7 +7,7 @@ import './registration_1/registration_1.css';
 function Registration1() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, errorMessage } = useSelector((state) => state.user);
+  const { errorMessage } = useSelector((state) => state.user);
 
   const handleForm = (event) => {
     event.preventDefault();

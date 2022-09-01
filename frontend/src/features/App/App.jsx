@@ -30,7 +30,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    socket.on('ROOM:JOINED', (users) => {
+    socket.on('ROOM:JOINED', () => {
     });
     socket.on('ROOM:NEW_MESSAGES', (message) => {
       dispatch(setMessages(message));
