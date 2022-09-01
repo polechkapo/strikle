@@ -19,7 +19,7 @@ export default function useAuth(code) {
         window.history.pushState({}, null, '/search');
       })
       .catch(() => {
-        console.log(111111);
+        console.log('ТЕПЕРЬ ТУТ');
         // window.location = '/search';
       });
   }, [code]);
