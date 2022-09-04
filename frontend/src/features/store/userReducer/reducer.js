@@ -11,6 +11,7 @@ const initialState = {
   users: null,
   errorMessage: null,
   checkEditPassword: false,
+  userCode: null,
 };
 
 const loadUser = createAsyncThunk(
@@ -175,6 +176,9 @@ const userSlice = createSlice({
     falseMessage: (state, action) => {
       state.checkEditPassword = action.payload;
     },
+    codeLoad: (state, action) => {
+      state.userCode = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -266,6 +270,7 @@ export {
 
 export const {
   falseMessage,
+  codeLoad,
 } = userSlice.actions;
 
 export const selectUser = (state) => state.user;

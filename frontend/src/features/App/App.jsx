@@ -40,7 +40,6 @@ function App() {
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    console.log('APPJSX');
     dispatch(loadUser());
     dispatch(loadEvents());
     dispatch(loadComments());

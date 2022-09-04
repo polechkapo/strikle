@@ -1,11 +1,17 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Dashboard from '../spotify/Dashboard';
 import LoginSpotify from '../spotify/LoginSpotify';
+import { codeLoad } from '../store/userReducer/reducer';
 import './SearchSpoty.css';
 
 function SearchSpoty() {
+  const dispatch = useDispatch();
+  const { userCode } = useSelector((state) => state.user);
   const code = new URLSearchParams(window.location.search).get('code');
-  console.log(code, 'CODE');
+  if (code) {
+    dispatch(codeLoad(code));
+  }
   return (
     <div className="container__wrapper">
 
@@ -13,7 +19,7 @@ function SearchSpoty() {
       <p className="ganresP">Тебе нужно выбрать 5 любимых песен</p>
 
       {
-        code ? <Dashboard code={code} />
+        userCode ? <Dashboard code={userCode} />
           : (
             <div className="genres__content spoty__content">
               <p>Для начала войди в свой аккаунт</p>
