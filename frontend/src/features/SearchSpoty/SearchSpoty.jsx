@@ -5,6 +5,7 @@ import './SearchSpoty.css';
 
 function SearchSpoty() {
   const code = new URLSearchParams(window.location.search).get('code');
+  console.log(code, 'CODE');
   return (
     <div className="container__wrapper">
 
