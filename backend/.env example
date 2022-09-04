@@ -3,9 +3,9 @@ SESSION_SECRET=htfjg&23534!
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/stikle
 REDIRECT_URI=https://strikle1.herokuapp.com/search
 ARTREDIRECT_URI=https://strikle1.herokuapp.com/cabinet
-CLIENT_ID=a64cff7f1f62470ab9902e118ab37e41
-CLIENT_SECRET=49c4649679ab40358170db62539fe3d5
+CLIENT_ID=b931afb81c784c88b86e59762b471baa
+CLIENT_SECRET=3be7b36b1c0c421ca4c869d8ca9c88e2
 
 спотифай:
-логин: lava.spoti@gmail.com
+логин: lava.spoti@gmail.com || vetal9305@gmail.com
 пароль: $90tifY/Uz8
