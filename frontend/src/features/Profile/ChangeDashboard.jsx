@@ -20,8 +20,7 @@ export default function ChangeDashboard({ code }) {
   const accessToken = useAuth(code);
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const added = useSelector((state) => state.tracks.tracks);
-  console.log('ERROR STAT', added);
+  useSelector((state) => state.tracks.tracks);
   const dispatch = useDispatch();
 
   useEffect(() => {

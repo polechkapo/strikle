@@ -19,7 +19,6 @@ export default function useAuth(code) {
         window.history.pushState({}, null, '/search');
       })
       .catch(() => {
-        console.log(111111);
         // window.location = '/search';
       });
   }, [code]);

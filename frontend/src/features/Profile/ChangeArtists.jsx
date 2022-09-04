@@ -6,7 +6,7 @@ import SpotifyLogin from './SpotifyLogin';
 
 function ChangeArtists() {
   const code = new URLSearchParams(window.location.search).get('code');
-
+  console.log(code, 'PROFILE');
   const { userTracks } = useSelector((state) => state.tracks);
   return (
     <div className="tracks__wrapper">

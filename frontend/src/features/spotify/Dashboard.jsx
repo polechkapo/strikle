@@ -4,15 +4,12 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-return-assign */
 import React, { useState, useEffect } from 'react';
-// import Player from "../Player"
 import { Container, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { addTracks } from '../store/artistsReducer/reducer';
 import { loadUser } from '../store/userReducer/reducer';
-// import axios from 'axios';
-// import TrackSearchResult from './TrackSearchResult';
 import useAuth from './useAuth';
 
 const spotifyApi = new SpotifyWebApi({
@@ -26,29 +23,6 @@ export default function Dashboard({ code }) {
   const added = useSelector((state) => state.tracks.tracks);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [playingTrack, setPlayingTrack] = useState();
-  // const [lyrics, setLyrics] = useState('');
-
-  // function chooseTrack(track) {
-  //   setPlayingTrack(track);
-  //   setSearch('');
-  //   setLyrics('');
-  // }
-
-  // useEffect(() => {
-  //   if (!playingTrack) return;
-
-  //   axios
-  //     .get('http://localhost:4000/artists', {
-  //       params: {
-  //         track: playingTrack.title,
-  //         artist: playingTrack.artist,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       setLyrics(res.data.lyrics);
-  //     });
-  // }, [playingTrack]);
 
   useEffect(() => {
     if (!accessToken) return;
@@ -90,8 +64,6 @@ export default function Dashboard({ code }) {
   }, [search, accessToken]);
 
   const [tracksArr, setTracksArr] = useState([]);
-
-  // const tracksArr = [];
 
   const handleTrack = (event) => {
     const img = event.target.parentNode.childNodes[0].childNodes[0].childNodes[0].attributes[0].nodeValue;
@@ -153,19 +125,7 @@ export default function Dashboard({ code }) {
             </div>
           ))}
         </div>
-        {/* {searchResults.length === 0 && (
-          <div className="text-center" style={{ whiteSpace: "pre" }}>
-            {lyrics}
-          </div>
-        )} */}
-      </div>
-      <div>
-        {/* <Player accessToken={accessToken} trackUri={playingTrack?.uri} /> */}
       </div>
     </Container>
   );
 }
-
-// track={track}
-// key={track.uri}
-// chooseTrack={chooseTrack}
