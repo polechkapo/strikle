@@ -12,7 +12,6 @@ function Home() {
   const { userTracks } = useSelector((state) => state.tracks);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(userTracks, 'userTracks');
   useEffect(() => {
     dispatch(loadUserGenres());
     dispatch(loadUserTracks());

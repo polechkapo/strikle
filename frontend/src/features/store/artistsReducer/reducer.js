@@ -7,20 +7,6 @@ const initialState = {
   userTracks: [],
 };
 
-// const loadGenres = createAsyncThunk(
-//   'genres/initGenres',
-//   async () => {
-//     const response = await fetch('/api/genre');
-//     const data = await response.json();
-
-//     if (data.error) {
-//       console.log(data.error);
-//       throw data.error;
-//     }
-//     return data;
-//   },
-// );
-
 const addTracks = createAsyncThunk(
   'tracks/addTracks',
   async (payload) => {
@@ -61,8 +47,7 @@ const editTracks = createAsyncThunk(
 
 const loadUserTracks = createAsyncThunk(
   'tracks/loadUserTracks',
-  async (payload) => {
-    console.log(payload, ',++++ thunk');
+  async () => {
     const response = await fetch('/api/artists');
 
     const data = await response.json();

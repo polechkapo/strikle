@@ -50,7 +50,6 @@ function App() {
     dispatch(loadUsers());
     dispatch(loadGenres());
     dispatch(loadUserTracks());
-    console.log(user, 'APP');
   }, []);
 
   return (

@@ -12,7 +12,6 @@ function Registration3() {
   const genres = useSelector((state) => state.genres);
   const userGenre = useSelector((state) => state.genres.userGenre);
 
-  console.log(genres.genres, 'жанры диспатч');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,8 +36,6 @@ function Registration3() {
     dispatch(addGenre(genresArr));
     navigate('/');
   };
-
-  console.log(userGenre, 'жанры пользователя');
 
   return (
     <div className="genres">
