@@ -19,8 +19,6 @@ export default function useAuth(code) {
         window.history.pushState({}, null, '/cabinet');
       })
       .catch(() => {
-        console.log(111111);
-        // window.location = '/search';
       });
   }, [code]);
 

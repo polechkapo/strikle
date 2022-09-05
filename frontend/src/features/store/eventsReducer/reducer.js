@@ -24,8 +24,7 @@ const loadEvents = createAsyncThunk(
 
 const loadComments = createAsyncThunk(
   'comments/initComments',
-  async (payload) => {
-    console.log(payload);
+  async () => {
     const response = await fetch('/api/comments');
     const data = await response.json();
 
@@ -39,8 +38,7 @@ const loadComments = createAsyncThunk(
 
 const loadParticipants = createAsyncThunk(
   'participants/initParticipants',
-  async (payload) => {
-    console.log(payload);
+  async () => {
     const response = await fetch('/api/participants');
     const data = await response.json();
 
