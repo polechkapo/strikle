@@ -1,7 +1,7 @@
 <div style="display:flex;align-items: stretch;gap:10px;">
 <img src="frontend/public/logo.png" height="32"/>
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Rubik+Mono+One&size=17&pause=1000&color=FD608C&center=true&vCenter=true&multiline=true&width=100&lines=Strikle)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Rubik+Mono+One&size=20&pause=1000&color=FD608C&center=true&vCenter=true&multiline=true&width=100&lines=Strikle)](https://git.io/typing-svg)
 </div>
 
 Если ты хочешь найти друзей, с которыми можно сходить на концерт или просто поболтать о любимой музыке, этот сайт то, что тебе нужно. В знакомствах не всегда всё однозначно. Если ты хочешь завести новые знакомства, друзей, а может быть любовь, [на Страйкл](https://strikle1.herokuapp.com/) это сделать проще простого. Знакомься онлайн — это просто.
