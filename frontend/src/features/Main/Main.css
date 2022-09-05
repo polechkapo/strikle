@@ -1,0 +1,93 @@
+/* body { */
+    /* display: flex;
+    justify-content: center;
+    flex-direction: row;
+} */
+body {
+    font-family: 'Mulish', sans-serif;
+}
+#mainContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    
+}
+.divMain {
+    background-color: linen;
+    background-image: url('./pattern.png');
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 151px;
+    padding-left: 40px;
+    padding-right: 100px;
+    gap: 16px;
+}
+    
+.btnMain {
+    display: flex;
+    width: 200px; 
+    height: 30px;
+    justify-content: center; 
+    align-items: center;
+    background: #FFFFFF;
+    padding: 20px;
+    border: none;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+#imgMain1 {
+    background-image: url('./img_main/Ellipse\ 25.png');
+    background-size: cover;
+    width: 23%;
+    height: 42%;
+    position: fixed;
+    right: 7%;
+    bottom: 2%;
+    z-index: 3;
+
+}
+#imgMain2 {
+    background-image: url('./img_main/Rectangle\ 56.png');
+    background-size: cover;
+    width: 22%;
+    height: 45%;
+    position: fixed;
+    right: 26%;
+    bottom: 27%;
+    z-index: 2;
+}
+#imgMain3 {
+    background-image:  url('./img_main/Rectangle\ 55\ \(1\).png');
+    background-size: cover;
+    width: 20%;
+    height: 45%;
+    position: fixed;
+    right: 7%;
+    top: 10%;
+    z-index: 1;
+}
+#btnMain2 {
+    width: 120px;
+    height: 20px;
+    margin: 10px;
+}
+
+#h1Main {
+    font-family: 'Rubik Mono One', sans-serif;
+    /* font-family: 'Russo One', sans-serif; */
+    /* font-family: 'Yeseva One', cursive; */
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}

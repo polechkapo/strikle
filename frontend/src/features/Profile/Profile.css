@@ -1,0 +1,354 @@
+.divProfile {
+    background-color: linen;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.h1Profile {
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 20px;
+    margin-top: 5%;
+    align-self: flex-start;
+    z-index: 2;
+
+}
+.container1 {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 1%;
+    margin: 0 79px;
+    z-index: 2;
+}
+.container2 {
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+.passwordProfile, .cityProfile, .bioProfile, .emailInfo, .nameInfo, .cityProfile, .bioProfile, .passwordProfile, .passw, .checkPass {
+    Width: 600px;
+    Height: 40px;
+    background: #FFFFFF;
+    padding: 20px;
+    border: none;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    margin-bottom: 10px;
+    color: dimgrey;
+    
+    /* align-content: center; */
+}
+.bioProfile {
+    height: 100px;
+}
+.btnGenres {
+    height: 50px;
+    color: white !important;
+    background: #FD608C!important;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px !important;
+    border: none;
+    margin-top: 20px;
+    z-index: 2;
+}
+#h1ProfileLk {
+    font-size: 30px;
+    margin-left: 10%;
+    z-index: 100;
+    z-index: 2;
+}
+#changeInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#changePass {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#btnProfile {
+    width: 300px;
+}
+#divGenres {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    gap: 21px;
+}
+
+
+.favGen {
+    height: 40px;
+    color: dimgray;
+    background: white;
+    box-shadow: 0px 4px 20px rgb(0 0 0 / 8%);
+    border-radius: 100px !important;
+    border: none;
+    margin-top: 20px;
+    z-index: 2;
+    padding: 9px 25px;
+    text-align: center;
+}
+
+.favGenOld {
+    height: 40px;
+    color: dimgray;
+    background: #fb5e8b;
+    box-shadow: 0px 4px 20px rgb(0 0 0 / 8%);
+    border-radius: 100px !important;
+    border: none;
+    margin-top: 20px;
+    z-index: 2;
+    padding: 9px 25px;
+    text-align: center;
+}
+
+.photoChAvatar {
+    /* margin-top: 15%; */
+    width: 230px !important;
+    /* height: 50% !important; */
+    border-top-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+    z-index: 2;
+    margin-top: -40px;
+}
+#btnChGen {
+    margin-top: 3%;
+}
+.imgsProfile {
+    position: absolute;
+}
+#image1 {
+    position: fixed;
+    background-image: url('./img_Profile/Ellipse\ 25\ \(3\).png');
+    background-size: cover;
+    width: 26%;
+    height: 48%;
+    right: 0;
+    z-index: 1;
+}
+#image2 {
+    /* position: fixed; */
+    background-image: url('./img_Profile/Ellipse\ 27.png');
+    background-size: cover;
+    width: 35%;
+    height: 48%;
+    top: 15%;
+    left: -5%;
+    z-index: 1;
+}
+#image3 {
+    /* position: fixed; */
+    background-image: url('./img_Profile/Ellipse\ 31\ \(1\).png');
+    background-size: cover;
+    width: 11%;
+    height: 15%;
+    top: 18%;
+    right: 10%;
+    z-index: 1;
+}
+#image4 {
+    /* position: fixed; */
+    background-image: url('./img_Profile/Ellipse\ 32.png');
+    background-size: cover;
+    width: 11%;
+    height: 15%;
+    top: 18%;
+    right: 20%;
+    z-index: 1;
+}
+#image5 {
+    /* position: fixed; */
+    background-image: url('./img_Profile/Rectangle\ 58.png');
+    background-size: cover;
+    width: 11%;
+    height: 20%;
+    top: 15%;
+    right: 21%;
+    z-index: 1;
+}
+#image6 {
+    position: fixed;
+    background-image: url('./img_Profile/Ellipse\ 27.png');
+    background-size: cover;
+    width: 50%;
+    height: 70%;
+    bottom: 1%;
+    right: 10%;
+    z-index: 1;
+}
+#image7 {
+    position: fixed;
+    background-image: url('./img_Profile/pattern.png');
+    background-size: cover;
+    width: 150%;
+    height: 150%;
+    top: 60%;
+    right: 50%;
+    z-index: 1;
+}
+input[type='file'] {
+    color: transparent;  
+  }
+
+/* input#file-upload-button {
+background: transparent;
+}
+
+.upload_input {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    width: 140px;
+} */
+.avatar {
+    display: flex;
+    flex-direction: column;
+}
+#formAvatar {
+    width: 120px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background: #FFFFFF;
+    border: none;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    padding: 10px;
+    text-align: center;
+    margin-left: 30%;
+}
+
+.form__create {
+    margin-left: 0!important;
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+}
+.container3 {
+    margin: 20px;
+    z-index: 2;
+}
+.container4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 79px;
+}
+/* .divArtists, .flex-grow-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+.tracksList {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    z-index: 2;
+}
+
+.btnGenres {
+    width: 100px;
+}
+
+.track__card {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 10px 17px;
+    background: white;
+    box-shadow: 0px 4px 20px rgb(0 0 0 / 8%);
+    border-radius: 100px;
+    justify-content: space-between;
+    padding: 8px 65px;
+}
+
+.track__title {
+    font-weight: 800;
+}
+
+.tracks__wrapper {
+    z-index: 2;
+    width: 100%;
+    margin-bottom: 67px;
+}
+
+.trackListSearch{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin-top: 41px;
+}
+
+.button_like {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 19px;
+}
+
+.card__titleTrack {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.search__wrapper {
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 26px;
+}
+#h1Artists {
+    text-align: center !important;
+}
+.h1Ganres{
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 20px;
+    margin-top: 5%;
+    z-index: 2;
+    text-align: center;
+}
+
+
+.searchCabinet {
+    border-radius: 20px;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.error_page {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 50px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 70px;
+    padding: 30px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-color: white;
+    font-size: 13px;
+    position: relative;
+    width: 900px;
+    align-items: center;
+}
+.pArtists {
+    margin-top: 10px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    color: gray;
+}

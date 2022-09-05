@@ -1,0 +1,124 @@
+.h1Login {
+    color: white;
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+.btnLogin {
+    width: 330px;
+    height: 45px;
+    color: white !important;
+    background: #FD608C!important;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px !important;
+    border: none;
+    margin-top: 20px;
+    z-index: 2;
+}
+
+#emailLog, #passwordLog {
+    Width: 420px;
+    Height: 45px;
+    background: #FFFFFF;
+    padding: 20px;
+    border: none;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    margin-bottom: 15px;
+    color: dimgrey;
+}
+
+.divLog {
+ width: 55%;
+ height: 100%;
+ background-color: linen;
+ position: relative;
+}
+.formLog{
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -39px;
+}
+.imgLog1 {
+    background-image: url('./Ellipse\ 25.png');
+    background-size: cover;
+    position: fixed;
+    bottom: 5%;
+    right: 8%;
+    width: 24%;
+    height: 44%;
+    z-index: 5;
+}
+.imgLog2 {
+    background-image: url('./Rectangle\ 55\ \(1\).png');
+    background-size: cover;
+    position: fixed;
+    top: 17%;
+    right: 25%;
+    width: 26%;
+    height: 58%;
+    z-index: 4;
+}
+.imgLog3 {
+    background-image: url('./Rectangle\ 56\ \(1\).png');
+    background-size: cover;
+    position: fixed;
+    top: 6%;
+    right: 6%;
+    width: 22%;
+    height: 46%;
+    z-index: 2;
+}
+.imgLog4 {
+    background-image: url('./Ellipse\ 25\ \(2\).png');
+    background-size: cover;
+    position: fixed;
+    bottom: 8%;
+    right: 320px;
+    width: 200px;
+    height: 205px;
+    z-index: 4;
+}
+.imgLog5 {
+    background-image: url('./Rectangle\ 58.png');
+    background-size: cover;
+    position: fixed;
+    top: 40px;
+    right: 380px;
+    width: 150px;
+    height: 150px;
+    z-index: 3;
+}
+.imgLog6 {
+    background-image: url('./Rectangle\ 59.png');
+    background-size: cover;
+    position: fixed;
+    top: 50px;
+    right: 250px;
+    width: 130px;
+    height: 130px;
+    z-index: 1;
+}
+.imgLog7 {
+    background-image: url('./Ellipse\ 32.png');
+    background-size: cover;
+    position: fixed;
+    top: 50px;
+    right: 360px;
+    width: 130px;
+    height: 130px;
+    z-index: 1;
+}
+.imgLog8 {
+    background-image: url('./Rectangle\ 59\ \(1\).png');
+    background-size: cover;
+    position: fixed;
+    bottom: 0;
+    left: 0px;
+    width: 130px;
+    height: 130px;
+    z-index: 1;
+}
+
+

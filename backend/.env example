@@ -1,0 +1,11 @@
+PORT=4000
+SESSION_SECRET=htfjg&23534!
+DATABASE_URL=postgres://postgres:postgres@localhost:5432/stikle
+REDIRECT_URI=http://localhost:3000/search
+ARTREDIRECT_URI=http://localhost:3000/cabinet
+CLIENT_ID=b931afb81c784c88b86e59762b471baa
+CLIENT_SECRET=3be7b36b1c0c421ca4c869d8ca9c88e2
+
+спотифай:
+логин: lava.spoti@gmail.com || vetal9305@gmail.com
+пароль: $90tifY/Uz8
