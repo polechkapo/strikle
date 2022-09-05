@@ -13,7 +13,7 @@
 ## Демо 🎧
 
 [Смотреть видео на Youtube](https://youtu.be/l9ImYZx9yCg)
-[![Strikle](/backend/public/readme/main.png)](https://youtu.be/l9ImYZx9yCg "Strikle")
+[![Strikle](/backend/public/readme/strikle.gif)](https://youtu.be/l9ImYZx9yCg "Strikle")
 
 [Перейти на сайт](https://strikle1.herokuapp.com/)
 
